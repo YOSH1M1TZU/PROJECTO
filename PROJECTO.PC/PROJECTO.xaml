@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROJECTO.PC"
         mc:Ignorable="d"
-        Title="PROJECTO" Height="680" Width="1250" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="PROJECTO" Height="680" Width="1250" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF344960">
     <Grid>
+        <Rectangle Fill="#FF24323C" Height="35" Stroke="Black" Width="1250" StrokeThickness="0" Margin="0,0,0,645" MouseDown="Rectangle_MouseDown"/>
+        <Label x:Name="btn_exit" Content="X" Height="30" Width="30" Foreground="White" FontSize="16" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="1216,2,4,648" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="btn_exit_MouseLeftButtonUp"/>
+        <Label x:Name="btn_minimize" Content="___" Height="30" Width="30" Foreground="White" FontSize="16" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="1185,2,0,648" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="btn_minimize_MouseLeftButtonUp" HorizontalAlignment="Left"/>
 
+        <Canvas x:Name="canvas_main" HorizontalAlignment="Left" Height="680" VerticalAlignment="Top" Width="1250">
+
+        </Canvas>
+        <Rectangle Fill="#FF24323C" HorizontalAlignment="Left" Height="645" Margin="0,35,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="280"/>
+        <Label x:Name="label1_Copy" Content="My Projects" HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top" Height="50" Width="280" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="36" Foreground="White" Padding="10,5,5,5"/>
+        <Label x:Name="label1_Copy0" Content="To Do" HorizontalAlignment="Left" Margin="0,180,0,0" VerticalAlignment="Top" Height="35" Width="280" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" Foreground="White" Padding="10,5,5,5"/>
+        <Label x:Name="label1_Copy1" Content="In Progress" HorizontalAlignment="Left" Margin="0,230,0,0" VerticalAlignment="Top" Height="35" Width="280" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" Foreground="White" Padding="10,5,5,5"/>
+        <Label x:Name="label1_Copy2" Content="Done" HorizontalAlignment="Left" Margin="0,280,0,0" VerticalAlignment="Top" Height="35" Width="280" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" Foreground="White" Padding="10,5,5,5"/>
+        <Label x:Name="label1_Copy3" Content="Files" HorizontalAlignment="Left" Margin="0,330,0,0" VerticalAlignment="Top" Height="35" Width="280" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" Foreground="White" Padding="10,5,5,5"/>
+        <Label x:Name="label1_Copy4" Content="Events" HorizontalAlignment="Left" Margin="0,380,0,0" VerticalAlignment="Top" Height="35" Width="280" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" Foreground="White" Padding="10,5,5,5"/>
+        <Label x:Name="label1_Copy5" Content="Tasks" HorizontalAlignment="Left" Margin="0,430,0,0" VerticalAlignment="Top" Height="35" Width="280" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" Foreground="White" Padding="10,5,5,5"/>
+        <Label x:Name="label1_Copy6" Content="Chat" HorizontalAlignment="Left" Margin="0,480,0,0" VerticalAlignment="Top" Height="35" Width="280" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" Foreground="White" Padding="10,5,5,5"/>
+        <Label x:Name="label1_Copy7" Content="Settings" HorizontalAlignment="Left" Margin="0,530,0,0" VerticalAlignment="Top" Height="35" Width="280" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" Foreground="White" Padding="10,5,5,5"/>
+        <Rectangle Fill="#FF367AAA" HorizontalAlignment="Left" Height="3" Margin="0,161,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="280"/>
+        <Label x:Name="label1_Copy8" Content="My Account" HorizontalAlignment="Left" Margin="0,620,0,0" VerticalAlignment="Top" Height="50" Width="280" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="36" Foreground="White" Padding="10,5,5,5"/>
     </Grid>
 </Window>
