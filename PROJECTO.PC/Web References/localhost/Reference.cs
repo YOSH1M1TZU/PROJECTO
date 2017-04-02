@@ -35,7 +35,13 @@ namespace PROJECTO.PC.localhost {
         
         private System.Threading.SendOrPostCallback RegisterOperationCompleted;
         
+        private System.Threading.SendOrPostCallback LoadDataOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback Projects_Owned_ReadOperationCompleted;
+        
         private System.Threading.SendOrPostCallback ChatMessageOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback MaintenanceOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -85,7 +91,16 @@ namespace PROJECTO.PC.localhost {
         public event RegisterCompletedEventHandler RegisterCompleted;
         
         /// <remarks/>
+        public event LoadDataCompletedEventHandler LoadDataCompleted;
+        
+        /// <remarks/>
+        public event Projects_Owned_ReadCompletedEventHandler Projects_Owned_ReadCompleted;
+        
+        /// <remarks/>
         public event ChatMessageCompletedEventHandler ChatMessageCompleted;
+        
+        /// <remarks/>
+        public event MaintenanceCompletedEventHandler MaintenanceCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/MOTD", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -116,25 +131,25 @@ namespace PROJECTO.PC.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/Login", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool Login(string username, string password) {
+        public string Login(string email, string password) {
             object[] results = this.Invoke("Login", new object[] {
-                        username,
+                        email,
                         password});
-            return ((bool)(results[0]));
+            return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void LoginAsync(string username, string password) {
-            this.LoginAsync(username, password, null);
+        public void LoginAsync(string email, string password) {
+            this.LoginAsync(email, password, null);
         }
         
         /// <remarks/>
-        public void LoginAsync(string username, string password, object userState) {
+        public void LoginAsync(string email, string password, object userState) {
             if ((this.LoginOperationCompleted == null)) {
                 this.LoginOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoginOperationCompleted);
             }
             this.InvokeAsync("Login", new object[] {
-                        username,
+                        email,
                         password}, this.LoginOperationCompleted, userState);
         }
         
@@ -147,60 +162,119 @@ namespace PROJECTO.PC.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/Register", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void Register(string username, string password, string email, string access_code) {
-            this.Invoke("Register", new object[] {
-                        username,
-                        password,
+        public string Register(string name, string surname, string email, string password) {
+            object[] results = this.Invoke("Register", new object[] {
+                        name,
+                        surname,
                         email,
-                        access_code});
+                        password});
+            return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void RegisterAsync(string username, string password, string email, string access_code) {
-            this.RegisterAsync(username, password, email, access_code, null);
+        public void RegisterAsync(string name, string surname, string email, string password) {
+            this.RegisterAsync(name, surname, email, password, null);
         }
         
         /// <remarks/>
-        public void RegisterAsync(string username, string password, string email, string access_code, object userState) {
+        public void RegisterAsync(string name, string surname, string email, string password, object userState) {
             if ((this.RegisterOperationCompleted == null)) {
                 this.RegisterOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegisterOperationCompleted);
             }
             this.InvokeAsync("Register", new object[] {
-                        username,
-                        password,
+                        name,
+                        surname,
                         email,
-                        access_code}, this.RegisterOperationCompleted, userState);
+                        password}, this.RegisterOperationCompleted, userState);
         }
         
         private void OnRegisterOperationCompleted(object arg) {
             if ((this.RegisterCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.RegisterCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.RegisterCompleted(this, new RegisterCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/LoadData", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] LoadData(string userID) {
+            object[] results = this.Invoke("LoadData", new object[] {
+                        userID});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LoadDataAsync(string userID) {
+            this.LoadDataAsync(userID, null);
+        }
+        
+        /// <remarks/>
+        public void LoadDataAsync(string userID, object userState) {
+            if ((this.LoadDataOperationCompleted == null)) {
+                this.LoadDataOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoadDataOperationCompleted);
+            }
+            this.InvokeAsync("LoadData", new object[] {
+                        userID}, this.LoadDataOperationCompleted, userState);
+        }
+        
+        private void OnLoadDataOperationCompleted(object arg) {
+            if ((this.LoadDataCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LoadDataCompleted(this, new LoadDataCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/Projects_Owned_Read", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] Projects_Owned_Read(string ownerID) {
+            object[] results = this.Invoke("Projects_Owned_Read", new object[] {
+                        ownerID});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Projects_Owned_ReadAsync(string ownerID) {
+            this.Projects_Owned_ReadAsync(ownerID, null);
+        }
+        
+        /// <remarks/>
+        public void Projects_Owned_ReadAsync(string ownerID, object userState) {
+            if ((this.Projects_Owned_ReadOperationCompleted == null)) {
+                this.Projects_Owned_ReadOperationCompleted = new System.Threading.SendOrPostCallback(this.OnProjects_Owned_ReadOperationCompleted);
+            }
+            this.InvokeAsync("Projects_Owned_Read", new object[] {
+                        ownerID}, this.Projects_Owned_ReadOperationCompleted, userState);
+        }
+        
+        private void OnProjects_Owned_ReadOperationCompleted(object arg) {
+            if ((this.Projects_Owned_ReadCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Projects_Owned_ReadCompleted(this, new Projects_Owned_ReadCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/ChatMessage", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void ChatMessage(string sender, string message, string project, string team) {
+        public void ChatMessage(string senderID, string message, string project, string team) {
             this.Invoke("ChatMessage", new object[] {
-                        sender,
+                        senderID,
                         message,
                         project,
                         team});
         }
         
         /// <remarks/>
-        public void ChatMessageAsync(string sender, string message, string project, string team) {
-            this.ChatMessageAsync(sender, message, project, team, null);
+        public void ChatMessageAsync(string senderID, string message, string project, string team) {
+            this.ChatMessageAsync(senderID, message, project, team, null);
         }
         
         /// <remarks/>
-        public void ChatMessageAsync(string sender, string message, string project, string team, object userState) {
+        public void ChatMessageAsync(string senderID, string message, string project, string team, object userState) {
             if ((this.ChatMessageOperationCompleted == null)) {
                 this.ChatMessageOperationCompleted = new System.Threading.SendOrPostCallback(this.OnChatMessageOperationCompleted);
             }
             this.InvokeAsync("ChatMessage", new object[] {
-                        sender,
+                        senderID,
                         message,
                         project,
                         team}, this.ChatMessageOperationCompleted, userState);
@@ -210,6 +284,33 @@ namespace PROJECTO.PC.localhost {
             if ((this.ChatMessageCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ChatMessageCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/Maintenance", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string Maintenance() {
+            object[] results = this.Invoke("Maintenance", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void MaintenanceAsync() {
+            this.MaintenanceAsync(null);
+        }
+        
+        /// <remarks/>
+        public void MaintenanceAsync(object userState) {
+            if ((this.MaintenanceOperationCompleted == null)) {
+                this.MaintenanceOperationCompleted = new System.Threading.SendOrPostCallback(this.OnMaintenanceOperationCompleted);
+            }
+            this.InvokeAsync("Maintenance", new object[0], this.MaintenanceOperationCompleted, userState);
+        }
+        
+        private void OnMaintenanceOperationCompleted(object arg) {
+            if ((this.MaintenanceCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.MaintenanceCompleted(this, new MaintenanceCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -276,21 +377,121 @@ namespace PROJECTO.PC.localhost {
         }
         
         /// <remarks/>
-        public bool Result {
+        public string Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
+                return ((string)(this.results[0]));
             }
         }
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
-    public delegate void RegisterCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void RegisterCompletedEventHandler(object sender, RegisterCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RegisterCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RegisterCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void LoadDataCompletedEventHandler(object sender, LoadDataCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LoadDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LoadDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void Projects_Owned_ReadCompletedEventHandler(object sender, Projects_Owned_ReadCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Projects_Owned_ReadCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Projects_Owned_ReadCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
     public delegate void ChatMessageCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void MaintenanceCompletedEventHandler(object sender, MaintenanceCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class MaintenanceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal MaintenanceCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
 }
 
 #pragma warning restore 1591

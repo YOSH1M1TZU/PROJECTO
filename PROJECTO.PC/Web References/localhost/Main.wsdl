@@ -15,7 +15,7 @@
       <s:element name="Login">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
           </s:sequence>
         </s:complexType>
@@ -23,27 +23,64 @@
       <s:element name="LoginResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="LoginResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="Register">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="surname" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="access_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="RegisterResponse">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadDataResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Projects_Owned_Read">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ownerID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Projects_Owned_ReadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Projects_Owned_ReadResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="ChatMessage">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="sender" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="senderID" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="project" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="team" type="s:string" />
@@ -52,6 +89,16 @@
       </s:element>
       <s:element name="ChatMessageResponse">
         <s:complexType />
+      </s:element>
+      <s:element name="Maintenance">
+        <s:complexType />
+      </s:element>
+      <s:element name="MaintenanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MaintenanceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
     </s:schema>
   </wsdl:types>
@@ -73,11 +120,29 @@
   <wsdl:message name="RegisterSoapOut">
     <wsdl:part name="parameters" element="tns:RegisterResponse" />
   </wsdl:message>
+  <wsdl:message name="LoadDataSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadData" />
+  </wsdl:message>
+  <wsdl:message name="LoadDataSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="Projects_Owned_ReadSoapIn">
+    <wsdl:part name="parameters" element="tns:Projects_Owned_Read" />
+  </wsdl:message>
+  <wsdl:message name="Projects_Owned_ReadSoapOut">
+    <wsdl:part name="parameters" element="tns:Projects_Owned_ReadResponse" />
+  </wsdl:message>
   <wsdl:message name="ChatMessageSoapIn">
     <wsdl:part name="parameters" element="tns:ChatMessage" />
   </wsdl:message>
   <wsdl:message name="ChatMessageSoapOut">
     <wsdl:part name="parameters" element="tns:ChatMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="MaintenanceSoapIn">
+    <wsdl:part name="parameters" element="tns:Maintenance" />
+  </wsdl:message>
+  <wsdl:message name="MaintenanceSoapOut">
+    <wsdl:part name="parameters" element="tns:MaintenanceResponse" />
   </wsdl:message>
   <wsdl:portType name="MainSoap">
     <wsdl:operation name="MOTD">
@@ -92,9 +157,21 @@
       <wsdl:input message="tns:RegisterSoapIn" />
       <wsdl:output message="tns:RegisterSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="LoadData">
+      <wsdl:input message="tns:LoadDataSoapIn" />
+      <wsdl:output message="tns:LoadDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Projects_Owned_Read">
+      <wsdl:input message="tns:Projects_Owned_ReadSoapIn" />
+      <wsdl:output message="tns:Projects_Owned_ReadSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ChatMessage">
       <wsdl:input message="tns:ChatMessageSoapIn" />
       <wsdl:output message="tns:ChatMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Maintenance">
+      <wsdl:input message="tns:MaintenanceSoapIn" />
+      <wsdl:output message="tns:MaintenanceSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MainSoap" type="tns:MainSoap">
@@ -126,8 +203,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LoadData">
+      <soap:operation soapAction="http://localhost/LoadData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Projects_Owned_Read">
+      <soap:operation soapAction="http://localhost/Projects_Owned_Read" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ChatMessage">
       <soap:operation soapAction="http://localhost/ChatMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Maintenance">
+      <soap:operation soapAction="http://localhost/Maintenance" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -165,8 +269,35 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LoadData">
+      <soap12:operation soapAction="http://localhost/LoadData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Projects_Owned_Read">
+      <soap12:operation soapAction="http://localhost/Projects_Owned_Read" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ChatMessage">
       <soap12:operation soapAction="http://localhost/ChatMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Maintenance">
+      <soap12:operation soapAction="http://localhost/Maintenance" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

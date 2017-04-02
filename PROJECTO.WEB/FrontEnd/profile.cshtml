@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+    string logged_user = (string)(Session["logged_user"]);
+}
+
+<!doctype html>
+
+<html>
+<head>
+    <title>Welcome @logged_user!</title>
+    <meta charset="UTF-8">
+    <!--		<meta name="viewport" content="initial-scale=1.0">-->
+    <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/profile.css" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="favicon.png" href="favicon.png">
+    <link rel="stylesheet" href="css/icon_font.css">
+</head>
+
+<body>
+    <nav class="nav">
+        <ul>
+            <li><a href="index.html">PROJECTO</a></li>
+            <li><a href="#" class="hovering">My Account</a></li>
+            <li><a href="downloads.html" class="hovering">Downloads</a></li>
+            <li><a href="https://www.github.com/YOSH1M1TZU/Projecto" class="hovering" target="_blank">Source</a></li>
+            <li><a href="#" class="hovering">About</a></li>
+        </ul>
+    </nav>
+
+    <section class="side_menu">
+        <ul>
+            <li><a href="#">Project 1 <i class="icons">&#xf0ec;</i></a></li>
+            <div class="spacer"></div>
+            <li><p>FEATURES:</p></li>
+            <li><a href="#">● To Do</a></li>
+            <li><a href="#">● In Progress</a></li>
+            <li><a href="#">● Finished</a></li>
+            <li><a href="#">● Bugs</a></li>
+            <li><p>COMMUNICATION:</p></li>
+            <li><a href="#">● Chat</a></li>
+            <li><a href="#">● Files</a></li>
+            <li><a href="#">● Teams</a></li>
+            <li><p>OTHER:</p></li>
+            <li><a href="#">● Meetings</a></li>
+            <li><a href="#">● Milestones</a></li>
+            <li><a href="#">● Settings</a></li>
+        </ul>
+    </section>
+
+    <!--
+            <section class="test1">
+                <div class="test1_wrapper">
+                    <h2>abcdef123 lorem ipsum</h2>
+                </div>
+            </section>
+    -->
+
+    <footer id="footer">
+        <div class="footer">
+            <p>Copyright &copy; 2017 Piotr Haptaś</p>
+        </div>
+    </footer>
+</body>
+</html>

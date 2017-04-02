@@ -102,6 +102,9 @@
     <Content Include="BackEnd\WebServices\Main.asmx" />
     <Content Include="packages.config" />
     <Content Include="FrontEnd\Index.cshtml" />
+    <Content Include="FrontEnd\profile.cshtml" />
+    <Content Include="FrontEnd\login_register.cshtml" />
+    <Content Include="FrontEnd\downloads.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -114,7 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackEnd\SecurityClass.cs" />
-    <Compile Include="BackEnd\ServerClass.cs" />
+    <Compile Include="BackEnd\DBClass.cs" />
     <Compile Include="BackEnd\WebServices\Main.asmx.cs">
       <DependentUpon>Main.asmx</DependentUpon>
       <SubType>Component</SubType>

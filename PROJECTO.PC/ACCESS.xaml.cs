@@ -89,10 +89,9 @@ namespace PROJECTO.PC
 
 
 
-
         public async void Internet_Check()
         {
-            await Task.Delay(5000);
+            await Task.Delay(2000);
             await Check();
         }
         public async Task Check()
@@ -100,7 +99,7 @@ namespace PROJECTO.PC
             try
             {
                 Ping ping = new Ping();
-                string host = "8.8.8.8";
+                string host = "localhost";
                 byte[] buffer = new byte[32];
                 int timeout = 1000;
                 PingOptions options = new PingOptions();
@@ -135,9 +134,10 @@ namespace PROJECTO.PC
         private void btn_login_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var web_service = new localhost.Main();
-            if (web_service.Login(email_login.Text.ToString(), password_login.Password.ToString()))
+            string result = web_service.Login(email_login.Text.ToString(), password_login.Password.ToString());
+            if (result != "ERR")
             {
-                MainWindow mw = new MainWindow();
+                MainWindow mw = new MainWindow(result);
                 mw.Show();
                 this.Hide();
             }
@@ -146,25 +146,30 @@ namespace PROJECTO.PC
                 error1.Content = "Oh no! It seems that your";
                 error2.Content = "username or password is incorrect.";
             }
+            //MessageBox.Show(result);
         }
 
         private void btn_register_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var web_service = new localhost.Main();
-            web_service.Register(name_register.Text.ToString(), surname_register.Text.ToString(), email_register.Text.ToString(), password_register.Text.ToString());
-            canvas_loading.Visibility = Visibility.Hidden;
-            canvas_login.Visibility = Visibility.Visible;
-            canvas_register.Visibility = Visibility.Hidden;
-            canvas_forgot.Visibility = Visibility.Hidden;
-            message_label.Content = "Almost done!";
-            small_message_label.Content = "Now log in to your new account:";
-            error1.Content = "";
-            error2.Content = "";
+            string result = web_service.Register(name_register.Text.ToString(), surname_register.Text.ToString(), email_register.Text.ToString(), password_register.Text.ToString());
+            if (result == "OK")
+            {
+                canvas_loading.Visibility = Visibility.Hidden;
+                canvas_login.Visibility = Visibility.Visible;
+                canvas_register.Visibility = Visibility.Hidden;
+                canvas_forgot.Visibility = Visibility.Hidden;
+                message_label.Content = "Almost done!";
+                small_message_label.Content = "Now log in to your new account:";
+                error1.Content = "";
+                error2.Content = "";
+            }
+            else { MessageBox.Show(result); }
         }
 
-        private void btn_forgot_send_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void btn_forgot_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            
         }
 
         private void btn_reconnect_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
