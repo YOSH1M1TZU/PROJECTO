@@ -118,6 +118,7 @@
   <ItemGroup>
     <Compile Include="BackEnd\SecurityClass.cs" />
     <Compile Include="BackEnd\DBClass.cs" />
+    <Compile Include="BackEnd\ServerClass.cs" />
     <Compile Include="BackEnd\WebServices\Main.asmx.cs">
       <DependentUpon>Main.asmx</DependentUpon>
       <SubType>Component</SubType>

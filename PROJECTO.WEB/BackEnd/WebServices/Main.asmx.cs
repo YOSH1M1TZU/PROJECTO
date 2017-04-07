@@ -37,19 +37,71 @@ namespace PROJECTO.WEB.BackEnd.WebServices
             return sc.Register(name, surname, email, password);
         }
 
+
+
+
+
+
+
+
+
+
         [WebMethod]
-        public List<string> LoadData(string userID)
+        public List<string> LoadProjects(string userID)
         {
             var sc = new DBClass();
-            return sc.LoadData(userID);
+            return sc.LoadProjects(userID);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        [WebMethod]
+        public List<string> LoadTodos(string chosenProject)
+        {
+            var sc = new DBClass();
+            return sc.LoadTodos(chosenProject);
         }
 
         [WebMethod]
-        public List<string> Projects_Owned_Read(string ownerID)
+        public string AddTodos(string title,string desc, string projectID)
         {
             var sc = new DBClass();
-            return sc.Projects_Owned_Reader(ownerID);
+            return sc.AddTodos(title, desc, projectID);
         }
+
+        [WebMethod]
+        public string EditTodos(string oldTitle, string newTitle, string newDesc, string projectID)
+        {
+            var sc = new DBClass();
+            return sc.EditTodos(oldTitle, newTitle, newDesc, projectID);
+        }
+
+        [WebMethod]
+        public string RemoveTodos(string title, string projectID)
+        {
+            var sc = new DBClass();
+            return sc.RemoveTodos(title, projectID);
+        }
+
+
+
+
+
+
+
+
+
 
         [WebMethod]
         public void ChatMessage(string senderID, string message, string project, string team)

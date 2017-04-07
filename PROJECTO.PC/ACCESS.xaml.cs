@@ -91,7 +91,7 @@ namespace PROJECTO.PC
 
         public async void Internet_Check()
         {
-            await Task.Delay(2000);
+            await Task.Delay(500);
             await Check();
         }
         public async Task Check()

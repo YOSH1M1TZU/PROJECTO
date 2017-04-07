@@ -106,12 +106,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <Resource Include="Resources\Aaargh.ttf" />
     <None Include="Web References\localhost\Main.wsdl" />
     <None Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Aaargh.ttf" />
     <Resource Include="Resources\error.png" />
     <Resource Include="Resources\main_bg.png" />
     <Resource Include="Resources\Moon Light.otf" />
@@ -133,22 +133,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\logo.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:2040/BackEnd/WebServices/Main.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\localhost\</RelPath>
-      <UpdateFromURL>http://localhost:2040/BackEnd/WebServices/Main.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>PROJECTO_PC_localhost_Main</CachedSettingsPropName>
-    </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\localhost\Main.disco" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\UI\achievs.png" />
@@ -183,6 +167,25 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\UI\manager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:2040/BackEnd/WebServices/Main.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\localhost\</RelPath>
+      <UpdateFromURL>http://localhost:2040/BackEnd/WebServices/Main.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>PROJECTO_PC_localhost_Main</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\localhost\Main.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\UI\todo\confirm_task.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
