@@ -39,10 +39,10 @@ namespace PROJECTO.PC
             canvas_finished.Visibility = Visibility.Hidden;
             canvas_bugs.Visibility = Visibility.Hidden;
             canvas_storage.Visibility = Visibility.Hidden;
-            canvas_chat.Visibility = Visibility.Hidden;
+            canvas_communication.Visibility = Visibility.Hidden;
             canvas_finances.Visibility = Visibility.Hidden;
             canvas_charts.Visibility = Visibility.Hidden;
-            canvas_teams.Visibility = Visibility.Hidden;
+            canvas_users.Visibility = Visibility.Hidden;
             canvas_achievs.Visibility = Visibility.Hidden;
             canvas_settings.Visibility = Visibility.Hidden;
         }
@@ -150,9 +150,9 @@ namespace PROJECTO.PC
                         storage_icon.Opacity = 1;
                     }
                     break;
-                case "chat_label":
+                case "communication_label":
                     {
-                        chat_icon.Opacity = 1;
+                        communication_icon.Opacity = 1;
                     }
                     break;
                 case "finances_label":
@@ -165,9 +165,9 @@ namespace PROJECTO.PC
                         charts_icon.Opacity = 1;
                     }
                     break;
-                case "teams_label":
+                case "users_label":
                     {
-                        teams_icon.Opacity = 1;
+                        users_icon.Opacity = 1;
                     }
                     break;
                 case "achievs_label":
@@ -236,9 +236,9 @@ namespace PROJECTO.PC
                         storage_icon.Opacity = 0.6;
                     }
                     break;
-                case "chat_label":
+                case "communication_label":
                     {
-                        chat_icon.Opacity = 0.6;
+                        communication_icon.Opacity = 0.6;
                     }
                     break;
                 case "finances_label":
@@ -251,9 +251,9 @@ namespace PROJECTO.PC
                         charts_icon.Opacity = 0.6;
                     }
                     break;
-                case "teams_label":
+                case "users_label":
                     {
-                        teams_icon.Opacity = 0.6;
+                        users_icon.Opacity = 0.6;
                     }
                     break;
                 case "achievs_label":
@@ -283,10 +283,10 @@ namespace PROJECTO.PC
                         canvas_finished.Visibility = Visibility.Hidden;
                         canvas_bugs.Visibility = Visibility.Hidden;
                         canvas_storage.Visibility = Visibility.Hidden;
-                        canvas_chat.Visibility = Visibility.Hidden;
+                        canvas_communication.Visibility = Visibility.Hidden;
                         canvas_finances.Visibility = Visibility.Hidden;
                         canvas_charts.Visibility = Visibility.Hidden;
-                        canvas_teams.Visibility = Visibility.Hidden;
+                        canvas_users.Visibility = Visibility.Hidden;
                         canvas_achievs.Visibility = Visibility.Hidden;
                         canvas_settings.Visibility = Visibility.Hidden;
                     }
@@ -300,10 +300,10 @@ namespace PROJECTO.PC
                         canvas_finished.Visibility = Visibility.Hidden;
                         canvas_bugs.Visibility = Visibility.Hidden;
                         canvas_storage.Visibility = Visibility.Hidden;
-                        canvas_chat.Visibility = Visibility.Hidden;
+                        canvas_communication.Visibility = Visibility.Hidden;
                         canvas_finances.Visibility = Visibility.Hidden;
                         canvas_charts.Visibility = Visibility.Hidden;
-                        canvas_teams.Visibility = Visibility.Hidden;
+                        canvas_users.Visibility = Visibility.Hidden;
                         canvas_achievs.Visibility = Visibility.Hidden;
                         canvas_settings.Visibility = Visibility.Hidden;
                     }
@@ -317,10 +317,10 @@ namespace PROJECTO.PC
                         canvas_finished.Visibility = Visibility.Hidden;
                         canvas_bugs.Visibility = Visibility.Hidden;
                         canvas_storage.Visibility = Visibility.Hidden;
-                        canvas_chat.Visibility = Visibility.Hidden;
+                        canvas_communication.Visibility = Visibility.Hidden;
                         canvas_finances.Visibility = Visibility.Hidden;
                         canvas_charts.Visibility = Visibility.Hidden;
-                        canvas_teams.Visibility = Visibility.Hidden;
+                        canvas_users.Visibility = Visibility.Hidden;
                         canvas_achievs.Visibility = Visibility.Hidden;
                         canvas_settings.Visibility = Visibility.Hidden;
                     }
@@ -334,10 +334,10 @@ namespace PROJECTO.PC
                         canvas_finished.Visibility = Visibility.Hidden;
                         canvas_bugs.Visibility = Visibility.Hidden;
                         canvas_storage.Visibility = Visibility.Hidden;
-                        canvas_chat.Visibility = Visibility.Hidden;
+                        canvas_communication.Visibility = Visibility.Hidden;
                         canvas_finances.Visibility = Visibility.Hidden;
                         canvas_charts.Visibility = Visibility.Hidden;
-                        canvas_teams.Visibility = Visibility.Hidden;
+                        canvas_users.Visibility = Visibility.Hidden;
                         canvas_achievs.Visibility = Visibility.Hidden;
                         canvas_settings.Visibility = Visibility.Hidden;
                     }
@@ -351,10 +351,10 @@ namespace PROJECTO.PC
                         canvas_finished.Visibility = Visibility.Visible;
                         canvas_bugs.Visibility = Visibility.Hidden;
                         canvas_storage.Visibility = Visibility.Hidden;
-                        canvas_chat.Visibility = Visibility.Hidden;
+                        canvas_communication.Visibility = Visibility.Hidden;
                         canvas_finances.Visibility = Visibility.Hidden;
                         canvas_charts.Visibility = Visibility.Hidden;
-                        canvas_teams.Visibility = Visibility.Hidden;
+                        canvas_users.Visibility = Visibility.Hidden;
                         canvas_achievs.Visibility = Visibility.Hidden;
                         canvas_settings.Visibility = Visibility.Hidden;
                     }
@@ -368,10 +368,10 @@ namespace PROJECTO.PC
                         canvas_finished.Visibility = Visibility.Hidden;
                         canvas_bugs.Visibility = Visibility.Visible;
                         canvas_storage.Visibility = Visibility.Hidden;
-                        canvas_chat.Visibility = Visibility.Hidden;
+                        canvas_communication.Visibility = Visibility.Hidden;
                         canvas_finances.Visibility = Visibility.Hidden;
                         canvas_charts.Visibility = Visibility.Hidden;
-                        canvas_teams.Visibility = Visibility.Hidden;
+                        canvas_users.Visibility = Visibility.Hidden;
                         canvas_achievs.Visibility = Visibility.Hidden;
                         canvas_settings.Visibility = Visibility.Hidden;
                     }
@@ -385,15 +385,15 @@ namespace PROJECTO.PC
                         canvas_finished.Visibility = Visibility.Hidden;
                         canvas_bugs.Visibility = Visibility.Hidden;
                         canvas_storage.Visibility = Visibility.Visible;
-                        canvas_chat.Visibility = Visibility.Hidden;
+                        canvas_communication.Visibility = Visibility.Hidden;
                         canvas_finances.Visibility = Visibility.Hidden;
                         canvas_charts.Visibility = Visibility.Hidden;
-                        canvas_teams.Visibility = Visibility.Hidden;
+                        canvas_users.Visibility = Visibility.Hidden;
                         canvas_achievs.Visibility = Visibility.Hidden;
                         canvas_settings.Visibility = Visibility.Hidden;
                     }
                     break;
-                case "chat_label":
+                case "communication_label":
                     {
                         canvas_dashboard.Visibility = Visibility.Hidden;
                         canvas_projects.Visibility = Visibility.Hidden;
@@ -402,10 +402,10 @@ namespace PROJECTO.PC
                         canvas_finished.Visibility = Visibility.Hidden;
                         canvas_bugs.Visibility = Visibility.Hidden;
                         canvas_storage.Visibility = Visibility.Hidden;
-                        canvas_chat.Visibility = Visibility.Visible;
+                        canvas_communication.Visibility = Visibility.Visible;
                         canvas_finances.Visibility = Visibility.Hidden;
                         canvas_charts.Visibility = Visibility.Hidden;
-                        canvas_teams.Visibility = Visibility.Hidden;
+                        canvas_users.Visibility = Visibility.Hidden;
                         canvas_achievs.Visibility = Visibility.Hidden;
                         canvas_settings.Visibility = Visibility.Hidden;
                     }
@@ -419,10 +419,10 @@ namespace PROJECTO.PC
                         canvas_finished.Visibility = Visibility.Hidden;
                         canvas_bugs.Visibility = Visibility.Hidden;
                         canvas_storage.Visibility = Visibility.Hidden;
-                        canvas_chat.Visibility = Visibility.Hidden;
+                        canvas_communication.Visibility = Visibility.Hidden;
                         canvas_finances.Visibility = Visibility.Visible;
                         canvas_charts.Visibility = Visibility.Hidden;
-                        canvas_teams.Visibility = Visibility.Hidden;
+                        canvas_users.Visibility = Visibility.Hidden;
                         canvas_achievs.Visibility = Visibility.Hidden;
                         canvas_settings.Visibility = Visibility.Hidden;
                     }
@@ -436,15 +436,15 @@ namespace PROJECTO.PC
                         canvas_finished.Visibility = Visibility.Hidden;
                         canvas_bugs.Visibility = Visibility.Hidden;
                         canvas_storage.Visibility = Visibility.Hidden;
-                        canvas_chat.Visibility = Visibility.Hidden;
+                        canvas_communication.Visibility = Visibility.Hidden;
                         canvas_finances.Visibility = Visibility.Hidden;
                         canvas_charts.Visibility = Visibility.Visible;
-                        canvas_teams.Visibility = Visibility.Hidden;
+                        canvas_users.Visibility = Visibility.Hidden;
                         canvas_achievs.Visibility = Visibility.Hidden;
                         canvas_settings.Visibility = Visibility.Hidden;
                     }
                     break;
-                case "teams_label":
+                case "users_label":
                     {
                         canvas_dashboard.Visibility = Visibility.Hidden;
                         canvas_projects.Visibility = Visibility.Hidden;
@@ -453,10 +453,10 @@ namespace PROJECTO.PC
                         canvas_finished.Visibility = Visibility.Hidden;
                         canvas_bugs.Visibility = Visibility.Hidden;
                         canvas_storage.Visibility = Visibility.Hidden;
-                        canvas_chat.Visibility = Visibility.Hidden;
+                        canvas_communication.Visibility = Visibility.Hidden;
                         canvas_finances.Visibility = Visibility.Hidden;
                         canvas_charts.Visibility = Visibility.Hidden;
-                        canvas_teams.Visibility = Visibility.Visible;
+                        canvas_users.Visibility = Visibility.Visible;
                         canvas_achievs.Visibility = Visibility.Hidden;
                         canvas_settings.Visibility = Visibility.Hidden;
                     }
@@ -470,10 +470,10 @@ namespace PROJECTO.PC
                         canvas_finished.Visibility = Visibility.Hidden;
                         canvas_bugs.Visibility = Visibility.Hidden;
                         canvas_storage.Visibility = Visibility.Hidden;
-                        canvas_chat.Visibility = Visibility.Hidden;
+                        canvas_communication.Visibility = Visibility.Hidden;
                         canvas_finances.Visibility = Visibility.Hidden;
                         canvas_charts.Visibility = Visibility.Hidden;
-                        canvas_teams.Visibility = Visibility.Hidden;
+                        canvas_users.Visibility = Visibility.Hidden;
                         canvas_achievs.Visibility = Visibility.Visible;
                         canvas_settings.Visibility = Visibility.Hidden;
                     }
@@ -487,10 +487,10 @@ namespace PROJECTO.PC
                         canvas_finished.Visibility = Visibility.Hidden;
                         canvas_bugs.Visibility = Visibility.Hidden;
                         canvas_storage.Visibility = Visibility.Hidden;
-                        canvas_chat.Visibility = Visibility.Hidden;
+                        canvas_communication.Visibility = Visibility.Hidden;
                         canvas_finances.Visibility = Visibility.Hidden;
                         canvas_charts.Visibility = Visibility.Hidden;
-                        canvas_teams.Visibility = Visibility.Hidden;
+                        canvas_users.Visibility = Visibility.Hidden;
                         canvas_achievs.Visibility = Visibility.Hidden;
                         canvas_settings.Visibility = Visibility.Visible;
                     }
@@ -538,7 +538,7 @@ namespace PROJECTO.PC
                 rect.Name = "rect";
                 rect.RadiusX = 5;
                 rect.RadiusY = 5;
-                rect.Fill = new SolidColorBrush(Color.FromArgb(255, 243, 243, 244));
+                rect.Fill = new SolidColorBrush(Color.FromArgb(255, 47, 64, 80));
                 project_canvas.Children.Add(rect);
 
                 Label project_name = new Label();
@@ -550,6 +550,7 @@ namespace PROJECTO.PC
                 project_name.Margin = project_name_margin;
                 project_name.FontSize = 36;
                 project_name.FontFamily = new FontFamily("Aaargh");
+                project_name.Foreground = Brushes.White;
                 project_name.Content = proj;
                 project_name.Name = "lb";
                 project_canvas.Children.Add(project_name);
@@ -622,7 +623,7 @@ namespace PROJECTO.PC
             var web_service = new localhost.Main();
             var result = web_service.LoadTodos(chsnProj);
 
-            int spacerY = 55;
+            int spacerY = 70;
             int spacerX = 20;
 
             for(int i=0;i<result.Length;i+=2)
@@ -643,7 +644,7 @@ namespace PROJECTO.PC
                 //rect.Name = "rect";
                 rect.RadiusX = 5;
                 rect.RadiusY = 5;
-                rect.Fill = new SolidColorBrush(Color.FromArgb(255, 243, 243, 244));
+                rect.Fill = new SolidColorBrush(Color.FromArgb(255, 47, 64, 80));
                 todo_canvas.Children.Add(rect);
 
                 TextBox todo_title = new TextBox();
@@ -655,12 +656,12 @@ namespace PROJECTO.PC
                 todo_title.Margin = todo_title_margin;
                 todo_title.FontSize = 14;
                 todo_title.BorderThickness = new Thickness(0, 0, 0, 2);
-                todo_title.BorderBrush = new SolidColorBrush(Color.FromArgb(255, 243, 243, 244));
+                todo_title.BorderBrush = new SolidColorBrush(Color.FromArgb(255, 47, 64, 80));
                 todo_title.AllowDrop = false;
                 todo_title.Focusable = false;
-                todo_title.Background = new SolidColorBrush(Color.FromArgb(255, 243, 243, 244));
+                todo_title.Background = new SolidColorBrush(Color.FromArgb(255, 47, 64, 80));
                 todo_title.FontFamily = new FontFamily("Aaargh");
-                todo_title.Foreground = Brushes.Black;
+                todo_title.Foreground = Brushes.White;
                 todo_title.Text = result[i];
                 //todo_title.Name = "lb";
                 todo_title.MaxLength = 30;
@@ -676,10 +677,11 @@ namespace PROJECTO.PC
                 tb.Margin = tb_margin;
                 tb.FontSize = 14;
                 tb.BorderThickness = new Thickness(0, 0, 0, 2);
-                tb.BorderBrush = new SolidColorBrush(Color.FromArgb(255, 243, 243, 244));
+                tb.BorderBrush = new SolidColorBrush(Color.FromArgb(255, 47, 64, 80));
                 tb.AllowDrop = false;
                 tb.Focusable = false;
-                tb.Background = new SolidColorBrush(Color.FromArgb(255, 243, 243, 244));
+                tb.Background = new SolidColorBrush(Color.FromArgb(255, 47, 64, 80));
+                tb.Foreground = Brushes.White;
                 tb.Text = result[i + 1];
                 tb.Cursor = Cursors.Arrow;
                 tb.TextWrapping = TextWrapping.Wrap;
@@ -802,15 +804,14 @@ namespace PROJECTO.PC
                 if(i==4)
                 {
                     spacerX += 320;
-                    spacerY = 55;
+                    spacerY = 70;
                 }
                 else if(i==10)
                 {
                     spacerX += 320;
-                    spacerY = 55;
+                    spacerY = 70;
                 }
                 else spacerY += 200;
-
             }
         }
 

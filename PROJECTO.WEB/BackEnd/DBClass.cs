@@ -16,7 +16,7 @@ namespace PROJECTO.WEB.BackEnd
         {
             string myConnectionString;
 
-            myConnectionString = "server=127.0.0.1;Port=3306;uid=AdminTester;pwd=AdminPassword123$;database=projecto;";
+            myConnectionString = "server=127.0.0.1;Port=3310;uid=AdminTester;pwd=AdminPassword123$;database=projecto;";
 
             try
             {
