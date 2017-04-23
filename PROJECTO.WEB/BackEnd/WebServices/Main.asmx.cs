@@ -37,6 +37,11 @@ namespace PROJECTO.WEB.BackEnd.WebServices
             return sc.Register(name, surname, email, password);
         }
 
+        
+
+
+
+
 
 
 
@@ -53,6 +58,33 @@ namespace PROJECTO.WEB.BackEnd.WebServices
             return sc.LoadProjects(userID);
         }
 
+        [WebMethod]
+        public List<string> LoadProjectMembers(string projectID)
+        {
+            var sc = new DBClass();
+            return sc.LoadProjectMembers(projectID);
+        }
+
+        [WebMethod]
+        public List<string> LoadMemberInfo(string memberID, string memberEmail)
+        {
+            var sc = new DBClass();
+            return sc.LoadMemberInfo(memberID, memberEmail);
+        }
+
+        [WebMethod]
+        public List<string> LoadMessages(string firstUserID, string secondUserID, string chsnProj)
+        {
+            var sc = new DBClass();
+            return sc.LoadMessages(firstUserID, secondUserID, chsnProj);
+        }
+
+        [WebMethod]
+        public string SendMessage(string messageText, string senderID, string receiverID, string sentTime, string chsnproj)
+        {
+            var sc = new DBClass();
+            return sc.SendMessage(messageText, senderID, receiverID, sentTime, chsnproj);
+        }
 
 
 
@@ -102,12 +134,6 @@ namespace PROJECTO.WEB.BackEnd.WebServices
 
 
 
-
-        [WebMethod]
-        public void ChatMessage(string senderID, string message, string project, string team)
-        {
-
-        }
 
         [WebMethod]
         public string Maintenance()

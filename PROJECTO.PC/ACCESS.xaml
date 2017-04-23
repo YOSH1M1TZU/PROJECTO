@@ -15,7 +15,7 @@
         <Label x:Name="btn_exit" Content="X" Canvas.Left="415" Height="30" Width="30" Canvas.Top="2" Foreground="White" FontSize="16" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="416,2,4,563" MouseLeftButtonDown="btn_exit_MouseLeftButtonDown" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave"/>
         <Label x:Name="btn_minimize" Content="___" Canvas.Left="382" Height="30" Width="30" Canvas.Top="2" Foreground="White" FontSize="16" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="385,2,0,563" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="btn_minimize_MouseLeftButtonUp" HorizontalAlignment="Left"/>
 
-        <Canvas x:Name="canvas_loading" HorizontalAlignment="Left" Height="595" VerticalAlignment="Top" Width="450">
+        <Canvas x:Name="canvas_loading" HorizontalAlignment="Left" Height="595" VerticalAlignment="Top" Width="450" Visibility="Hidden">
             <Ellipse x:Name="ellipse" StrokeThickness="20" RenderTransformOrigin="0.5,0.5" Height="180" Canvas.Left="135" Canvas.Top="125" Width="180">
                 <Ellipse.Stroke>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -64,13 +64,13 @@
             <Image Height="315" Canvas.Left="15" Canvas.Top="145" Width="420" Source="Resources/error.png"/>
         </Canvas>
 
-        <Canvas x:Name="canvas_login" HorizontalAlignment="Left" Height="595" VerticalAlignment="Top" Width="450" Visibility="Hidden">
+        <Canvas x:Name="canvas_login" HorizontalAlignment="Left" Height="595" VerticalAlignment="Top" Width="450">
             <Label x:Name="message_label" Content="Welcome!" Canvas.Top="60" Height="60" Width="450" Foreground="White" FontSize="48" FontFamily="Moon" HorizontalContentAlignment="Center"/>
             <TextBox x:Name="email_login" Height="35" Canvas.Left="55" TextWrapping="Wrap" Canvas.Top="235" Width="340" FontSize="20" Padding="0,2,0,0" Text="admin"/>
             <Label x:Name="small_message_label" Content="Please log in to your account:" Canvas.Top="140" Height="45" Width="450" Foreground="White" FontSize="22" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" HorizontalContentAlignment="Center"/>
             <Label Content="Email Address" Canvas.Top="200" Height="35" Width="340" Foreground="White" FontSize="22" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Canvas.Left="55" Padding="0,5,5,5"/>
             <Label Content="Password" Canvas.Top="285" Height="35" Width="340" Foreground="White" FontSize="22" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Canvas.Left="55" Padding="0,5,5,5"/>
-            <Label x:Name="btn_login" Content="LOG IN!" Canvas.Left="55" Canvas.Top="410" Width="340" Height="40" Background="#FF00BA79" FontFamily="Moon" FontSize="28" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" Foreground="White" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="btn_login_MouseLeftButtonUp"/>
+            <Label x:Name="btn_login" Content="LOG IN!" Canvas.Left="55" Canvas.Top="410" Width="340" Height="40" Background="#FF00BA79" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="28" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" Foreground="White" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="btn_login_MouseLeftButtonUp"/>
             <Label x:Name="btn_goto_forgot" Content="Forgot Something?" Canvas.Left="220" Canvas.Top="365" Width="175" FontSize="18" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Foreground="White" HorizontalContentAlignment="Right" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="btn_goto_forgot_MouseLeftButtonUp" Padding="5,5,0,5"/>
             <Label x:Name="btn_new_account" Content="Don't have an account? Create one!" Canvas.Left="55" Canvas.Top="545" Width="340" FontSize="16" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Foreground="White" HorizontalContentAlignment="Center" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="btn_new_account_MouseLeftButtonUp"/>
             <PasswordBox x:Name="password_login" Canvas.Left="55" Canvas.Top="320" Width="340" Height="35" FontSize="20" Padding="0,2,0,0" Password="admin"/>

@@ -8,7 +8,7 @@
         string login = Request.Form["flogin_email"];
         string password = Request.Form["flogin_password"];
 
-        var sc = new PROJECTO.WEB.BackEnd.ServerClass();
+        var sc = new PROJECTO.WEB.BackEnd.DBClass();
         string result = sc.Login(login, password);
         if (result != null)
         {
@@ -58,8 +58,8 @@
                 <form method="post">
                     <h2>Log In</h2>
                     <div class="spacer"></div>
-                    <input type="text" name="flogin_email" placeholder="Email">
-                    <input type="password" name="flogin_password" placeholder="Password">
+                    <input type="text" name="flogin_email" value="admin">
+                    <input type="password" name="flogin_password" value="admin">
                     <a href="forgot_something.html">Forgot something?</a>
                     <input type="submit" name="flogin" value="Log In">
                 </form>

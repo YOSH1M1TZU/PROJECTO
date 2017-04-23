@@ -169,6 +169,18 @@
     <Resource Include="Resources\UI\manager.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\UI\todo\confirm_task.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\UI\communication\send_message.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\UI\members\search_member.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\UI\avatar.png" />
+  </ItemGroup>
+  <ItemGroup>
     <WebReferenceUrl Include="http://localhost:2040/BackEnd/WebServices/Main.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\localhost\</RelPath>
@@ -183,12 +195,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\localhost\Main.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\UI\todo\confirm_task.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\UI\communication\send_message.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

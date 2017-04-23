@@ -25,6 +25,7 @@
 .icon-login:before { content: '\e817'; } /* '' */
 .icon-stopwatch:before { content: '\e818'; } /* '' */
 .icon-money:before { content: '\e819'; } /* '' */
+.icon-cog:before { content: '\e81a'; } /* '' */
 .icon-spin1:before { content: '\e830'; } /* '' */
 .icon-spin3:before { content: '\e832'; } /* '' */
 .icon-spin5:before { content: '\e838'; } /* '' */
@@ -38,6 +39,7 @@
 .icon-github-circled:before { content: '\f09b'; } /* '' */
 .icon-rss:before { content: '\f09e'; } /* '' */
 .icon-gplus-squared:before { content: '\f0d4'; } /* '' */
+.icon-exchange:before { content: '\f0ec'; } /* '' */
 .icon-quote-left:before { content: '\f10d'; } /* '' */
 .icon-quote-right:before { content: '\f10e'; } /* '' */
 .icon-github:before { content: '\f113'; } /* '' */
@@ -54,6 +56,7 @@
 .icon-empire:before { content: '\f1d1'; } /* '' */
 .icon-git:before { content: '\f1d3'; } /* '' */
 .icon-twitch:before { content: '\f1e8'; } /* '' */
+.icon-map-signs:before { content: '\f277'; } /* '' */
 .icon-commenting:before { content: '\f27a'; } /* '' */
 .icon-commenting-o:before { content: '\f27b'; } /* '' */
 .icon-hashtag:before { content: '\f292'; } /* '' */

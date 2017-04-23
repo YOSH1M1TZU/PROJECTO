@@ -37,6 +37,14 @@ namespace PROJECTO.PC.localhost {
         
         private System.Threading.SendOrPostCallback LoadProjectsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback LoadProjectMembersOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback LoadMemberInfoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback LoadMessagesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SendMessageOperationCompleted;
+        
         private System.Threading.SendOrPostCallback LoadTodosOperationCompleted;
         
         private System.Threading.SendOrPostCallback AddTodosOperationCompleted;
@@ -44,8 +52,6 @@ namespace PROJECTO.PC.localhost {
         private System.Threading.SendOrPostCallback EditTodosOperationCompleted;
         
         private System.Threading.SendOrPostCallback RemoveTodosOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback ChatMessageOperationCompleted;
         
         private System.Threading.SendOrPostCallback MaintenanceOperationCompleted;
         
@@ -100,6 +106,18 @@ namespace PROJECTO.PC.localhost {
         public event LoadProjectsCompletedEventHandler LoadProjectsCompleted;
         
         /// <remarks/>
+        public event LoadProjectMembersCompletedEventHandler LoadProjectMembersCompleted;
+        
+        /// <remarks/>
+        public event LoadMemberInfoCompletedEventHandler LoadMemberInfoCompleted;
+        
+        /// <remarks/>
+        public event LoadMessagesCompletedEventHandler LoadMessagesCompleted;
+        
+        /// <remarks/>
+        public event SendMessageCompletedEventHandler SendMessageCompleted;
+        
+        /// <remarks/>
         public event LoadTodosCompletedEventHandler LoadTodosCompleted;
         
         /// <remarks/>
@@ -110,9 +128,6 @@ namespace PROJECTO.PC.localhost {
         
         /// <remarks/>
         public event RemoveTodosCompletedEventHandler RemoveTodosCompleted;
-        
-        /// <remarks/>
-        public event ChatMessageCompletedEventHandler ChatMessageCompleted;
         
         /// <remarks/>
         public event MaintenanceCompletedEventHandler MaintenanceCompleted;
@@ -236,6 +251,136 @@ namespace PROJECTO.PC.localhost {
             if ((this.LoadProjectsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.LoadProjectsCompleted(this, new LoadProjectsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/LoadProjectMembers", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] LoadProjectMembers(string projectID) {
+            object[] results = this.Invoke("LoadProjectMembers", new object[] {
+                        projectID});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LoadProjectMembersAsync(string projectID) {
+            this.LoadProjectMembersAsync(projectID, null);
+        }
+        
+        /// <remarks/>
+        public void LoadProjectMembersAsync(string projectID, object userState) {
+            if ((this.LoadProjectMembersOperationCompleted == null)) {
+                this.LoadProjectMembersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoadProjectMembersOperationCompleted);
+            }
+            this.InvokeAsync("LoadProjectMembers", new object[] {
+                        projectID}, this.LoadProjectMembersOperationCompleted, userState);
+        }
+        
+        private void OnLoadProjectMembersOperationCompleted(object arg) {
+            if ((this.LoadProjectMembersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LoadProjectMembersCompleted(this, new LoadProjectMembersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/LoadMemberInfo", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] LoadMemberInfo(string memberID, string memberEmail) {
+            object[] results = this.Invoke("LoadMemberInfo", new object[] {
+                        memberID,
+                        memberEmail});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LoadMemberInfoAsync(string memberID, string memberEmail) {
+            this.LoadMemberInfoAsync(memberID, memberEmail, null);
+        }
+        
+        /// <remarks/>
+        public void LoadMemberInfoAsync(string memberID, string memberEmail, object userState) {
+            if ((this.LoadMemberInfoOperationCompleted == null)) {
+                this.LoadMemberInfoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoadMemberInfoOperationCompleted);
+            }
+            this.InvokeAsync("LoadMemberInfo", new object[] {
+                        memberID,
+                        memberEmail}, this.LoadMemberInfoOperationCompleted, userState);
+        }
+        
+        private void OnLoadMemberInfoOperationCompleted(object arg) {
+            if ((this.LoadMemberInfoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LoadMemberInfoCompleted(this, new LoadMemberInfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/LoadMessages", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] LoadMessages(string firstUserID, string secondUserID, string chsnProj) {
+            object[] results = this.Invoke("LoadMessages", new object[] {
+                        firstUserID,
+                        secondUserID,
+                        chsnProj});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LoadMessagesAsync(string firstUserID, string secondUserID, string chsnProj) {
+            this.LoadMessagesAsync(firstUserID, secondUserID, chsnProj, null);
+        }
+        
+        /// <remarks/>
+        public void LoadMessagesAsync(string firstUserID, string secondUserID, string chsnProj, object userState) {
+            if ((this.LoadMessagesOperationCompleted == null)) {
+                this.LoadMessagesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoadMessagesOperationCompleted);
+            }
+            this.InvokeAsync("LoadMessages", new object[] {
+                        firstUserID,
+                        secondUserID,
+                        chsnProj}, this.LoadMessagesOperationCompleted, userState);
+        }
+        
+        private void OnLoadMessagesOperationCompleted(object arg) {
+            if ((this.LoadMessagesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LoadMessagesCompleted(this, new LoadMessagesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/SendMessage", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SendMessage(string messageText, string senderID, string receiverID, string sentTime, string chsnproj) {
+            object[] results = this.Invoke("SendMessage", new object[] {
+                        messageText,
+                        senderID,
+                        receiverID,
+                        sentTime,
+                        chsnproj});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SendMessageAsync(string messageText, string senderID, string receiverID, string sentTime, string chsnproj) {
+            this.SendMessageAsync(messageText, senderID, receiverID, sentTime, chsnproj, null);
+        }
+        
+        /// <remarks/>
+        public void SendMessageAsync(string messageText, string senderID, string receiverID, string sentTime, string chsnproj, object userState) {
+            if ((this.SendMessageOperationCompleted == null)) {
+                this.SendMessageOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSendMessageOperationCompleted);
+            }
+            this.InvokeAsync("SendMessage", new object[] {
+                        messageText,
+                        senderID,
+                        receiverID,
+                        sentTime,
+                        chsnproj}, this.SendMessageOperationCompleted, userState);
+        }
+        
+        private void OnSendMessageOperationCompleted(object arg) {
+            if ((this.SendMessageCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SendMessageCompleted(this, new SendMessageCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -364,40 +509,6 @@ namespace PROJECTO.PC.localhost {
             if ((this.RemoveTodosCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.RemoveTodosCompleted(this, new RemoveTodosCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/ChatMessage", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void ChatMessage(string senderID, string message, string project, string team) {
-            this.Invoke("ChatMessage", new object[] {
-                        senderID,
-                        message,
-                        project,
-                        team});
-        }
-        
-        /// <remarks/>
-        public void ChatMessageAsync(string senderID, string message, string project, string team) {
-            this.ChatMessageAsync(senderID, message, project, team, null);
-        }
-        
-        /// <remarks/>
-        public void ChatMessageAsync(string senderID, string message, string project, string team, object userState) {
-            if ((this.ChatMessageOperationCompleted == null)) {
-                this.ChatMessageOperationCompleted = new System.Threading.SendOrPostCallback(this.OnChatMessageOperationCompleted);
-            }
-            this.InvokeAsync("ChatMessage", new object[] {
-                        senderID,
-                        message,
-                        project,
-                        team}, this.ChatMessageOperationCompleted, userState);
-        }
-        
-        private void OnChatMessageOperationCompleted(object arg) {
-            if ((this.ChatMessageCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.ChatMessageCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -553,6 +664,110 @@ namespace PROJECTO.PC.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void LoadProjectMembersCompletedEventHandler(object sender, LoadProjectMembersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LoadProjectMembersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LoadProjectMembersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void LoadMemberInfoCompletedEventHandler(object sender, LoadMemberInfoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LoadMemberInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LoadMemberInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void LoadMessagesCompletedEventHandler(object sender, LoadMessagesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LoadMessagesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LoadMessagesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void SendMessageCompletedEventHandler(object sender, SendMessageCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SendMessageCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SendMessageCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
     public delegate void LoadTodosCompletedEventHandler(object sender, LoadTodosCompletedEventArgs e);
     
     /// <remarks/>
@@ -654,10 +869,6 @@ namespace PROJECTO.PC.localhost {
             }
         }
     }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
-    public delegate void ChatMessageCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]

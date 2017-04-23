@@ -63,6 +63,69 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="LoadProjectMembers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadProjectMembersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadProjectMembersResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadMemberInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="memberEmail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadMemberInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadMemberInfoResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadMessages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="firstUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="secondUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chsnProj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadMessagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadMessagesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="messageText" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="senderID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="receiverID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sentTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chsnproj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="LoadTodos">
         <s:complexType>
           <s:sequence>
@@ -125,19 +188,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="ChatMessage">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="senderID" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="project" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="team" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="ChatMessageResponse">
-        <s:complexType />
-      </s:element>
       <s:element name="Maintenance">
         <s:complexType />
       </s:element>
@@ -174,6 +224,30 @@
   <wsdl:message name="LoadProjectsSoapOut">
     <wsdl:part name="parameters" element="tns:LoadProjectsResponse" />
   </wsdl:message>
+  <wsdl:message name="LoadProjectMembersSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadProjectMembers" />
+  </wsdl:message>
+  <wsdl:message name="LoadProjectMembersSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadProjectMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadMemberInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadMemberInfo" />
+  </wsdl:message>
+  <wsdl:message name="LoadMemberInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadMemberInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadMessagesSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadMessages" />
+  </wsdl:message>
+  <wsdl:message name="LoadMessagesSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMessageResponse" />
+  </wsdl:message>
   <wsdl:message name="LoadTodosSoapIn">
     <wsdl:part name="parameters" element="tns:LoadTodos" />
   </wsdl:message>
@@ -198,12 +272,6 @@
   <wsdl:message name="RemoveTodosSoapOut">
     <wsdl:part name="parameters" element="tns:RemoveTodosResponse" />
   </wsdl:message>
-  <wsdl:message name="ChatMessageSoapIn">
-    <wsdl:part name="parameters" element="tns:ChatMessage" />
-  </wsdl:message>
-  <wsdl:message name="ChatMessageSoapOut">
-    <wsdl:part name="parameters" element="tns:ChatMessageResponse" />
-  </wsdl:message>
   <wsdl:message name="MaintenanceSoapIn">
     <wsdl:part name="parameters" element="tns:Maintenance" />
   </wsdl:message>
@@ -227,6 +295,22 @@
       <wsdl:input message="tns:LoadProjectsSoapIn" />
       <wsdl:output message="tns:LoadProjectsSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="LoadProjectMembers">
+      <wsdl:input message="tns:LoadProjectMembersSoapIn" />
+      <wsdl:output message="tns:LoadProjectMembersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadMemberInfo">
+      <wsdl:input message="tns:LoadMemberInfoSoapIn" />
+      <wsdl:output message="tns:LoadMemberInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadMessages">
+      <wsdl:input message="tns:LoadMessagesSoapIn" />
+      <wsdl:output message="tns:LoadMessagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <wsdl:input message="tns:SendMessageSoapIn" />
+      <wsdl:output message="tns:SendMessageSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="LoadTodos">
       <wsdl:input message="tns:LoadTodosSoapIn" />
       <wsdl:output message="tns:LoadTodosSoapOut" />
@@ -242,10 +326,6 @@
     <wsdl:operation name="RemoveTodos">
       <wsdl:input message="tns:RemoveTodosSoapIn" />
       <wsdl:output message="tns:RemoveTodosSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="ChatMessage">
-      <wsdl:input message="tns:ChatMessageSoapIn" />
-      <wsdl:output message="tns:ChatMessageSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Maintenance">
       <wsdl:input message="tns:MaintenanceSoapIn" />
@@ -290,6 +370,42 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LoadProjectMembers">
+      <soap:operation soapAction="http://localhost/LoadProjectMembers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadMemberInfo">
+      <soap:operation soapAction="http://localhost/LoadMemberInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadMessages">
+      <soap:operation soapAction="http://localhost/LoadMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <soap:operation soapAction="http://localhost/SendMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="LoadTodos">
       <soap:operation soapAction="http://localhost/LoadTodos" style="document" />
       <wsdl:input>
@@ -319,15 +435,6 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveTodos">
       <soap:operation soapAction="http://localhost/RemoveTodos" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ChatMessage">
-      <soap:operation soapAction="http://localhost/ChatMessage" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -383,6 +490,42 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LoadProjectMembers">
+      <soap12:operation soapAction="http://localhost/LoadProjectMembers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadMemberInfo">
+      <soap12:operation soapAction="http://localhost/LoadMemberInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadMessages">
+      <soap12:operation soapAction="http://localhost/LoadMessages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <soap12:operation soapAction="http://localhost/SendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="LoadTodos">
       <soap12:operation soapAction="http://localhost/LoadTodos" style="document" />
       <wsdl:input>
@@ -412,15 +555,6 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveTodos">
       <soap12:operation soapAction="http://localhost/RemoveTodos" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ChatMessage">
-      <soap12:operation soapAction="http://localhost/ChatMessage" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
