@@ -1,18 +1,17 @@
 ﻿using MySql.Data.MySqlClient;
+using System.Data;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
-using System.Windows;
 
-namespace PROJECTO.WEB.BackEnd
+namespace PROJECTO.WEB.BackEnd.DBConn
 {
-    public class DBClass
+    public class ForReview
     {
         public MySqlConnection conn;
 
-        public DBClass ()
+        public ForReview()
         {
             string myConnectionString;
 
@@ -25,11 +24,6 @@ namespace PROJECTO.WEB.BackEnd
                 conn.Open();
             }
             catch (MySqlException ex) { }
-        }
-
-        public string MOTD()
-        {
-            return "random";
         }
     }
 }

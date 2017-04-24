@@ -23,123 +23,50 @@ namespace PROJECTO.WEB.BackEnd.WebServices
             return sc.MOTD();
         }
 
-        [WebMethod]
-        public string Login(string email, string password)
-        {
-            var sc = new DBClass();
-            return sc.Login(email, password);
-        }
-
-        [WebMethod]
-        public string Register(string name, string surname, string email, string password)
-        {
-            var sc = new DBClass();
-            return sc.Register(name, surname, email, password);
-        }
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
+        //TODO: deconstruct this Web Service into a smaller ones
 
         [WebMethod]
         public List<string> LoadProjects(string userID)
         {
-            var sc = new DBClass();
+            var sc = new DBConn.Projects();
             return sc.LoadProjects(userID);
         }
 
         [WebMethod]
         public List<string> LoadProjectMembers(string projectID)
         {
-            var sc = new DBClass();
+            var sc = new DBConn.Projects();
             return sc.LoadProjectMembers(projectID);
         }
 
         [WebMethod]
         public List<string> LoadMemberInfo(string memberID, string memberEmail)
         {
-            var sc = new DBClass();
+            var sc = new DBConn.Members();
             return sc.LoadMemberInfo(memberID, memberEmail);
         }
 
         [WebMethod]
         public List<string> LoadMessages(string firstUserID, string secondUserID, string chsnProj)
         {
-            var sc = new DBClass();
+            var sc = new DBConn.Messages();
             return sc.LoadMessages(firstUserID, secondUserID, chsnProj);
         }
 
         [WebMethod]
         public string SendMessage(string messageText, string senderID, string receiverID, string sentTime, string chsnproj)
         {
-            var sc = new DBClass();
+            var sc = new DBConn.Messages();
             return sc.SendMessage(messageText, senderID, receiverID, sentTime, chsnproj);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        [WebMethod]
-        public List<string> LoadTodos(string chosenProject)
-        {
-            var sc = new DBClass();
-            return sc.LoadTodos(chosenProject);
-        }
-
-        [WebMethod]
-        public string AddTodos(string title,string desc, string projectID)
-        {
-            var sc = new DBClass();
-            return sc.AddTodos(title, desc, projectID);
-        }
-
-        [WebMethod]
-        public string EditTodos(string oldTitle, string newTitle, string newDesc, string projectID)
-        {
-            var sc = new DBClass();
-            return sc.EditTodos(oldTitle, newTitle, newDesc, projectID);
-        }
-
-        [WebMethod]
-        public string RemoveTodos(string title, string projectID)
-        {
-            var sc = new DBClass();
-            return sc.RemoveTodos(title, projectID);
-        }
-
-
-
-
-
-
-
 
 
 
         [WebMethod]
         public string Maintenance()
         {
-            var sc = new DBClass();
-            return sc.Maintenance();
+            var sc = new DBConn.Maintenance();
+            return sc.ClearNonActivated();
         }
     }
 }

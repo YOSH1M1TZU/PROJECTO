@@ -99,7 +99,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BackEnd\WebServices\AccMgmt.asmx" />
     <Content Include="BackEnd\WebServices\Main.asmx" />
+    <Content Include="BackEnd\WebServices\Tasks.asmx" />
     <Content Include="packages.config" />
     <Content Include="FrontEnd\Index.cshtml" />
     <Content Include="FrontEnd\profile.cshtml" />
@@ -116,11 +118,28 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackEnd\DBConn\Maintenance.cs" />
+    <Compile Include="BackEnd\DBConn\Members.cs" />
+    <Compile Include="BackEnd\DBConn\Messages.cs" />
+    <Compile Include="BackEnd\DBConn\Tasks\Done.cs" />
+    <Compile Include="BackEnd\DBConn\Tasks\ForReview.cs" />
+    <Compile Include="BackEnd\DBConn\Tasks\InProgress.cs" />
+    <Compile Include="BackEnd\DBConn\LoginRegister.cs" />
+    <Compile Include="BackEnd\DBConn\Projects.cs" />
+    <Compile Include="BackEnd\DBConn\Tasks\ToDo.cs" />
     <Compile Include="BackEnd\SecurityClass.cs" />
     <Compile Include="BackEnd\DBClass.cs" />
     <Compile Include="BackEnd\ServerClass.cs" />
+    <Compile Include="BackEnd\WebServices\AccMgmt.asmx.cs">
+      <DependentUpon>AccMgmt.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BackEnd\WebServices\Main.asmx.cs">
       <DependentUpon>Main.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BackEnd\WebServices\Tasks.asmx.cs">
+      <DependentUpon>Tasks.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

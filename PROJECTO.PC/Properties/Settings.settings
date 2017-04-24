@@ -2,7 +2,13 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PROJECTO.PC.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="PROJECTO_PC_localhost_Main" Type="(Web Service URL)" Scope="Application">
+    <Setting Name="PROJECTO_PC_TasksWS_Tasks" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:2040/BackEnd/WebServices/Tasks.asmx</Value>
+    </Setting>
+    <Setting Name="PROJECTO_PC_AccMgmtWS_AccMgmt" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:2040/BackEnd/WebServices/AccMgmt.asmx</Value>
+    </Setting>
+    <Setting Name="PROJECTO_PC_MainWS_Main" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:2040/BackEnd/WebServices/Main.asmx</Value>
     </Setting>
   </Settings>

@@ -26,10 +26,30 @@ namespace PROJECTO.PC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:2040/BackEnd/WebServices/Main.asmx")]
-        public string PROJECTO_PC_localhost_Main {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:2040/BackEnd/WebServices/Tasks.asmx")]
+        public string PROJECTO_PC_TasksWS_Tasks {
             get {
-                return ((string)(this["PROJECTO_PC_localhost_Main"]));
+                return ((string)(this["PROJECTO_PC_TasksWS_Tasks"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:2040/BackEnd/WebServices/AccMgmt.asmx")]
+        public string PROJECTO_PC_AccMgmtWS_AccMgmt {
+            get {
+                return ((string)(this["PROJECTO_PC_AccMgmtWS_AccMgmt"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:2040/BackEnd/WebServices/Main.asmx")]
+        public string PROJECTO_PC_MainWS_Main {
+            get {
+                return ((string)(this["PROJECTO_PC_MainWS_Main"]));
             }
         }
     }

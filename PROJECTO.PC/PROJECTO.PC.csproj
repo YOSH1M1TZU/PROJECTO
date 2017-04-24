@@ -58,7 +58,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CodeBehind\Security.cs" />
-    <Compile Include="Web References\localhost\Reference.cs">
+    <Compile Include="Web References\AccMgmtWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\MainWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\TasksWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -106,11 +116,21 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Web References\localhost\Main.wsdl" />
-    <None Include="Web References\localhost\Reference.map">
+    <None Include="Web References\AccMgmtWS\AccMgmt.wsdl" />
+    <None Include="Web References\AccMgmtWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Web References\MainWS\Main.wsdl" />
+    <None Include="Web References\MainWS\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\TasksWS\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\TasksWS\Tasks.wsdl" />
     <Resource Include="Resources\Aaargh.ttf" />
     <Resource Include="Resources\error.png" />
     <Resource Include="Resources\main_bg.png" />
@@ -181,20 +201,48 @@
     <Resource Include="Resources\UI\avatar.png" />
   </ItemGroup>
   <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:2040/BackEnd/WebServices/AccMgmt.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\AccMgmtWS\</RelPath>
+      <UpdateFromURL>http://localhost:2040/BackEnd/WebServices/AccMgmt.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>PROJECTO_PC_AccMgmtWS_AccMgmt</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:2040/BackEnd/WebServices/Main.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\localhost\</RelPath>
+      <RelPath>Web References\MainWS\</RelPath>
       <UpdateFromURL>http://localhost:2040/BackEnd/WebServices/Main.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>PROJECTO_PC_localhost_Main</CachedSettingsPropName>
+      <CachedSettingsPropName>PROJECTO_PC_MainWS_Main</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:2040/BackEnd/WebServices/Tasks.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\TasksWS\</RelPath>
+      <UpdateFromURL>http://localhost:2040/BackEnd/WebServices/Tasks.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>PROJECTO_PC_TasksWS_Tasks</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\localhost\Main.disco" />
+    <None Include="Web References\TasksWS\Tasks.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\AccMgmtWS\AccMgmt.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\MainWS\Main.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

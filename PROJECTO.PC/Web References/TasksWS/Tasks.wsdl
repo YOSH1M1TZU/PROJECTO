@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://localhost/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://localhost/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/">
+      <s:element name="LoadTodos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="chosenProject" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadTodosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadTodosResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddTodos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddTodosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddTodosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditTodos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oldTitle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newTitle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newDesc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditTodosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EditTodosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveTodos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveTodosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveTodosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoadTodosSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadTodos" />
+  </wsdl:message>
+  <wsdl:message name="LoadTodosSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadTodosResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddTodosSoapIn">
+    <wsdl:part name="parameters" element="tns:AddTodos" />
+  </wsdl:message>
+  <wsdl:message name="AddTodosSoapOut">
+    <wsdl:part name="parameters" element="tns:AddTodosResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditTodosSoapIn">
+    <wsdl:part name="parameters" element="tns:EditTodos" />
+  </wsdl:message>
+  <wsdl:message name="EditTodosSoapOut">
+    <wsdl:part name="parameters" element="tns:EditTodosResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveTodosSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveTodos" />
+  </wsdl:message>
+  <wsdl:message name="RemoveTodosSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveTodosResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TasksSoap">
+    <wsdl:operation name="LoadTodos">
+      <wsdl:input message="tns:LoadTodosSoapIn" />
+      <wsdl:output message="tns:LoadTodosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTodos">
+      <wsdl:input message="tns:AddTodosSoapIn" />
+      <wsdl:output message="tns:AddTodosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditTodos">
+      <wsdl:input message="tns:EditTodosSoapIn" />
+      <wsdl:output message="tns:EditTodosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveTodos">
+      <wsdl:input message="tns:RemoveTodosSoapIn" />
+      <wsdl:output message="tns:RemoveTodosSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TasksSoap" type="tns:TasksSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LoadTodos">
+      <soap:operation soapAction="http://localhost/LoadTodos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTodos">
+      <soap:operation soapAction="http://localhost/AddTodos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditTodos">
+      <soap:operation soapAction="http://localhost/EditTodos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveTodos">
+      <soap:operation soapAction="http://localhost/RemoveTodos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TasksSoap12" type="tns:TasksSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LoadTodos">
+      <soap12:operation soapAction="http://localhost/LoadTodos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTodos">
+      <soap12:operation soapAction="http://localhost/AddTodos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditTodos">
+      <soap12:operation soapAction="http://localhost/EditTodos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveTodos">
+      <soap12:operation soapAction="http://localhost/RemoveTodos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Tasks">
+    <wsdl:port name="TasksSoap" binding="tns:TasksSoap">
+      <soap:address location="http://localhost:2040/BackEnd/WebServices/Tasks.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TasksSoap12" binding="tns:TasksSoap12">
+      <soap12:address location="http://localhost:2040/BackEnd/WebServices/Tasks.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

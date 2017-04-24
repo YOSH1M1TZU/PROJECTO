@@ -22,6 +22,7 @@ namespace PROJECTO.PC
         public string chosenProject = null;
         public bool editingTodo = false;
         public string currentUserID = null;
+        public string whoAmICommWith = null;
 
         string oldTitleTodo = null;
         string oldDescTodo = null;
@@ -439,7 +440,7 @@ namespace PROJECTO.PC
         #region DBinfoRetrieving
         public void LoadProjects(string userID)
         {
-            var web_service = new localhost.Main();
+            var web_service = new MainWS.Main();
             var result = web_service.LoadProjects(userID);
 
             chosenProject = result[2];
@@ -557,7 +558,7 @@ namespace PROJECTO.PC
             {
                 todo_wrapper.Children.Remove(cv);
             }
-            var web_service = new localhost.Main();
+            var web_service = new TasksWS.Tasks();
             var result = web_service.LoadTodos(chsnProj);
 
             int spacerY = 5;
@@ -695,7 +696,7 @@ namespace PROJECTO.PC
                         edit_icon.Source = edit_image2;
                         editingTodo = false;
 
-                        var web_service2 = new localhost.Main();
+                        var web_service2 = new TasksWS.Tasks();
                         var result2 = web_service.EditTodos(oldTitleTodo, todo_title.Text.ToString(), tb.Text.ToString(), chosenProject);
                         LoadTodos(chosenProject);
                     }
@@ -724,7 +725,7 @@ namespace PROJECTO.PC
                 delete_icon.Source = delete_image;
                 delete_icon.MouseDown += (source, e) =>
                 {
-                    var web_service2 = new localhost.Main();
+                    var web_service2 = new TasksWS.Tasks();
                     var result2 = web_service.RemoveTodos(todo_title.Text.ToString(), chosenProject);
                     LoadTodos(chosenProject);
                 };
@@ -756,7 +757,7 @@ namespace PROJECTO.PC
             {
                 inprogress_wrapper.Children.Remove(cv);
             }
-            var web_service = new localhost.Main();
+            var web_service = new TasksWS.Tasks();
             var result = web_service.LoadTodos(chsnProj);
 
             int spacerY = 5;
@@ -894,7 +895,7 @@ namespace PROJECTO.PC
                         edit_icon.Source = edit_image2;
                         editingTodo = false;
 
-                        var web_service2 = new localhost.Main();
+                        var web_service2 = new TasksWS.Tasks();
                         var result2 = web_service.EditTodos(oldTitleTodo, todo_title.Text.ToString(), tb.Text.ToString(), chosenProject);
                         LoadTodos(chosenProject);
                     }
@@ -923,7 +924,7 @@ namespace PROJECTO.PC
                 delete_icon.Source = delete_image;
                 delete_icon.MouseDown += (source, e) =>
                 {
-                    var web_service2 = new localhost.Main();
+                    var web_service2 = new TasksWS.Tasks();
                     var result2 = web_service.RemoveTodos(todo_title.Text.ToString(), chosenProject);
                     LoadTodos(chosenProject);
                 };
@@ -955,7 +956,7 @@ namespace PROJECTO.PC
             {
                 forreview_wrapper.Children.Remove(cv);
             }
-            var web_service = new localhost.Main();
+            var web_service = new TasksWS.Tasks();
             var result = web_service.LoadTodos(chsnProj);
 
             int spacerY = 5;
@@ -1093,7 +1094,7 @@ namespace PROJECTO.PC
                         edit_icon.Source = edit_image2;
                         editingTodo = false;
 
-                        var web_service2 = new localhost.Main();
+                        var web_service2 = new TasksWS.Tasks();
                         var result2 = web_service.EditTodos(oldTitleTodo, todo_title.Text.ToString(), tb.Text.ToString(), chosenProject);
                         LoadTodos(chosenProject);
                     }
@@ -1122,7 +1123,7 @@ namespace PROJECTO.PC
                 delete_icon.Source = delete_image;
                 delete_icon.MouseDown += (source, e) =>
                 {
-                    var web_service2 = new localhost.Main();
+                    var web_service2 = new TasksWS.Tasks();
                     var result2 = web_service.RemoveTodos(todo_title.Text.ToString(), chosenProject);
                     LoadTodos(chosenProject);
                 };
@@ -1154,7 +1155,7 @@ namespace PROJECTO.PC
             {
                 done_wrapper.Children.Remove(cv);
             }
-            var web_service = new localhost.Main();
+            var web_service = new TasksWS.Tasks();
             var result = web_service.LoadTodos(chsnProj);
 
             int spacerY = 5;
@@ -1292,7 +1293,7 @@ namespace PROJECTO.PC
                         edit_icon.Source = edit_image2;
                         editingTodo = false;
 
-                        var web_service2 = new localhost.Main();
+                        var web_service2 = new TasksWS.Tasks();
                         var result2 = web_service.EditTodos(oldTitleTodo, todo_title.Text.ToString(), tb.Text.ToString(), chosenProject);
                         LoadTodos(chosenProject);
                     }
@@ -1321,7 +1322,7 @@ namespace PROJECTO.PC
                 delete_icon.Source = delete_image;
                 delete_icon.MouseDown += (source, e) =>
                 {
-                    var web_service2 = new localhost.Main();
+                    var web_service2 = new TasksWS.Tasks();
                     var result2 = web_service.RemoveTodos(todo_title.Text.ToString(), chosenProject);
                     LoadTodos(chosenProject);
                 };
@@ -1349,7 +1350,7 @@ namespace PROJECTO.PC
 
         public void LoadProjectMembers(string chsnProj)
         {
-            var web_service = new localhost.Main();
+            var web_service = new MainWS.Main();
             var result = web_service.LoadProjectMembers(chsnProj);
 
             int spacerY1 = 5;
@@ -1357,6 +1358,7 @@ namespace PROJECTO.PC
 
             foreach(string member in result)
             {
+                string[] mem = member.Split(',');
                 Canvas cv = new Canvas();
                 cv.Width = 483;
                 cv.Height = 60;
@@ -1392,6 +1394,7 @@ namespace PROJECTO.PC
                 cv.Children.Add(img);
 
                 Label lb = new Label();
+                //lb.Name = mem[0];
                 lb.Width = 360;
                 lb.Height = 40;
                 Thickness lb_margin = cv.Margin;
@@ -1405,7 +1408,7 @@ namespace PROJECTO.PC
                 lb.Padding = lb_padding;
                 lb.FontFamily = new FontFamily("Aaargh");
                 lb.FontSize = 24;
-                lb.Content = member;
+                lb.Content = mem[1];
                 lb.VerticalContentAlignment = VerticalAlignment.Center;
                 lb.MouseEnter += (source, e) =>
                 {
@@ -1422,6 +1425,7 @@ namespace PROJECTO.PC
 
             foreach (string member in result)
             {
+                string[] mem = member.Split(',');
                 Canvas cv = new Canvas();
                 cv.Width = 1040;
                 cv.Height = 80;
@@ -1461,7 +1465,7 @@ namespace PROJECTO.PC
                 lb.Padding = lb_padding;
                 lb.FontFamily = new FontFamily("Aaargh");
                 lb.FontSize = 16;
-                lb.Content = member;
+                lb.Content = mem[1];
                 lb.VerticalContentAlignment = VerticalAlignment.Center;
                 cv.Children.Add(lb);
 
@@ -1531,7 +1535,7 @@ namespace PROJECTO.PC
                 
                 if(title!="" || desc!="")
                 {
-                    var web_service = new localhost.Main();
+                    var web_service = new TasksWS.Tasks();
                     var result = web_service.AddTodos(title, desc, chosenProject);
                     LoadTodos(chosenProject);
                 }
@@ -1558,7 +1562,7 @@ namespace PROJECTO.PC
         {
             try
             {
-                var web_service = new localhost.Main();
+                var web_service = new MainWS.Main();
                 var result = web_service.LoadMemberInfo(null, member_email.Text.ToString());
                 members_wrapper.Children.Clear();
 
@@ -1588,6 +1592,7 @@ namespace PROJECTO.PC
 
                 foreach (string member in result)
                 {
+                    string[] mem = member.Split(',');
                     Canvas cv = new Canvas();
                     cv.Width = 1040;
                     cv.Height = 80;
@@ -1627,7 +1632,7 @@ namespace PROJECTO.PC
                     lb.Padding = lb_padding;
                     lb.FontFamily = new FontFamily("Aaargh");
                     lb.FontSize = 16;
-                    lb.Content = member;
+                    lb.Content = mem[1];
                     lb.VerticalContentAlignment = VerticalAlignment.Center;
                     cv.Children.Add(lb);
 
@@ -1684,7 +1689,7 @@ namespace PROJECTO.PC
                 {
                     try
                     {
-                        var web_service = new localhost.Main();
+                        var web_service = new MainWS.Main();
                         var result = web_service.SendMessage(message_textBox.Text.ToString(), currentUserID, "2", DateTime.Now.ToString(), chosenProject);
                         //LoadMessages(chosenProject);
                         message_textBox.Text = "";

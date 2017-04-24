@@ -133,7 +133,7 @@ namespace PROJECTO.PC
 
         private void btn_login_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            var web_service = new localhost.Main();
+            var web_service = new AccMgmtWS.AccMgmt();
             string result = web_service.Login(email_login.Text.ToString(), password_login.Password.ToString());
             if (result != "ERR")
             {
@@ -151,7 +151,7 @@ namespace PROJECTO.PC
 
         private void btn_register_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            var web_service = new localhost.Main();
+            var web_service = new AccMgmtWS.AccMgmt();
             string result = web_service.Register(name_register.Text.ToString(), surname_register.Text.ToString(), email_register.Text.ToString(), password_register.Text.ToString());
             if (result == "OK")
             {

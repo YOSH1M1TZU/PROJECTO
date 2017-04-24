@@ -12,38 +12,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="Login">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="LoginResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Register">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="surname" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="RegisterResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="RegisterResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="LoadProjects">
         <s:complexType>
           <s:sequence>
@@ -126,68 +94,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="LoadTodos">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="chosenProject" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="LoadTodosResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="LoadTodosResult" type="tns:ArrayOfString" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="AddTodos">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="projectID" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="AddTodosResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="AddTodosResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="EditTodos">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="oldTitle" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="newTitle" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="newDesc" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="projectID" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="EditTodosResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="EditTodosResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="RemoveTodos">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="projectID" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="RemoveTodosResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="RemoveTodosResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="Maintenance">
         <s:complexType />
       </s:element>
@@ -205,18 +111,6 @@
   </wsdl:message>
   <wsdl:message name="MOTDSoapOut">
     <wsdl:part name="parameters" element="tns:MOTDResponse" />
-  </wsdl:message>
-  <wsdl:message name="LoginSoapIn">
-    <wsdl:part name="parameters" element="tns:Login" />
-  </wsdl:message>
-  <wsdl:message name="LoginSoapOut">
-    <wsdl:part name="parameters" element="tns:LoginResponse" />
-  </wsdl:message>
-  <wsdl:message name="RegisterSoapIn">
-    <wsdl:part name="parameters" element="tns:Register" />
-  </wsdl:message>
-  <wsdl:message name="RegisterSoapOut">
-    <wsdl:part name="parameters" element="tns:RegisterResponse" />
   </wsdl:message>
   <wsdl:message name="LoadProjectsSoapIn">
     <wsdl:part name="parameters" element="tns:LoadProjects" />
@@ -248,30 +142,6 @@
   <wsdl:message name="SendMessageSoapOut">
     <wsdl:part name="parameters" element="tns:SendMessageResponse" />
   </wsdl:message>
-  <wsdl:message name="LoadTodosSoapIn">
-    <wsdl:part name="parameters" element="tns:LoadTodos" />
-  </wsdl:message>
-  <wsdl:message name="LoadTodosSoapOut">
-    <wsdl:part name="parameters" element="tns:LoadTodosResponse" />
-  </wsdl:message>
-  <wsdl:message name="AddTodosSoapIn">
-    <wsdl:part name="parameters" element="tns:AddTodos" />
-  </wsdl:message>
-  <wsdl:message name="AddTodosSoapOut">
-    <wsdl:part name="parameters" element="tns:AddTodosResponse" />
-  </wsdl:message>
-  <wsdl:message name="EditTodosSoapIn">
-    <wsdl:part name="parameters" element="tns:EditTodos" />
-  </wsdl:message>
-  <wsdl:message name="EditTodosSoapOut">
-    <wsdl:part name="parameters" element="tns:EditTodosResponse" />
-  </wsdl:message>
-  <wsdl:message name="RemoveTodosSoapIn">
-    <wsdl:part name="parameters" element="tns:RemoveTodos" />
-  </wsdl:message>
-  <wsdl:message name="RemoveTodosSoapOut">
-    <wsdl:part name="parameters" element="tns:RemoveTodosResponse" />
-  </wsdl:message>
   <wsdl:message name="MaintenanceSoapIn">
     <wsdl:part name="parameters" element="tns:Maintenance" />
   </wsdl:message>
@@ -282,14 +152,6 @@
     <wsdl:operation name="MOTD">
       <wsdl:input message="tns:MOTDSoapIn" />
       <wsdl:output message="tns:MOTDSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Login">
-      <wsdl:input message="tns:LoginSoapIn" />
-      <wsdl:output message="tns:LoginSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Register">
-      <wsdl:input message="tns:RegisterSoapIn" />
-      <wsdl:output message="tns:RegisterSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="LoadProjects">
       <wsdl:input message="tns:LoadProjectsSoapIn" />
@@ -311,22 +173,6 @@
       <wsdl:input message="tns:SendMessageSoapIn" />
       <wsdl:output message="tns:SendMessageSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="LoadTodos">
-      <wsdl:input message="tns:LoadTodosSoapIn" />
-      <wsdl:output message="tns:LoadTodosSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="AddTodos">
-      <wsdl:input message="tns:AddTodosSoapIn" />
-      <wsdl:output message="tns:AddTodosSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="EditTodos">
-      <wsdl:input message="tns:EditTodosSoapIn" />
-      <wsdl:output message="tns:EditTodosSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="RemoveTodos">
-      <wsdl:input message="tns:RemoveTodosSoapIn" />
-      <wsdl:output message="tns:RemoveTodosSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="Maintenance">
       <wsdl:input message="tns:MaintenanceSoapIn" />
       <wsdl:output message="tns:MaintenanceSoapOut" />
@@ -336,24 +182,6 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="MOTD">
       <soap:operation soapAction="http://localhost/MOTD" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Login">
-      <soap:operation soapAction="http://localhost/Login" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Register">
-      <soap:operation soapAction="http://localhost/Register" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -406,42 +234,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="LoadTodos">
-      <soap:operation soapAction="http://localhost/LoadTodos" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddTodos">
-      <soap:operation soapAction="http://localhost/AddTodos" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EditTodos">
-      <soap:operation soapAction="http://localhost/EditTodos" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RemoveTodos">
-      <soap:operation soapAction="http://localhost/RemoveTodos" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="Maintenance">
       <soap:operation soapAction="http://localhost/Maintenance" style="document" />
       <wsdl:input>
@@ -456,24 +248,6 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="MOTD">
       <soap12:operation soapAction="http://localhost/MOTD" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Login">
-      <soap12:operation soapAction="http://localhost/Login" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Register">
-      <soap12:operation soapAction="http://localhost/Register" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -519,42 +293,6 @@
     </wsdl:operation>
     <wsdl:operation name="SendMessage">
       <soap12:operation soapAction="http://localhost/SendMessage" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LoadTodos">
-      <soap12:operation soapAction="http://localhost/LoadTodos" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddTodos">
-      <soap12:operation soapAction="http://localhost/AddTodos" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EditTodos">
-      <soap12:operation soapAction="http://localhost/EditTodos" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RemoveTodos">
-      <soap12:operation soapAction="http://localhost/RemoveTodos" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
