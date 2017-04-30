@@ -31,7 +31,25 @@ namespace PROJECTO.WEB.BackEnd.DBConn
             try
             {
                 var result = new List<string>();
-                return result;
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.CommandTimeout = 40;
+                cmd.CommandText = "SELECT * FROM projecto.messages WHERE messageSender='" + firstUserID + "' AND messageReceiver='" + secondUserID + "' AND projectID='" + chsnProj + "';";
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    result.Add(reader.GetString("messageText"));
+                    result.Add(reader.GetString("sentTime"));
+                }
+
+                if (result != null) return result;
+                else
+                {
+                    result.Add("ERR");
+                    return result;
+                }
             }
             catch (MySqlException ex)
             {

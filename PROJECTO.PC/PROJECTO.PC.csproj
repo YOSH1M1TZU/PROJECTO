@@ -176,9 +176,6 @@
     <Resource Include="Resources\UI\todo\delete_task.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\UI\todo\progress_task.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\UI\projects\create_project.png" />
   </ItemGroup>
   <ItemGroup>
@@ -190,9 +187,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\UI\todo\confirm_task.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\UI\communication\send_message.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\UI\members\search_member.png" />
@@ -243,6 +237,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\MainWS\Main.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\UI\todo\move_backward_task.png" />
+    <Resource Include="Resources\UI\todo\move_forward_task.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\UI\communication\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -121,12 +121,13 @@
     <Compile Include="BackEnd\DBConn\Maintenance.cs" />
     <Compile Include="BackEnd\DBConn\Members.cs" />
     <Compile Include="BackEnd\DBConn\Messages.cs" />
-    <Compile Include="BackEnd\DBConn\Tasks\Done.cs" />
-    <Compile Include="BackEnd\DBConn\Tasks\ForReview.cs" />
-    <Compile Include="BackEnd\DBConn\Tasks\InProgress.cs" />
+    <Compile Include="BackEnd\DBConn\Repositories\Done.cs" />
+    <Compile Include="BackEnd\DBConn\Repositories\ForReview.cs" />
+    <Compile Include="BackEnd\DBConn\Repositories\InProgress.cs" />
     <Compile Include="BackEnd\DBConn\LoginRegister.cs" />
     <Compile Include="BackEnd\DBConn\Projects.cs" />
-    <Compile Include="BackEnd\DBConn\Tasks\ToDo.cs" />
+    <Compile Include="BackEnd\DBConn\Repositories\ToDo.cs" />
+    <Compile Include="BackEnd\DBConn\TasksMain.cs" />
     <Compile Include="BackEnd\SecurityClass.cs" />
     <Compile Include="BackEnd\DBClass.cs" />
     <Compile Include="BackEnd\ServerClass.cs" />

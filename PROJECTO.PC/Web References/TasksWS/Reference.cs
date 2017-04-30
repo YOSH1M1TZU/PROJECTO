@@ -31,11 +31,19 @@ namespace PROJECTO.PC.TasksWS {
         
         private System.Threading.SendOrPostCallback LoadTodosOperationCompleted;
         
+        private System.Threading.SendOrPostCallback LoadInProgressOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback LoadForReviewOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback LoadDoneOperationCompleted;
+        
         private System.Threading.SendOrPostCallback AddTodosOperationCompleted;
         
         private System.Threading.SendOrPostCallback EditTodosOperationCompleted;
         
         private System.Threading.SendOrPostCallback RemoveTodosOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback MoveTaskOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -79,6 +87,15 @@ namespace PROJECTO.PC.TasksWS {
         public event LoadTodosCompletedEventHandler LoadTodosCompleted;
         
         /// <remarks/>
+        public event LoadInProgressCompletedEventHandler LoadInProgressCompleted;
+        
+        /// <remarks/>
+        public event LoadForReviewCompletedEventHandler LoadForReviewCompleted;
+        
+        /// <remarks/>
+        public event LoadDoneCompletedEventHandler LoadDoneCompleted;
+        
+        /// <remarks/>
         public event AddTodosCompletedEventHandler AddTodosCompleted;
         
         /// <remarks/>
@@ -88,25 +105,28 @@ namespace PROJECTO.PC.TasksWS {
         public event RemoveTodosCompletedEventHandler RemoveTodosCompleted;
         
         /// <remarks/>
+        public event MoveTaskCompletedEventHandler MoveTaskCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/LoadTodos", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string[] LoadTodos(string chosenProject) {
+        public string[] LoadTodos(string projectID) {
             object[] results = this.Invoke("LoadTodos", new object[] {
-                        chosenProject});
+                        projectID});
             return ((string[])(results[0]));
         }
         
         /// <remarks/>
-        public void LoadTodosAsync(string chosenProject) {
-            this.LoadTodosAsync(chosenProject, null);
+        public void LoadTodosAsync(string projectID) {
+            this.LoadTodosAsync(projectID, null);
         }
         
         /// <remarks/>
-        public void LoadTodosAsync(string chosenProject, object userState) {
+        public void LoadTodosAsync(string projectID, object userState) {
             if ((this.LoadTodosOperationCompleted == null)) {
                 this.LoadTodosOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoadTodosOperationCompleted);
             }
             this.InvokeAsync("LoadTodos", new object[] {
-                        chosenProject}, this.LoadTodosOperationCompleted, userState);
+                        projectID}, this.LoadTodosOperationCompleted, userState);
         }
         
         private void OnLoadTodosOperationCompleted(object arg) {
@@ -117,28 +137,117 @@ namespace PROJECTO.PC.TasksWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/LoadInProgress", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] LoadInProgress(string projectID) {
+            object[] results = this.Invoke("LoadInProgress", new object[] {
+                        projectID});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LoadInProgressAsync(string projectID) {
+            this.LoadInProgressAsync(projectID, null);
+        }
+        
+        /// <remarks/>
+        public void LoadInProgressAsync(string projectID, object userState) {
+            if ((this.LoadInProgressOperationCompleted == null)) {
+                this.LoadInProgressOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoadInProgressOperationCompleted);
+            }
+            this.InvokeAsync("LoadInProgress", new object[] {
+                        projectID}, this.LoadInProgressOperationCompleted, userState);
+        }
+        
+        private void OnLoadInProgressOperationCompleted(object arg) {
+            if ((this.LoadInProgressCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LoadInProgressCompleted(this, new LoadInProgressCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/LoadForReview", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] LoadForReview(string projectID) {
+            object[] results = this.Invoke("LoadForReview", new object[] {
+                        projectID});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LoadForReviewAsync(string projectID) {
+            this.LoadForReviewAsync(projectID, null);
+        }
+        
+        /// <remarks/>
+        public void LoadForReviewAsync(string projectID, object userState) {
+            if ((this.LoadForReviewOperationCompleted == null)) {
+                this.LoadForReviewOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoadForReviewOperationCompleted);
+            }
+            this.InvokeAsync("LoadForReview", new object[] {
+                        projectID}, this.LoadForReviewOperationCompleted, userState);
+        }
+        
+        private void OnLoadForReviewOperationCompleted(object arg) {
+            if ((this.LoadForReviewCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LoadForReviewCompleted(this, new LoadForReviewCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/LoadDone", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] LoadDone(string projectID) {
+            object[] results = this.Invoke("LoadDone", new object[] {
+                        projectID});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LoadDoneAsync(string projectID) {
+            this.LoadDoneAsync(projectID, null);
+        }
+        
+        /// <remarks/>
+        public void LoadDoneAsync(string projectID, object userState) {
+            if ((this.LoadDoneOperationCompleted == null)) {
+                this.LoadDoneOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoadDoneOperationCompleted);
+            }
+            this.InvokeAsync("LoadDone", new object[] {
+                        projectID}, this.LoadDoneOperationCompleted, userState);
+        }
+        
+        private void OnLoadDoneOperationCompleted(object arg) {
+            if ((this.LoadDoneCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LoadDoneCompleted(this, new LoadDoneCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/AddTodos", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string AddTodos(string title, string desc, string projectID) {
+        public string AddTodos(string title, string desc, string category, string projectID) {
             object[] results = this.Invoke("AddTodos", new object[] {
                         title,
                         desc,
+                        category,
                         projectID});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void AddTodosAsync(string title, string desc, string projectID) {
-            this.AddTodosAsync(title, desc, projectID, null);
+        public void AddTodosAsync(string title, string desc, string category, string projectID) {
+            this.AddTodosAsync(title, desc, category, projectID, null);
         }
         
         /// <remarks/>
-        public void AddTodosAsync(string title, string desc, string projectID, object userState) {
+        public void AddTodosAsync(string title, string desc, string category, string projectID, object userState) {
             if ((this.AddTodosOperationCompleted == null)) {
                 this.AddTodosOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddTodosOperationCompleted);
             }
             this.InvokeAsync("AddTodos", new object[] {
                         title,
                         desc,
+                        category,
                         projectID}, this.AddTodosOperationCompleted, userState);
         }
         
@@ -216,6 +325,45 @@ namespace PROJECTO.PC.TasksWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/MoveTask", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string MoveTask(string from, string to, string taskTitle, string taskDesc, string taskCategory, string projectID) {
+            object[] results = this.Invoke("MoveTask", new object[] {
+                        from,
+                        to,
+                        taskTitle,
+                        taskDesc,
+                        taskCategory,
+                        projectID});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void MoveTaskAsync(string from, string to, string taskTitle, string taskDesc, string taskCategory, string projectID) {
+            this.MoveTaskAsync(from, to, taskTitle, taskDesc, taskCategory, projectID, null);
+        }
+        
+        /// <remarks/>
+        public void MoveTaskAsync(string from, string to, string taskTitle, string taskDesc, string taskCategory, string projectID, object userState) {
+            if ((this.MoveTaskOperationCompleted == null)) {
+                this.MoveTaskOperationCompleted = new System.Threading.SendOrPostCallback(this.OnMoveTaskOperationCompleted);
+            }
+            this.InvokeAsync("MoveTask", new object[] {
+                        from,
+                        to,
+                        taskTitle,
+                        taskDesc,
+                        taskCategory,
+                        projectID}, this.MoveTaskOperationCompleted, userState);
+        }
+        
+        private void OnMoveTaskOperationCompleted(object arg) {
+            if ((this.MoveTaskCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.MoveTaskCompleted(this, new MoveTaskCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -247,6 +395,84 @@ namespace PROJECTO.PC.TasksWS {
         private object[] results;
         
         internal LoadTodosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void LoadInProgressCompletedEventHandler(object sender, LoadInProgressCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LoadInProgressCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LoadInProgressCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void LoadForReviewCompletedEventHandler(object sender, LoadForReviewCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LoadForReviewCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LoadForReviewCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void LoadDoneCompletedEventHandler(object sender, LoadDoneCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LoadDoneCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LoadDoneCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -325,6 +551,32 @@ namespace PROJECTO.PC.TasksWS {
         private object[] results;
         
         internal RemoveTodosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void MoveTaskCompletedEventHandler(object sender, MoveTaskCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class MoveTaskCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal MoveTaskCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

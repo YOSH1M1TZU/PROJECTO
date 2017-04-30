@@ -455,50 +455,96 @@ namespace PROJECTO.PC
                 dataProjects.Add(result[i]);
             }
 
-            int spacer = 65;
+            int spacer = 5;
+            int counter = 0;
 
-            foreach (string proj in dataProjects)
+            for(int zz=0; zz<dataProjects.Count; zz+=4)
             {
                 Canvas project_canvas = new Canvas();
-                project_canvas.Width = 1060;
-                project_canvas.Height = 75;
-                project_canvas.Name = "cnvs";
+                project_canvas.Width = 1053;
+                project_canvas.Height = 44;
+                //project_canvas.Name = "cnvs";
                 Thickness project_margin = project_canvas.Margin;
-                project_margin.Left = 20;
+                project_margin.Left = 5;
                 project_margin.Top = spacer;
                 project_canvas.Margin = project_margin;
-                canvas_projects.Children.Add(project_canvas);
+                projects_wrapper.Children.Add(project_canvas);
 
                 Rectangle rect = new Rectangle();
-                rect.Width = 1060;
-                rect.Height = 75;
-                rect.Name = "rect";
-                rect.RadiusX = 5;
-                rect.RadiusY = 5;
-                rect.Fill = new SolidColorBrush(Color.FromArgb(255, 47, 64, 80));
+                rect.Width = 1053;
+                rect.Height = 44;
+                //rect.Name = "rect";
+                if(counter%2==0) rect.Fill = Brushes.White; //new SolidColorBrush(Color.FromArgb(255, 47, 64, 80));
+                else rect.Fill = new SolidColorBrush(Color.FromArgb(255, 190, 222, 255));
                 project_canvas.Children.Add(rect);
 
                 Label project_name = new Label();
-                project_name.Width = 550;
-                project_name.Height = 55;
+                project_name.Width = 300;
+                project_name.Height = 40;
                 Thickness project_name_margin = project_canvas.Margin;
-                project_name_margin.Left = 10;
-                project_name_margin.Top = 10;
+                project_name_margin.Left = 5;
+                project_name_margin.Top = 2;
                 project_name.Margin = project_name_margin;
-                project_name.FontSize = 36;
+                project_name.FontSize = 24;
                 project_name.FontFamily = new FontFamily("Aaargh");
-                project_name.Foreground = Brushes.White;
-                project_name.Content = proj;
-                project_name.Name = "lb";
+                if(counter%2==0) project_name.Foreground = Brushes.Black;
+                else project_name.Foreground = Brushes.White;
+                project_name.Content = dataProjects[zz];
+                //project_name.Name = "lb";
                 project_canvas.Children.Add(project_name);
+
+                Label creator = new Label();
+                creator.Width = 300;
+                creator.Height = 40;
+                Thickness creator_margin = project_canvas.Margin;
+                creator_margin.Left = 315;
+                creator_margin.Top = 2;
+                creator.Margin = creator_margin;
+                creator.FontSize = 24;
+                creator.FontFamily = new FontFamily("Aaargh");
+                if (counter % 2 == 0) creator.Foreground = Brushes.Black;
+                else creator.Foreground = Brushes.White;
+                creator.Content = dataProjects[zz + 1];
+                //project_name.Name = "lb";
+                project_canvas.Children.Add(creator);
+
+                Label membersCount = new Label();
+                membersCount.Width = 40;
+                membersCount.Height = 40;
+                Thickness membersCount_margin = project_canvas.Margin;
+                membersCount_margin.Left = 630;
+                membersCount_margin.Top = 2;
+                membersCount.Margin = membersCount_margin;
+                membersCount.FontSize = 28;
+                membersCount.FontFamily = new FontFamily("MOON");
+                if (counter % 2 == 0) membersCount.Foreground = Brushes.Black;
+                else membersCount.Foreground = Brushes.White;
+                membersCount.Content = dataProjects[zz + 2];
+                //project_name.Name = "lb";
+                project_canvas.Children.Add(membersCount);
+
+                Label deadline = new Label();
+                deadline.Width = 240;
+                deadline.Height = 40;
+                Thickness deadline_margin = project_canvas.Margin;
+                deadline_margin.Left = 695;
+                deadline_margin.Top = 2;
+                deadline.Margin = deadline_margin;
+                deadline.FontSize = 24;
+                deadline.FontFamily = new FontFamily("Aaargh");
+                if (counter % 2 == 0) deadline.Foreground = Brushes.Black;
+                else deadline.Foreground = Brushes.White;
+                deadline.Content = dataProjects[zz + 3];
+                //project_name.Name = "lb";
+                project_canvas.Children.Add(deadline);
 
                 Image edit_icon = new Image();
                 edit_icon.Height = 40;
                 edit_icon.Width = 40;
-                edit_icon.Name = "edi";
+                //edit_icon.Name = "edi";
                 Thickness edit_margin = project_canvas.Margin;
-                edit_margin.Left = 950;
-                edit_margin.Top = 17;
+                edit_margin.Left = 960;
+                edit_margin.Top = 2;
                 edit_icon.Margin = edit_margin;
                 BitmapImage edit_image = new BitmapImage(new Uri("/Projecto.PC;component/Resources/UI/projects/edit_project.png", UriKind.Relative));
                 edit_icon.Source = edit_image;
@@ -521,10 +567,10 @@ namespace PROJECTO.PC
                 Image delete_icon = new Image();
                 delete_icon.Height = 40;
                 delete_icon.Width = 40;
-                delete_icon.Name = "edi";
+                //delete_icon.Name = "edi";
                 Thickness delete_margin = project_canvas.Margin;
-                delete_margin.Left = 1000;
-                delete_margin.Top = 17;
+                delete_margin.Left = 1010;
+                delete_margin.Top = 2;
                 delete_icon.Margin = delete_margin;
                 BitmapImage delete_image = new BitmapImage(new Uri("/Projecto.PC;component/Resources/UI/projects/delete_project.png", UriKind.Relative));
                 delete_icon.Source = delete_image;
@@ -544,7 +590,8 @@ namespace PROJECTO.PC
                 };
                 project_canvas.Children.Add(delete_icon);
 
-                spacer += 95;
+                spacer += 44;
+                counter++;
             }
         }
 
@@ -564,7 +611,7 @@ namespace PROJECTO.PC
             int spacerY = 5;
             int counter = 0;
 
-            for(int i=0;i<result.Length;i+=2)
+            for(int i=0;i<result.Length;i+=3)
             {
                 Canvas todo_canvas = new Canvas();
                 todo_canvas.Width = 250;
@@ -592,7 +639,7 @@ namespace PROJECTO.PC
                 todo_canvas.Children.Add(rect);
 
                 TextBox todo_title = new TextBox();
-                todo_title.Width = 230;
+                todo_title.Width = 195; //230
                 todo_title.Height = 31;
                 Thickness todo_title_margin = todo_canvas.Margin;
                 todo_title_margin.Left = 10;
@@ -648,7 +695,7 @@ namespace PROJECTO.PC
                 tb2.Foreground = Brushes.Black;
                 tb2.VerticalAlignment = VerticalAlignment.Center;
                 tb2.FontWeight = FontWeights.Bold;
-                tb2.Text = "Maintenance";
+                tb2.Text = result[i + 2];
                 tb2.Cursor = Cursors.Arrow;
                 tb2.TextWrapping = TextWrapping.Wrap;
                 tb2.MaxLength = 210;
@@ -741,12 +788,40 @@ namespace PROJECTO.PC
                 };
                 todo_canvas.Children.Add(delete_icon);
 
+                Image move_icon = new Image();
+                move_icon.Height = 30;
+                move_icon.Width = 30;
+                move_icon.Name = "edi";
+                Thickness move_margin = todo_canvas.Margin;
+                move_margin.Left = 210;
+                move_margin.Top = 5;
+                move_icon.Margin = move_margin;
+                BitmapImage move_image = new BitmapImage(new Uri("/Projecto.PC;component/Resources/UI/todo/move_forward_task.png", UriKind.Relative));
+                move_icon.Source = move_image;
+                move_icon.MouseDown += (source, e) =>
+                {
+                    MoveTask("todo", "inprogress", todo_title.Text.ToString(), tb.Text.ToString(), tb2.Text.ToString());
+                    LoadTodos(chosenProject);
+                    LoadInProgress(chosenProject);
+                };
+                move_icon.MouseEnter += (source, e) =>
+                {
+                    move_icon.Opacity = 0.3;
+                    Cursor = Cursors.Hand;
+                };
+                move_icon.MouseLeave += (source, e) =>
+                {
+                    move_icon.Opacity = 1;
+                    Cursor = Cursors.Arrow;
+                };
+                todo_canvas.Children.Add(move_icon);
+
                 spacerY += 160;
                 if(i==6) todo_wrapper.Height += 35;
                 else if(i>6) todo_wrapper.Height += 165;
                 counter++;
             }
-            todo_counter.Content = counter.ToString();
+            todo_counter.Content = "Count: " + counter.ToString();
         }
 
         public void LoadInProgress(string chsnProj)
@@ -758,12 +833,12 @@ namespace PROJECTO.PC
                 inprogress_wrapper.Children.Remove(cv);
             }
             var web_service = new TasksWS.Tasks();
-            var result = web_service.LoadTodos(chsnProj);
+            var result = web_service.LoadInProgress(chsnProj);
 
             int spacerY = 5;
             int counter = 0;
 
-            for (int i = 0; i < result.Length; i += 2)
+            for (int i = 0; i < result.Length; i += 3)
             {
                 Canvas todo_canvas = new Canvas();
                 todo_canvas.Width = 250;
@@ -791,7 +866,7 @@ namespace PROJECTO.PC
                 todo_canvas.Children.Add(rect);
 
                 TextBox todo_title = new TextBox();
-                todo_title.Width = 230;
+                todo_title.Width = 195;
                 todo_title.Height = 31;
                 Thickness todo_title_margin = todo_canvas.Margin;
                 todo_title_margin.Left = 10;
@@ -847,7 +922,7 @@ namespace PROJECTO.PC
                 tb2.Foreground = Brushes.Black;
                 tb2.VerticalAlignment = VerticalAlignment.Center;
                 tb2.FontWeight = FontWeights.Bold;
-                tb2.Text = "Maintenance";
+                tb2.Text = result[i + 2];
                 tb2.Cursor = Cursors.Arrow;
                 tb2.TextWrapping = TextWrapping.Wrap;
                 tb2.MaxLength = 210;
@@ -897,7 +972,7 @@ namespace PROJECTO.PC
 
                         var web_service2 = new TasksWS.Tasks();
                         var result2 = web_service.EditTodos(oldTitleTodo, todo_title.Text.ToString(), tb.Text.ToString(), chosenProject);
-                        LoadTodos(chosenProject);
+                        LoadInProgress(chosenProject);
                     }
                 };
                 edit_icon.MouseEnter += (source, e) =>
@@ -926,7 +1001,7 @@ namespace PROJECTO.PC
                 {
                     var web_service2 = new TasksWS.Tasks();
                     var result2 = web_service.RemoveTodos(todo_title.Text.ToString(), chosenProject);
-                    LoadTodos(chosenProject);
+                    LoadInProgress(chosenProject);
                 };
                 delete_icon.MouseEnter += (source, e) =>
                 {
@@ -940,12 +1015,68 @@ namespace PROJECTO.PC
                 };
                 todo_canvas.Children.Add(delete_icon);
 
+                Image move_icon = new Image();
+                move_icon.Height = 30;
+                move_icon.Width = 30;
+                move_icon.Name = "edi";
+                Thickness move_margin = todo_canvas.Margin;
+                move_margin.Left = 210;
+                move_margin.Top = 5;
+                move_icon.Margin = move_margin;
+                BitmapImage move_image = new BitmapImage(new Uri("/Projecto.PC;component/Resources/UI/todo/move_forward_task.png", UriKind.Relative));
+                move_icon.Source = move_image;
+                move_icon.MouseDown += (source, e) =>
+                {
+                    MoveTask("inprogress", "forreview", todo_title.Text.ToString(), tb.Text.ToString(), tb2.Text.ToString());
+                    LoadInProgress(chosenProject);
+                    LoadForReview(chosenProject);
+                };
+                move_icon.MouseEnter += (source, e) =>
+                {
+                    move_icon.Opacity = 0.3;
+                    Cursor = Cursors.Hand;
+                };
+                move_icon.MouseLeave += (source, e) =>
+                {
+                    move_icon.Opacity = 1;
+                    Cursor = Cursors.Arrow;
+                };
+                todo_canvas.Children.Add(move_icon);
+
+                Image back_icon = new Image();
+                back_icon.Height = 30;
+                back_icon.Width = 30;
+                back_icon.Name = "edi";
+                Thickness back_margin = todo_canvas.Margin;
+                back_margin.Left = 180;
+                back_margin.Top = 5;
+                back_icon.Margin = back_margin;
+                BitmapImage back_image = new BitmapImage(new Uri("/Projecto.PC;component/Resources/UI/todo/move_backward_task.png", UriKind.Relative));
+                back_icon.Source = back_image;
+                back_icon.MouseDown += (source, e) =>
+                {
+                    MoveTask("inprogress", "todo", todo_title.Text.ToString(), tb.Text.ToString(), tb2.Text.ToString());
+                    LoadInProgress(chosenProject);
+                    LoadTodos(chosenProject);
+                };
+                back_icon.MouseEnter += (source, e) =>
+                {
+                    back_icon.Opacity = 0.3;
+                    Cursor = Cursors.Hand;
+                };
+                back_icon.MouseLeave += (source, e) =>
+                {
+                    back_icon.Opacity = 1;
+                    Cursor = Cursors.Arrow;
+                };
+                todo_canvas.Children.Add(back_icon);
+
                 spacerY += 160;
                 if (i == 6) inprogress_wrapper.Height += 35;
                 else if (i > 6) inprogress_wrapper.Height += 165;
                 counter++;
             }
-            inprogress_counter.Content = counter.ToString();
+            inprogress_counter.Content = "Count: " + counter.ToString();
         }
 
         public void LoadForReview(string chsnProj)
@@ -957,12 +1088,12 @@ namespace PROJECTO.PC
                 forreview_wrapper.Children.Remove(cv);
             }
             var web_service = new TasksWS.Tasks();
-            var result = web_service.LoadTodos(chsnProj);
+            var result = web_service.LoadForReview(chsnProj);
 
             int spacerY = 5;
             int counter = 0;
 
-            for (int i = 0; i < result.Length; i += 2)
+            for (int i = 0; i < result.Length; i += 3)
             {
                 Canvas todo_canvas = new Canvas();
                 todo_canvas.Width = 250;
@@ -990,7 +1121,7 @@ namespace PROJECTO.PC
                 todo_canvas.Children.Add(rect);
 
                 TextBox todo_title = new TextBox();
-                todo_title.Width = 230;
+                todo_title.Width = 195;
                 todo_title.Height = 31;
                 Thickness todo_title_margin = todo_canvas.Margin;
                 todo_title_margin.Left = 10;
@@ -1046,7 +1177,7 @@ namespace PROJECTO.PC
                 tb2.Foreground = Brushes.Black;
                 tb2.VerticalAlignment = VerticalAlignment.Center;
                 tb2.FontWeight = FontWeights.Bold;
-                tb2.Text = "Maintenance";
+                tb2.Text = result[i + 2];
                 tb2.Cursor = Cursors.Arrow;
                 tb2.TextWrapping = TextWrapping.Wrap;
                 tb2.MaxLength = 210;
@@ -1096,7 +1227,7 @@ namespace PROJECTO.PC
 
                         var web_service2 = new TasksWS.Tasks();
                         var result2 = web_service.EditTodos(oldTitleTodo, todo_title.Text.ToString(), tb.Text.ToString(), chosenProject);
-                        LoadTodos(chosenProject);
+                        LoadForReview(chosenProject);
                     }
                 };
                 edit_icon.MouseEnter += (source, e) =>
@@ -1125,7 +1256,7 @@ namespace PROJECTO.PC
                 {
                     var web_service2 = new TasksWS.Tasks();
                     var result2 = web_service.RemoveTodos(todo_title.Text.ToString(), chosenProject);
-                    LoadTodos(chosenProject);
+                    LoadForReview(chosenProject);
                 };
                 delete_icon.MouseEnter += (source, e) =>
                 {
@@ -1139,12 +1270,68 @@ namespace PROJECTO.PC
                 };
                 todo_canvas.Children.Add(delete_icon);
 
+                Image move_icon = new Image();
+                move_icon.Height = 30;
+                move_icon.Width = 30;
+                move_icon.Name = "edi";
+                Thickness move_margin = todo_canvas.Margin;
+                move_margin.Left = 210;
+                move_margin.Top = 5;
+                move_icon.Margin = move_margin;
+                BitmapImage move_image = new BitmapImage(new Uri("/Projecto.PC;component/Resources/UI/todo/move_forward_task.png", UriKind.Relative));
+                move_icon.Source = move_image;
+                move_icon.MouseDown += (source, e) =>
+                {
+                    MoveTask("forreview", "done", todo_title.Text.ToString(), tb.Text.ToString(), tb2.Text.ToString());
+                    LoadForReview(chosenProject);
+                    LoadDone(chosenProject);
+                };
+                move_icon.MouseEnter += (source, e) =>
+                {
+                    move_icon.Opacity = 0.3;
+                    Cursor = Cursors.Hand;
+                };
+                move_icon.MouseLeave += (source, e) =>
+                {
+                    move_icon.Opacity = 1;
+                    Cursor = Cursors.Arrow;
+                };
+                todo_canvas.Children.Add(move_icon);
+
+                Image back_icon = new Image();
+                back_icon.Height = 30;
+                back_icon.Width = 30;
+                back_icon.Name = "edi";
+                Thickness back_margin = todo_canvas.Margin;
+                back_margin.Left = 180;
+                back_margin.Top = 5;
+                back_icon.Margin = back_margin;
+                BitmapImage back_image = new BitmapImage(new Uri("/Projecto.PC;component/Resources/UI/todo/move_backward_task.png", UriKind.Relative));
+                back_icon.Source = back_image;
+                back_icon.MouseDown += (source, e) =>
+                {
+                    MoveTask("forreview", "inprogress", todo_title.Text.ToString(), tb.Text.ToString(), tb2.Text.ToString());
+                    LoadForReview(chosenProject);
+                    LoadInProgress(chosenProject);
+                };
+                back_icon.MouseEnter += (source, e) =>
+                {
+                    back_icon.Opacity = 0.3;
+                    Cursor = Cursors.Hand;
+                };
+                back_icon.MouseLeave += (source, e) =>
+                {
+                    back_icon.Opacity = 1;
+                    Cursor = Cursors.Arrow;
+                };
+                todo_canvas.Children.Add(back_icon);
+
                 spacerY += 160;
                 if (i == 6) forreview_wrapper.Height += 35;
                 else if (i > 6) forreview_wrapper.Height += 165;
                 counter++;
             }
-            forreview_counter.Content = counter.ToString();
+            forreview_counter.Content = "Count: " + counter.ToString();
         }
 
         public void LoadDone(string chsnProj)
@@ -1156,12 +1343,12 @@ namespace PROJECTO.PC
                 done_wrapper.Children.Remove(cv);
             }
             var web_service = new TasksWS.Tasks();
-            var result = web_service.LoadTodos(chsnProj);
+            var result = web_service.LoadDone(chsnProj);
 
             int spacerY = 5;
             int counter = 0;
 
-            for (int i = 0; i < result.Length; i += 2)
+            for (int i = 0; i < result.Length; i += 3)
             {
                 Canvas todo_canvas = new Canvas();
                 todo_canvas.Width = 250;
@@ -1245,7 +1432,7 @@ namespace PROJECTO.PC
                 tb2.Foreground = Brushes.Black;
                 tb2.VerticalAlignment = VerticalAlignment.Center;
                 tb2.FontWeight = FontWeights.Bold;
-                tb2.Text = "Maintenance";
+                tb2.Text = result[i + 2];
                 tb2.Cursor = Cursors.Arrow;
                 tb2.TextWrapping = TextWrapping.Wrap;
                 tb2.MaxLength = 210;
@@ -1295,7 +1482,7 @@ namespace PROJECTO.PC
 
                         var web_service2 = new TasksWS.Tasks();
                         var result2 = web_service.EditTodos(oldTitleTodo, todo_title.Text.ToString(), tb.Text.ToString(), chosenProject);
-                        LoadTodos(chosenProject);
+                        LoadDone(chosenProject);
                     }
                 };
                 edit_icon.MouseEnter += (source, e) =>
@@ -1324,7 +1511,7 @@ namespace PROJECTO.PC
                 {
                     var web_service2 = new TasksWS.Tasks();
                     var result2 = web_service.RemoveTodos(todo_title.Text.ToString(), chosenProject);
-                    LoadTodos(chosenProject);
+                    LoadDone(chosenProject);
                 };
                 delete_icon.MouseEnter += (source, e) =>
                 {
@@ -1338,13 +1525,50 @@ namespace PROJECTO.PC
                 };
                 todo_canvas.Children.Add(delete_icon);
 
+                Image back_icon = new Image();
+                back_icon.Height = 30;
+                back_icon.Width = 30;
+                back_icon.Name = "edi";
+                Thickness back_margin = todo_canvas.Margin;
+                back_margin.Left = 180;
+                back_margin.Top = 5;
+                back_icon.Margin = back_margin;
+                BitmapImage back_image = new BitmapImage(new Uri("/Projecto.PC;component/Resources/UI/todo/move_backward_task.png", UriKind.Relative));
+                back_icon.Source = back_image;
+                back_icon.MouseDown += (source, e) =>
+                {
+                    MoveTask("done", "forreview", todo_title.Text.ToString(), tb.Text.ToString(), tb2.Text.ToString());
+                    LoadDone(chosenProject);
+                    LoadForReview(chosenProject);
+                };
+                back_icon.MouseEnter += (source, e) =>
+                {
+                    back_icon.Opacity = 0.3;
+                    Cursor = Cursors.Hand;
+                };
+                back_icon.MouseLeave += (source, e) =>
+                {
+                    back_icon.Opacity = 1;
+                    Cursor = Cursors.Arrow;
+                };
+                todo_canvas.Children.Add(back_icon);
+
                 spacerY += 160;
                 if (i == 6) done_wrapper.Height += 35;
                 else if (i > 6) done_wrapper.Height += 165;
                 counter++;
             }
-            done_counter.Content = counter.ToString();
+            done_counter.Content = "Count: " + counter.ToString();
         }
+
+        public void MoveTask(string from, string to, string taskTitle, string taskDesc, string taskCategory)
+        {
+            var web_service = new TasksWS.Tasks();
+            var result = web_service.MoveTask(from, to, taskTitle, taskDesc, taskCategory, chosenProject);
+        }
+
+
+
 
 
 
@@ -1356,6 +1580,7 @@ namespace PROJECTO.PC
             int spacerY1 = 5;
             int spacerY2 = 10;
 
+            //communication members
             foreach(string member in result)
             {
                 string[] mem = member.Split(',');
@@ -1367,6 +1592,15 @@ namespace PROJECTO.PC
                 member_margin.Top = spacerY1;
                 cv.Margin = member_margin;
                 comm_members_wrapper.Children.Add(cv);
+
+                Label lb2 = new Label();
+                Thickness lb2_margin = cv.Margin;
+                lb2_margin.Left = 70;
+                lb2_margin.Top = 10;
+                lb2.Margin = lb2_margin;
+                lb2.Content = mem[0];
+                lb2.Foreground = Brushes.White;
+                cv.Children.Add(lb2);
 
                 Rectangle rect = new Rectangle();
                 rect.Width = 483;
@@ -1380,6 +1614,10 @@ namespace PROJECTO.PC
                 rect.MouseLeave += (source, e) =>
                 {
                     rect.Fill = new SolidColorBrush(Color.FromArgb(255, 243, 243, 244));
+                };
+                rect.MouseLeftButtonDown += (source, e) =>
+                {
+                    LoadMessages(currentUserID, lb2.Content.ToString(), chosenProject);
                 };
                 cv.Children.Add(rect);
 
@@ -1423,6 +1661,7 @@ namespace PROJECTO.PC
                 spacerY1 += 65;
             }
 
+            //project members
             foreach (string member in result)
             {
                 string[] mem = member.Split(',');
@@ -1512,9 +1751,37 @@ namespace PROJECTO.PC
 
         public void LoadMessages(string firstUserID, string secondUserID, string chsnProj)
         {
+            var web_service = new MainWS.Main();
+            var result = web_service.LoadMessages(firstUserID, secondUserID, chsnProj);
 
+            chat_wrapper.Children.Clear();
+
+            int spacerY = 10;
+
+            for (int i = 0; i < result.Length; i++)
+            {
+                Canvas cv = new Canvas();
+                cv.Width = 375;
+                cv.Height = 60;
+                Thickness cv_thickness = chat_wrapper.Margin;
+                cv_thickness.Left = 10;
+                cv_thickness.Top = spacerY;
+                cv.Margin = cv_thickness;
+                chat_wrapper.Children.Add(cv);
+
+                Rectangle rect = new Rectangle();
+                rect.Width = 375;
+                rect.Height = 35;
+                rect.RadiusX = 5;
+                rect.RadiusY = 5;
+                rect.Fill = new SolidColorBrush(Color.FromArgb(255, 52, 152, 219));
+                cv.Children.Add(rect);
+            }
         }
         #endregion
+
+
+
 
 
 
@@ -1532,17 +1799,19 @@ namespace PROJECTO.PC
             {
                 string title = add_todo_title.Text.ToString();
                 string desc = add_todo_desc.Text.ToString();
-                
-                if(title!="" || desc!="")
+                string category = add_todo_category.Text.ToString();
+
+                if (title!="" && desc!="" && category!="")
                 {
                     var web_service = new TasksWS.Tasks();
-                    var result = web_service.AddTodos(title, desc, chosenProject);
+                    var result = web_service.AddTodos(title, desc, category, chosenProject);
                     LoadTodos(chosenProject);
                 }
 
                 canvas_main.Effect = null;
                 add_todo_title.Text = "";
                 add_todo_desc.Text = "";
+                add_todo_category.Text = "";
                 canvas_add_todo.Visibility = Visibility.Hidden;
             }
             catch (Exception ex) { }
@@ -1555,6 +1824,9 @@ namespace PROJECTO.PC
             add_todo_desc.Text = "";
             canvas_add_todo.Visibility = Visibility.Hidden;
         }
+
+
+
 
 
 
@@ -1681,6 +1953,9 @@ namespace PROJECTO.PC
 
 
 
+
+
+
         private void message_textBox_KeyUp(object sender, KeyEventArgs e)
         {
             if(e.Key == Key.Enter)
@@ -1690,13 +1965,39 @@ namespace PROJECTO.PC
                     try
                     {
                         var web_service = new MainWS.Main();
-                        var result = web_service.SendMessage(message_textBox.Text.ToString(), currentUserID, "2", DateTime.Now.ToString(), chosenProject);
+                        var result = web_service.SendMessage(message_textBox.Text.ToString(), currentUserID, actual_comm_member_id.Content.ToString(), DateTime.Now.ToString(), chosenProject);
                         //LoadMessages(chosenProject);
                         message_textBox.Text = "";
                     }
                     catch (Exception ex) { }
                 }
             }
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            LoadMessages(currentUserID, "2", chosenProject);
+        }
+
+        private void create_project_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var blur = new BlurEffect();
+            blur.Radius = 9;
+            canvas_main.Effect = blur;
+            canvas_add_project.Visibility = Visibility.Visible;
+        }
+
+        private void add_project_cancel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            canvas_main.Effect = null;
+            add_todo_title.Text = "";
+            add_todo_desc.Text = "";
+            canvas_add_project.Visibility = Visibility.Hidden;
+        }
+
+        private void add_project_confirm_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

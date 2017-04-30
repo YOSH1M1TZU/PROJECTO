@@ -64,6 +64,10 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                         firstProjectID = 0;
                     }
                     result.Add(reader2.GetString("project"));
+                    var m = new Members();
+                    result.Add(m.LoadMemberInfo(reader2.GetString("ownerID"), null)[0].Split(',')[1].ToString());
+                    result.Add(reader2.GetString("memberIDs").Split(',').Length.ToString());
+                    result.Add(reader2.GetString("deadline"));
                 }
 
                 if (result != null) return result;

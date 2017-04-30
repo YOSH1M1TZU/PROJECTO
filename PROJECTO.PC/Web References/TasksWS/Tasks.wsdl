@@ -5,7 +5,7 @@
       <s:element name="LoadTodos">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="chosenProject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectID" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -21,11 +21,54 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="LoadInProgress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadInProgressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadInProgressResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadForReview">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadForReviewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadForReviewResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadDone">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadDoneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadDoneResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="AddTodos">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="category" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="projectID" type="s:string" />
           </s:sequence>
         </s:complexType>
@@ -69,6 +112,25 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="MoveTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="from" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="to" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="taskTitle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="taskDesc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="taskCategory" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MoveTaskResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="LoadTodosSoapIn">
@@ -76,6 +138,24 @@
   </wsdl:message>
   <wsdl:message name="LoadTodosSoapOut">
     <wsdl:part name="parameters" element="tns:LoadTodosResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadInProgressSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadInProgress" />
+  </wsdl:message>
+  <wsdl:message name="LoadInProgressSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadInProgressResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadForReviewSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadForReview" />
+  </wsdl:message>
+  <wsdl:message name="LoadForReviewSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadForReviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadDoneSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadDone" />
+  </wsdl:message>
+  <wsdl:message name="LoadDoneSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadDoneResponse" />
   </wsdl:message>
   <wsdl:message name="AddTodosSoapIn">
     <wsdl:part name="parameters" element="tns:AddTodos" />
@@ -95,10 +175,28 @@
   <wsdl:message name="RemoveTodosSoapOut">
     <wsdl:part name="parameters" element="tns:RemoveTodosResponse" />
   </wsdl:message>
+  <wsdl:message name="MoveTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:MoveTask" />
+  </wsdl:message>
+  <wsdl:message name="MoveTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:MoveTaskResponse" />
+  </wsdl:message>
   <wsdl:portType name="TasksSoap">
     <wsdl:operation name="LoadTodos">
       <wsdl:input message="tns:LoadTodosSoapIn" />
       <wsdl:output message="tns:LoadTodosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadInProgress">
+      <wsdl:input message="tns:LoadInProgressSoapIn" />
+      <wsdl:output message="tns:LoadInProgressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadForReview">
+      <wsdl:input message="tns:LoadForReviewSoapIn" />
+      <wsdl:output message="tns:LoadForReviewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadDone">
+      <wsdl:input message="tns:LoadDoneSoapIn" />
+      <wsdl:output message="tns:LoadDoneSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="AddTodos">
       <wsdl:input message="tns:AddTodosSoapIn" />
@@ -112,11 +210,42 @@
       <wsdl:input message="tns:RemoveTodosSoapIn" />
       <wsdl:output message="tns:RemoveTodosSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="MoveTask">
+      <wsdl:input message="tns:MoveTaskSoapIn" />
+      <wsdl:output message="tns:MoveTaskSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TasksSoap" type="tns:TasksSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="LoadTodos">
       <soap:operation soapAction="http://localhost/LoadTodos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadInProgress">
+      <soap:operation soapAction="http://localhost/LoadInProgress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadForReview">
+      <soap:operation soapAction="http://localhost/LoadForReview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadDone">
+      <soap:operation soapAction="http://localhost/LoadDone" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -151,11 +280,47 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="MoveTask">
+      <soap:operation soapAction="http://localhost/MoveTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TasksSoap12" type="tns:TasksSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="LoadTodos">
       <soap12:operation soapAction="http://localhost/LoadTodos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadInProgress">
+      <soap12:operation soapAction="http://localhost/LoadInProgress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadForReview">
+      <soap12:operation soapAction="http://localhost/LoadForReview" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadDone">
+      <soap12:operation soapAction="http://localhost/LoadDone" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -183,6 +348,15 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveTodos">
       <soap12:operation soapAction="http://localhost/RemoveTodos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveTask">
+      <soap12:operation soapAction="http://localhost/MoveTask" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

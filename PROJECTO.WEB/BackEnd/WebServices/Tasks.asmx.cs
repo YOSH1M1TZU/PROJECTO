@@ -17,17 +17,43 @@ namespace PROJECTO.WEB.BackEnd.WebServices
     public class Tasks : System.Web.Services.WebService
     {
         [WebMethod]
-        public List<string> LoadTodos(string chosenProject)
+        public List<string> LoadTodos(string projectID)
         {
             var sc = new DBConn.ToDo();
-            return sc.LoadTodos(chosenProject);
+            return sc.LoadTodos(projectID);
         }
 
         [WebMethod]
-        public string AddTodos(string title, string desc, string projectID)
+        public List<string> LoadInProgress(string projectID)
+        {
+            var sc = new DBConn.InProgress();
+            return sc.LoadInProgress(projectID);
+        }
+
+        [WebMethod]
+        public List<string> LoadForReview(string projectID)
+        {
+            var sc = new DBConn.ForReview();
+            return sc.LoadForReview(projectID);
+        }
+
+        [WebMethod]
+        public List<string> LoadDone(string projectID)
+        {
+            var sc = new DBConn.Done();
+            return sc.LoadDone(projectID);
+        }
+
+
+
+
+
+
+        [WebMethod]
+        public string AddTodos(string title, string desc, string category, string projectID)
         {
             var sc = new DBConn.ToDo();
-            return sc.AddTodos(title, desc, projectID);
+            return sc.AddTodos(title, desc, category, projectID);
         }
 
         [WebMethod]
@@ -42,6 +68,18 @@ namespace PROJECTO.WEB.BackEnd.WebServices
         {
             var sc = new DBConn.ToDo();
             return sc.RemoveTodos(title, projectID);
+        }
+
+
+
+
+
+
+        [WebMethod]
+        public string MoveTask(string from, string to, string taskTitle, string taskDesc, string taskCategory, string projectID)
+        {
+            var sc = new DBConn.TasksMain();
+            return sc.MoveTask(from, to, taskTitle, taskDesc, taskCategory, projectID);
         }
     }
 }
