@@ -116,6 +116,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\Quicksand.otf" />
     <None Include="Web References\AccMgmtWS\AccMgmt.wsdl" />
     <None Include="Web References\AccMgmtWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -150,9 +151,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\question.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\logo.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\UI\achievs.png" />
@@ -244,6 +242,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\UI\communication\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\UI\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

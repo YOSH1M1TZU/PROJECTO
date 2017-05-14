@@ -26,26 +26,11 @@ namespace PROJECTO.WEB.BackEnd.DBConn
             catch (MySqlException ex) { }
         }
 
-        public List<string> LoadProjects(string userID)
+        public List<string> LoadMyProjects(string userID)
         {
             try
             {
                 var result = new List<string>();
-
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.CommandTimeout = 40;
-                cmd.CommandText = "SELECT * FROM projecto.accounts WHERE id='" + userID + "'";
-                cmd.Connection = conn;
-                cmd.CommandType = CommandType.Text;
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    result.Add(reader.GetString("name"));
-                    result.Add(reader.GetString("surname"));
-                }
-                reader.Close();
-                cmd.Dispose();
 
                 MySqlCommand cmd2 = new MySqlCommand();
                 cmd2.CommandTimeout = 40;
@@ -53,17 +38,11 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 cmd2.Connection = conn;
                 cmd2.CommandType = CommandType.Text;
                 MySqlDataReader reader2 = cmd2.ExecuteReader();
-
-                int firstProjectID = 100000001;
-
                 while (reader2.Read())
                 {
-                    if (firstProjectID == 100000001)
-                    {
-                        result.Add(reader2.GetInt32("ID").ToString());
-                        firstProjectID = 0;
-                    }
+                    result.Add(reader2.GetInt32("ID").ToString());
                     result.Add(reader2.GetString("project"));
+                    result.Add(reader2.GetString("ownerID"));
                     var m = new Members();
                     result.Add(m.LoadMemberInfo(reader2.GetString("ownerID"), null)[0].Split(',')[1].ToString());
                     result.Add(reader2.GetString("memberIDs").Split(',').Length.ToString());
@@ -73,7 +52,7 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 if (result != null) return result;
                 else
                 {
-                    result.Add("Error");
+                    result.Add("ERR");
                     return result;
                 }
             }
@@ -84,6 +63,48 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 return result;
             }
         }
+
+        public List<string> LoadParticipatingProjects(string userID)
+        {
+            try
+            {
+                var result = new List<string>();
+
+                MySqlCommand cmd2 = new MySqlCommand();
+                cmd2.CommandTimeout = 40;
+                cmd2.CommandText = "SELECT * FROM projecto.projects WHERE memberIDs LIKE '%" + userID + "%'";
+                cmd2.Connection = conn;
+                cmd2.CommandType = CommandType.Text;
+                MySqlDataReader reader2 = cmd2.ExecuteReader();
+                while (reader2.Read())
+                {
+                    result.Add(reader2.GetInt32("ID").ToString());
+                    result.Add(reader2.GetString("project"));
+                    result.Add(reader2.GetString("ownerID"));
+                    var m = new Members();
+                    result.Add(m.LoadMemberInfo(reader2.GetString("ownerID"), null)[0].Split(',')[1].ToString());
+                    result.Add(reader2.GetString("memberIDs").Split(',').Length.ToString());
+                    result.Add(reader2.GetString("deadline"));
+                }
+
+                if (result != null) return result;
+                else
+                {
+                    result.Add("ERR");
+                    result.Add("ERR");
+                    return result;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                var result = new List<string>();
+                result.Add("ERR");
+                result.Add(ex.ToString());
+                return result;
+            }
+        }
+
+
 
         public List<string> LoadProjectMembers(string projectID)
         {
@@ -127,6 +148,122 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 var result = new List<string>();
                 result.Add(ex.ToString());
                 return result;
+            }
+        }
+
+        public string AddProjectMember(string memberID, string projectID)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.CommandTimeout = 40;
+                cmd.CommandText = "UPDATE projecto.projects SET memberIDs=CONCAT(memberIDs,'," + memberID + "') WHERE ID='" + projectID + "'";
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+                return "OK";
+            }
+            catch (MySqlException ex)
+            {
+                return ex.ToString();
+            }
+        }
+
+        public string RemoveProjectMember(string memberID, string projectID)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.CommandTimeout = 40;
+                cmd.CommandText = "UPDATE projecto.projects SET memberIDs = REPLACE(memberIDs, '," + memberID + "', '') WHERE ID='" + projectID + "'";
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+                return "OK";
+            }
+            catch (MySqlException ex)
+            {
+                return ex.ToString();
+            }
+        }
+
+
+
+        public string AddProject(string name, string desc, string deadline, string ownerID)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.CommandTimeout = 40;
+                cmd.CommandText = "INSERT INTO projecto.projects (project, description, deadline, ownerID, memberIDs) VALUES ('" + name + "', '" + desc + "', '" + deadline + "', '" + ownerID + "', '0');";
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+                return "OK";
+            }
+            catch (MySqlException ex)
+            {
+                return ex.ToString();
+            }
+        }
+
+        public string DeleteProject(string projectID)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.CommandTimeout = 40;
+                cmd.CommandText = "DELETE FROM projecto.projects WHERE ID='" + projectID + "'";
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                MySqlCommand cmd2 = new MySqlCommand();
+                cmd2.CommandTimeout = 40;
+                cmd2.CommandText = "DELETE * FROM projecto.todo WHERE projectID='" + projectID + "'";
+                cmd2.Connection = conn;
+                cmd2.CommandType = CommandType.Text;
+                cmd2.ExecuteNonQuery();
+                cmd2.Dispose();
+
+                MySqlCommand cmd3 = new MySqlCommand();
+                cmd3.CommandTimeout = 40;
+                cmd3.CommandText = "DELETE * FROM projecto.inprogress WHERE projectID='" + projectID + "'";
+                cmd3.Connection = conn;
+                cmd3.CommandType = CommandType.Text;
+                cmd3.ExecuteNonQuery();
+                cmd3.Dispose();
+
+                MySqlCommand cmd4 = new MySqlCommand();
+                cmd4.CommandTimeout = 40;
+                cmd4.CommandText = "DELETE * FROM projecto.forreview WHERE projectID='" + projectID + "'";
+                cmd4.Connection = conn;
+                cmd4.CommandType = CommandType.Text;
+                cmd4.ExecuteNonQuery();
+                cmd4.Dispose();
+
+                MySqlCommand cmd5 = new MySqlCommand();
+                cmd5.CommandTimeout = 40;
+                cmd5.CommandText = "DELETE * FROM projecto.done WHERE projectID='" + projectID + "'";
+                cmd5.Connection = conn;
+                cmd5.CommandType = CommandType.Text;
+                cmd5.ExecuteNonQuery();
+                cmd5.Dispose();
+
+                MySqlCommand cmd6 = new MySqlCommand();
+                cmd6.CommandTimeout = 40;
+                cmd6.CommandText = "DELETE * FROM projecto.messages WHERE projectID='" + projectID + "'";
+                cmd6.Connection = conn;
+                cmd6.CommandType = CommandType.Text;
+                cmd6.ExecuteNonQuery();
+                cmd6.Dispose();
+
+                return "OK";
+            }
+            catch (MySqlException ex)
+            {
+                return ex.ToString();
             }
         }
     }

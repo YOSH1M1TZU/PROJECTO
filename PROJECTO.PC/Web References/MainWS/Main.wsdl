@@ -12,17 +12,17 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="LoadProjects">
+      <s:element name="LoadMyProjects">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="LoadProjectsResponse">
+      <s:element name="LoadMyProjectsResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="LoadProjectsResult" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoadMyProjectsResult" type="tns:ArrayOfString" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -31,6 +31,20 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="LoadParticipatingProjects">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadParticipatingProjectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadParticipatingProjectsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="LoadProjectMembers">
         <s:complexType>
           <s:sequence>
@@ -42,6 +56,67 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="LoadProjectMembersResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddProjectMember">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chsnProj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddProjectMemberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddProjectMemberResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveProjectMember">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chsnProj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveProjectMemberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveProjectMemberResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="deadline" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownerID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddProjectResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="chsnProj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteProjectResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -112,17 +187,47 @@
   <wsdl:message name="MOTDSoapOut">
     <wsdl:part name="parameters" element="tns:MOTDResponse" />
   </wsdl:message>
-  <wsdl:message name="LoadProjectsSoapIn">
-    <wsdl:part name="parameters" element="tns:LoadProjects" />
+  <wsdl:message name="LoadMyProjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadMyProjects" />
   </wsdl:message>
-  <wsdl:message name="LoadProjectsSoapOut">
-    <wsdl:part name="parameters" element="tns:LoadProjectsResponse" />
+  <wsdl:message name="LoadMyProjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadMyProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadParticipatingProjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadParticipatingProjects" />
+  </wsdl:message>
+  <wsdl:message name="LoadParticipatingProjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadParticipatingProjectsResponse" />
   </wsdl:message>
   <wsdl:message name="LoadProjectMembersSoapIn">
     <wsdl:part name="parameters" element="tns:LoadProjectMembers" />
   </wsdl:message>
   <wsdl:message name="LoadProjectMembersSoapOut">
     <wsdl:part name="parameters" element="tns:LoadProjectMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddProjectMemberSoapIn">
+    <wsdl:part name="parameters" element="tns:AddProjectMember" />
+  </wsdl:message>
+  <wsdl:message name="AddProjectMemberSoapOut">
+    <wsdl:part name="parameters" element="tns:AddProjectMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveProjectMemberSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveProjectMember" />
+  </wsdl:message>
+  <wsdl:message name="RemoveProjectMemberSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveProjectMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:AddProject" />
+  </wsdl:message>
+  <wsdl:message name="AddProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:AddProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteProject" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteProjectResponse" />
   </wsdl:message>
   <wsdl:message name="LoadMemberInfoSoapIn">
     <wsdl:part name="parameters" element="tns:LoadMemberInfo" />
@@ -153,13 +258,33 @@
       <wsdl:input message="tns:MOTDSoapIn" />
       <wsdl:output message="tns:MOTDSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="LoadProjects">
-      <wsdl:input message="tns:LoadProjectsSoapIn" />
-      <wsdl:output message="tns:LoadProjectsSoapOut" />
+    <wsdl:operation name="LoadMyProjects">
+      <wsdl:input message="tns:LoadMyProjectsSoapIn" />
+      <wsdl:output message="tns:LoadMyProjectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadParticipatingProjects">
+      <wsdl:input message="tns:LoadParticipatingProjectsSoapIn" />
+      <wsdl:output message="tns:LoadParticipatingProjectsSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="LoadProjectMembers">
       <wsdl:input message="tns:LoadProjectMembersSoapIn" />
       <wsdl:output message="tns:LoadProjectMembersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProjectMember">
+      <wsdl:input message="tns:AddProjectMemberSoapIn" />
+      <wsdl:output message="tns:AddProjectMemberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveProjectMember">
+      <wsdl:input message="tns:RemoveProjectMemberSoapIn" />
+      <wsdl:output message="tns:RemoveProjectMemberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProject">
+      <wsdl:input message="tns:AddProjectSoapIn" />
+      <wsdl:output message="tns:AddProjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <wsdl:input message="tns:DeleteProjectSoapIn" />
+      <wsdl:output message="tns:DeleteProjectSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="LoadMemberInfo">
       <wsdl:input message="tns:LoadMemberInfoSoapIn" />
@@ -189,8 +314,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="LoadProjects">
-      <soap:operation soapAction="http://localhost/LoadProjects" style="document" />
+    <wsdl:operation name="LoadMyProjects">
+      <soap:operation soapAction="http://localhost/LoadMyProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadParticipatingProjects">
+      <soap:operation soapAction="http://localhost/LoadParticipatingProjects" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -200,6 +334,42 @@
     </wsdl:operation>
     <wsdl:operation name="LoadProjectMembers">
       <soap:operation soapAction="http://localhost/LoadProjectMembers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProjectMember">
+      <soap:operation soapAction="http://localhost/AddProjectMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveProjectMember">
+      <soap:operation soapAction="http://localhost/RemoveProjectMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProject">
+      <soap:operation soapAction="http://localhost/AddProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <soap:operation soapAction="http://localhost/DeleteProject" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -255,8 +425,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="LoadProjects">
-      <soap12:operation soapAction="http://localhost/LoadProjects" style="document" />
+    <wsdl:operation name="LoadMyProjects">
+      <soap12:operation soapAction="http://localhost/LoadMyProjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadParticipatingProjects">
+      <soap12:operation soapAction="http://localhost/LoadParticipatingProjects" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -266,6 +445,42 @@
     </wsdl:operation>
     <wsdl:operation name="LoadProjectMembers">
       <soap12:operation soapAction="http://localhost/LoadProjectMembers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProjectMember">
+      <soap12:operation soapAction="http://localhost/AddProjectMember" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveProjectMember">
+      <soap12:operation soapAction="http://localhost/RemoveProjectMember" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProject">
+      <soap12:operation soapAction="http://localhost/AddProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <soap12:operation soapAction="http://localhost/DeleteProject" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

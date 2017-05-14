@@ -31,9 +31,19 @@ namespace PROJECTO.PC.MainWS {
         
         private System.Threading.SendOrPostCallback MOTDOperationCompleted;
         
-        private System.Threading.SendOrPostCallback LoadProjectsOperationCompleted;
+        private System.Threading.SendOrPostCallback LoadMyProjectsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback LoadParticipatingProjectsOperationCompleted;
         
         private System.Threading.SendOrPostCallback LoadProjectMembersOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddProjectMemberOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RemoveProjectMemberOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddProjectOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DeleteProjectOperationCompleted;
         
         private System.Threading.SendOrPostCallback LoadMemberInfoOperationCompleted;
         
@@ -85,10 +95,25 @@ namespace PROJECTO.PC.MainWS {
         public event MOTDCompletedEventHandler MOTDCompleted;
         
         /// <remarks/>
-        public event LoadProjectsCompletedEventHandler LoadProjectsCompleted;
+        public event LoadMyProjectsCompletedEventHandler LoadMyProjectsCompleted;
+        
+        /// <remarks/>
+        public event LoadParticipatingProjectsCompletedEventHandler LoadParticipatingProjectsCompleted;
         
         /// <remarks/>
         public event LoadProjectMembersCompletedEventHandler LoadProjectMembersCompleted;
+        
+        /// <remarks/>
+        public event AddProjectMemberCompletedEventHandler AddProjectMemberCompleted;
+        
+        /// <remarks/>
+        public event RemoveProjectMemberCompletedEventHandler RemoveProjectMemberCompleted;
+        
+        /// <remarks/>
+        public event AddProjectCompletedEventHandler AddProjectCompleted;
+        
+        /// <remarks/>
+        public event DeleteProjectCompletedEventHandler DeleteProjectCompleted;
         
         /// <remarks/>
         public event LoadMemberInfoCompletedEventHandler LoadMemberInfoCompleted;
@@ -130,31 +155,60 @@ namespace PROJECTO.PC.MainWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/LoadProjects", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string[] LoadProjects(string userID) {
-            object[] results = this.Invoke("LoadProjects", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/LoadMyProjects", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] LoadMyProjects(string userID) {
+            object[] results = this.Invoke("LoadMyProjects", new object[] {
                         userID});
             return ((string[])(results[0]));
         }
         
         /// <remarks/>
-        public void LoadProjectsAsync(string userID) {
-            this.LoadProjectsAsync(userID, null);
+        public void LoadMyProjectsAsync(string userID) {
+            this.LoadMyProjectsAsync(userID, null);
         }
         
         /// <remarks/>
-        public void LoadProjectsAsync(string userID, object userState) {
-            if ((this.LoadProjectsOperationCompleted == null)) {
-                this.LoadProjectsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoadProjectsOperationCompleted);
+        public void LoadMyProjectsAsync(string userID, object userState) {
+            if ((this.LoadMyProjectsOperationCompleted == null)) {
+                this.LoadMyProjectsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoadMyProjectsOperationCompleted);
             }
-            this.InvokeAsync("LoadProjects", new object[] {
-                        userID}, this.LoadProjectsOperationCompleted, userState);
+            this.InvokeAsync("LoadMyProjects", new object[] {
+                        userID}, this.LoadMyProjectsOperationCompleted, userState);
         }
         
-        private void OnLoadProjectsOperationCompleted(object arg) {
-            if ((this.LoadProjectsCompleted != null)) {
+        private void OnLoadMyProjectsOperationCompleted(object arg) {
+            if ((this.LoadMyProjectsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.LoadProjectsCompleted(this, new LoadProjectsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.LoadMyProjectsCompleted(this, new LoadMyProjectsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/LoadParticipatingProjects", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] LoadParticipatingProjects(string userID) {
+            object[] results = this.Invoke("LoadParticipatingProjects", new object[] {
+                        userID});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LoadParticipatingProjectsAsync(string userID) {
+            this.LoadParticipatingProjectsAsync(userID, null);
+        }
+        
+        /// <remarks/>
+        public void LoadParticipatingProjectsAsync(string userID, object userState) {
+            if ((this.LoadParticipatingProjectsOperationCompleted == null)) {
+                this.LoadParticipatingProjectsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoadParticipatingProjectsOperationCompleted);
+            }
+            this.InvokeAsync("LoadParticipatingProjects", new object[] {
+                        userID}, this.LoadParticipatingProjectsOperationCompleted, userState);
+        }
+        
+        private void OnLoadParticipatingProjectsOperationCompleted(object arg) {
+            if ((this.LoadParticipatingProjectsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LoadParticipatingProjectsCompleted(this, new LoadParticipatingProjectsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -184,6 +238,132 @@ namespace PROJECTO.PC.MainWS {
             if ((this.LoadProjectMembersCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.LoadProjectMembersCompleted(this, new LoadProjectMembersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/AddProjectMember", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string AddProjectMember(string memberID, string chsnProj) {
+            object[] results = this.Invoke("AddProjectMember", new object[] {
+                        memberID,
+                        chsnProj});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AddProjectMemberAsync(string memberID, string chsnProj) {
+            this.AddProjectMemberAsync(memberID, chsnProj, null);
+        }
+        
+        /// <remarks/>
+        public void AddProjectMemberAsync(string memberID, string chsnProj, object userState) {
+            if ((this.AddProjectMemberOperationCompleted == null)) {
+                this.AddProjectMemberOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddProjectMemberOperationCompleted);
+            }
+            this.InvokeAsync("AddProjectMember", new object[] {
+                        memberID,
+                        chsnProj}, this.AddProjectMemberOperationCompleted, userState);
+        }
+        
+        private void OnAddProjectMemberOperationCompleted(object arg) {
+            if ((this.AddProjectMemberCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddProjectMemberCompleted(this, new AddProjectMemberCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/RemoveProjectMember", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string RemoveProjectMember(string memberID, string chsnProj) {
+            object[] results = this.Invoke("RemoveProjectMember", new object[] {
+                        memberID,
+                        chsnProj});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RemoveProjectMemberAsync(string memberID, string chsnProj) {
+            this.RemoveProjectMemberAsync(memberID, chsnProj, null);
+        }
+        
+        /// <remarks/>
+        public void RemoveProjectMemberAsync(string memberID, string chsnProj, object userState) {
+            if ((this.RemoveProjectMemberOperationCompleted == null)) {
+                this.RemoveProjectMemberOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveProjectMemberOperationCompleted);
+            }
+            this.InvokeAsync("RemoveProjectMember", new object[] {
+                        memberID,
+                        chsnProj}, this.RemoveProjectMemberOperationCompleted, userState);
+        }
+        
+        private void OnRemoveProjectMemberOperationCompleted(object arg) {
+            if ((this.RemoveProjectMemberCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RemoveProjectMemberCompleted(this, new RemoveProjectMemberCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/AddProject", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string AddProject(string name, string desc, string deadline, string ownerID) {
+            object[] results = this.Invoke("AddProject", new object[] {
+                        name,
+                        desc,
+                        deadline,
+                        ownerID});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AddProjectAsync(string name, string desc, string deadline, string ownerID) {
+            this.AddProjectAsync(name, desc, deadline, ownerID, null);
+        }
+        
+        /// <remarks/>
+        public void AddProjectAsync(string name, string desc, string deadline, string ownerID, object userState) {
+            if ((this.AddProjectOperationCompleted == null)) {
+                this.AddProjectOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddProjectOperationCompleted);
+            }
+            this.InvokeAsync("AddProject", new object[] {
+                        name,
+                        desc,
+                        deadline,
+                        ownerID}, this.AddProjectOperationCompleted, userState);
+        }
+        
+        private void OnAddProjectOperationCompleted(object arg) {
+            if ((this.AddProjectCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddProjectCompleted(this, new AddProjectCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/DeleteProject", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string DeleteProject(string chsnProj) {
+            object[] results = this.Invoke("DeleteProject", new object[] {
+                        chsnProj});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DeleteProjectAsync(string chsnProj) {
+            this.DeleteProjectAsync(chsnProj, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteProjectAsync(string chsnProj, object userState) {
+            if ((this.DeleteProjectOperationCompleted == null)) {
+                this.DeleteProjectOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteProjectOperationCompleted);
+            }
+            this.InvokeAsync("DeleteProject", new object[] {
+                        chsnProj}, this.DeleteProjectOperationCompleted, userState);
+        }
+        
+        private void OnDeleteProjectOperationCompleted(object arg) {
+            if ((this.DeleteProjectCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteProjectCompleted(this, new DeleteProjectCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -362,17 +542,43 @@ namespace PROJECTO.PC.MainWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
-    public delegate void LoadProjectsCompletedEventHandler(object sender, LoadProjectsCompletedEventArgs e);
+    public delegate void LoadMyProjectsCompletedEventHandler(object sender, LoadMyProjectsCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class LoadProjectsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class LoadMyProjectsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal LoadProjectsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal LoadMyProjectsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void LoadParticipatingProjectsCompletedEventHandler(object sender, LoadParticipatingProjectsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LoadParticipatingProjectsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LoadParticipatingProjectsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -408,6 +614,110 @@ namespace PROJECTO.PC.MainWS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void AddProjectMemberCompletedEventHandler(object sender, AddProjectMemberCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddProjectMemberCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddProjectMemberCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void RemoveProjectMemberCompletedEventHandler(object sender, RemoveProjectMemberCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RemoveProjectMemberCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RemoveProjectMemberCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void AddProjectCompletedEventHandler(object sender, AddProjectCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddProjectCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddProjectCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void DeleteProjectCompletedEventHandler(object sender, DeleteProjectCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DeleteProjectCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DeleteProjectCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }

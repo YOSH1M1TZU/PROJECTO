@@ -23,14 +23,21 @@ namespace PROJECTO.WEB.BackEnd.WebServices
             return sc.MOTD();
         }
 
-        //TODO: deconstruct this Web Service into a smaller ones
-
         [WebMethod]
-        public List<string> LoadProjects(string userID)
+        public List<string> LoadMyProjects(string userID)
         {
             var sc = new DBConn.Projects();
-            return sc.LoadProjects(userID);
+            return sc.LoadMyProjects(userID);
         }
+
+        [WebMethod]
+        public List<string> LoadParticipatingProjects(string userID)
+        {
+            var sc = new DBConn.Projects();
+            return sc.LoadParticipatingProjects(userID);
+        }
+
+
 
         [WebMethod]
         public List<string> LoadProjectMembers(string projectID)
@@ -38,6 +45,38 @@ namespace PROJECTO.WEB.BackEnd.WebServices
             var sc = new DBConn.Projects();
             return sc.LoadProjectMembers(projectID);
         }
+
+        [WebMethod]
+        public string AddProjectMember(string memberID, string chsnProj)
+        {
+            var sc = new DBConn.Projects();
+            return sc.AddProjectMember(memberID, chsnProj);
+        }
+
+        [WebMethod]
+        public string RemoveProjectMember(string memberID, string chsnProj)
+        {
+            var sc = new DBConn.Projects();
+            return sc.RemoveProjectMember(memberID, chsnProj);
+        }
+
+
+
+        [WebMethod]
+        public string AddProject(string name, string desc, string deadline, string ownerID)
+        {
+            var sc = new DBConn.Projects();
+            return sc.AddProject(name, desc, deadline, ownerID);
+        }
+
+        [WebMethod]
+        public string DeleteProject(string chsnProj)
+        {
+            var sc = new DBConn.Projects();
+            return sc.DeleteProject(chsnProj);
+        }
+
+
 
         [WebMethod]
         public List<string> LoadMemberInfo(string memberID, string memberEmail)

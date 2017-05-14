@@ -33,6 +33,8 @@ namespace PROJECTO.PC.AccMgmtWS {
         
         private System.Threading.SendOrPostCallback RegisterOperationCompleted;
         
+        private System.Threading.SendOrPostCallback LoadUserInfoOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -76,6 +78,9 @@ namespace PROJECTO.PC.AccMgmtWS {
         
         /// <remarks/>
         public event RegisterCompletedEventHandler RegisterCompleted;
+        
+        /// <remarks/>
+        public event LoadUserInfoCompletedEventHandler LoadUserInfoCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/Login", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -140,6 +145,35 @@ namespace PROJECTO.PC.AccMgmtWS {
             if ((this.RegisterCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.RegisterCompleted(this, new RegisterCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/LoadUserInfo", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] LoadUserInfo(string userID) {
+            object[] results = this.Invoke("LoadUserInfo", new object[] {
+                        userID});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LoadUserInfoAsync(string userID) {
+            this.LoadUserInfoAsync(userID, null);
+        }
+        
+        /// <remarks/>
+        public void LoadUserInfoAsync(string userID, object userState) {
+            if ((this.LoadUserInfoOperationCompleted == null)) {
+                this.LoadUserInfoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoadUserInfoOperationCompleted);
+            }
+            this.InvokeAsync("LoadUserInfo", new object[] {
+                        userID}, this.LoadUserInfoOperationCompleted, userState);
+        }
+        
+        private void OnLoadUserInfoOperationCompleted(object arg) {
+            if ((this.LoadUserInfoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LoadUserInfoCompleted(this, new LoadUserInfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -210,6 +244,32 @@ namespace PROJECTO.PC.AccMgmtWS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void LoadUserInfoCompletedEventHandler(object sender, LoadUserInfoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LoadUserInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LoadUserInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
             }
         }
     }

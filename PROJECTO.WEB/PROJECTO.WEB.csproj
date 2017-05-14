@@ -124,7 +124,7 @@
     <Compile Include="BackEnd\DBConn\Repositories\Done.cs" />
     <Compile Include="BackEnd\DBConn\Repositories\ForReview.cs" />
     <Compile Include="BackEnd\DBConn\Repositories\InProgress.cs" />
-    <Compile Include="BackEnd\DBConn\LoginRegister.cs" />
+    <Compile Include="BackEnd\DBConn\Accounts.cs" />
     <Compile Include="BackEnd\DBConn\Projects.cs" />
     <Compile Include="BackEnd\DBConn\Repositories\ToDo.cs" />
     <Compile Include="BackEnd\DBConn\TasksMain.cs" />

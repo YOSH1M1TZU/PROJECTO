@@ -19,15 +19,22 @@ namespace PROJECTO.WEB.BackEnd.WebServices
         [WebMethod]
         public string Login(string email, string password)
         {
-            var sc = new DBConn.LoginRegister();
+            var sc = new DBConn.Accounts();
             return sc.Login(email, password);
         }
 
         [WebMethod]
         public string Register(string name, string surname, string email, string password)
         {
-            var sc = new DBConn.LoginRegister();
+            var sc = new DBConn.Accounts();
             return sc.Register(name, surname, email, password);
+        }
+
+        [WebMethod]
+        public List<string> LoadUserInfo(string userID)
+        {
+            var sc = new DBConn.Accounts();
+            return sc.LoadUserInfo(userID);
         }
     }
 }

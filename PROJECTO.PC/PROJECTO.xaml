@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROJECTO.PC"
         mc:Ignorable="d"
-        Title="PROJECTO" Height="700" Width="1300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Icon="Resources/logo.ico" AllowsTransparency="True">
+        Title="PROJECTO" Height="700" Width="1300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Icon="Resources/icon.ico" AllowsTransparency="True">
     <Window.Background>
         <ImageBrush ImageSource="Resources/main_bg.png"/>
     </Window.Background>
@@ -15,13 +15,13 @@
             <Rectangle Fill="#FF2F4050" HorizontalAlignment="Left" Height="700" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="200"/>
             <Label x:Name="btn_exit" Content="X" Height="30" Width="30" Foreground="White" FontSize="16" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="1268,2,2,668" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="btn_exit_MouseLeftButtonUp"/>
             <Label x:Name="btn_minimize" Content="___" Height="30" Width="30" Foreground="White" FontSize="16" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="1234,2,0,668" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="btn_minimize_MouseLeftButtonUp" HorizontalAlignment="Left"/>
-
+            <ComboBox x:Name="chosen_project" Width="180" Height="30" Background="White" SelectedIndex="0" FontSize="20" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" BorderBrush="#FFE8EBED" Canvas.Top="432" Canvas.Left="10"/>
 
             <Canvas x:Name="canvas_dashboard" HorizontalAlignment="Left" Height="665" VerticalAlignment="Top" Width="1100" Margin="200,35,0,0" Visibility="Hidden">
-                <Label x:Name="label" Content="14:06" Canvas.Left="840" Canvas.Top="457" Height="120" Width="240" Foreground="White" FontSize="86" HorizontalContentAlignment="Right" FontFamily="/PROJECTO.PC;component/Resources/#Moon"/>
-                <Label x:Name="label_Copy" Content="Welcome user!" Canvas.Top="549" Height="60" Width="1070" Foreground="White" FontSize="36" HorizontalContentAlignment="Right" Canvas.Left="10" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh"/>
-                <Label x:Name="label_Copy1" Content="&quot;Quality is not an act, it is a habit&quot; - Aristotle" Canvas.Top="614" Height="41" Width="1070" Foreground="White" FontSize="20" HorizontalContentAlignment="Right" Canvas.Left="10" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh"/>
-                <Label x:Name="label2" Content="Today's Tasks:" Canvas.Left="20" Canvas.Top="10" Height="35" Width="200" Foreground="White" FontSize="20" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Padding="0,5,5,5"/>
+                <Label x:Name="label" Content="14:06" Canvas.Left="840" Canvas.Top="457" Height="120" Width="240" Foreground="White" FontSize="86" HorizontalContentAlignment="Right" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand"/>
+                <Label x:Name="label_Copy" Content="Welcome user!" Canvas.Top="549" Height="60" Width="1070" Foreground="White" FontSize="36" HorizontalContentAlignment="Right" Canvas.Left="10" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand"/>
+                <Label x:Name="label_Copy1" Content="&quot;Quality is not an act, it is a habit&quot; - Aristotle" Canvas.Top="614" Height="41" Width="1070" Foreground="White" FontSize="20" HorizontalContentAlignment="Right" Canvas.Left="10" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand"/>
+                <Label x:Name="label2" Content="Today's Tasks:" Canvas.Left="20" Canvas.Top="10" Height="40" Width="200" Foreground="White" FontSize="24" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" Padding="0,5,5,5"/>
                 <Rectangle Fill="#FFF3F3F4" Height="100" Canvas.Left="20" Stroke="Black" StrokeThickness="0" Canvas.Top="55" Width="390" RadiusX="5" RadiusY="5" Opacity="0.6"/>
                 <Rectangle Fill="#FFF3F3F4" Height="100" Canvas.Left="20" Stroke="Black" StrokeThickness="0" Canvas.Top="170" Width="390" RadiusX="5" RadiusY="5" Opacity="0.6"/>
                 <Rectangle Fill="#FFF3F3F4" Height="100" Canvas.Left="20" Stroke="Black" StrokeThickness="0" Canvas.Top="285" Width="390" RadiusX="5" RadiusY="5" Opacity="0.6"/>
@@ -33,21 +33,21 @@
                 <TextBox x:Name="textBox_Copy2" Height="85" Canvas.Left="32" TextWrapping="Wrap" Text="Integer porttitor lacus felis, sit amet ultrices risus tincidunt nec. Nullam diam est, lacinia quis condimentum eget, molestie in metus. Ut congue pretium odio. Duis mollis nibh tincidunt euismod maximus. " Canvas.Top="292" Width="365" BorderBrush="{x:Null}" BorderThickness="0" Background="{x:Null}" Focusable="False" AllowDrop="False" Cursor="Arrow" FontSize="14"/>
             </Canvas>
 
-            <Canvas x:Name="canvas_projects" HorizontalAlignment="Left" Height="665" Margin="200,35,0,0" VerticalAlignment="Top" Width="1100">
+            <Canvas x:Name="canvas_projects" HorizontalAlignment="Left" Height="665" Margin="200,35,0,0" VerticalAlignment="Top" Width="1100" Visibility="Hidden">
                 <Rectangle Fill="#FFF3F3F4" Height="665" Stroke="Black" StrokeThickness="0" Width="1100"/>
                 <Rectangle Fill="White" Height="55" Stroke="#FFE8EBED" Width="1100"/>
-                <Label Content="My Projects:" Canvas.Left="20" Canvas.Top="10" Height="40" Width="120" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Foreground="Black" FontSize="20" Padding="0,5,5,5"/>
+                <Label Content="My Projects:" Canvas.Left="10" Height="55" Width="150" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" Foreground="Black" FontSize="24" Padding="0,5,5,5" VerticalContentAlignment="Center"/>
                 <Image x:Name="create_project" Height="40" Canvas.Left="1040" Canvas.Top="7" Width="40" Source="Resources/UI/todo/add_task.png" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="create_project_MouseLeftButtonUp"/>
                 <Rectangle Fill="#FF2F4050" Height="44" Canvas.Left="10" Stroke="#FFE8EBED" Canvas.Top="60" Width="1080" StrokeThickness="0" RadiusX="2" RadiusY="2"/>
                 <Rectangle Fill="White" Height="552" Canvas.Left="10" Stroke="#FFE8EBED" Canvas.Top="104" Width="1080"/>
                 <ScrollViewer Height="552" Canvas.Left="10" Canvas.Top="104" Width="1080">
                     <Canvas x:Name="projects_wrapper" Height="552" Width="1063">
                         <Canvas Height="44" Canvas.Left="5" Canvas.Top="5" Width="1053" Visibility="Hidden">
-                            <Rectangle Fill="#FFBEDEFF" Height="44" Stroke="#FFE8EBED" Width="1053" StrokeThickness="0"/>
-                            <Label Content="Project title 1" Canvas.Left="5" Height="40" Width="300" Foreground="Black" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="24" VerticalContentAlignment="Center" Padding="5,0" Canvas.Top="2"/>
-                            <Label Content="Piotr Kowalski" Canvas.Left="315" Height="40" Width="300" Foreground="Black" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="24" VerticalContentAlignment="Center" Padding="5,0" Canvas.Top="2"/>
-                            <Label Content="3" Canvas.Left="630" Height="40" Width="40" Foreground="Black" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" Padding="5,0" Canvas.Top="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                            <Label Content="01.02.2018" Canvas.Left="695" Height="40" Width="240" Foreground="Black" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="24" VerticalContentAlignment="Center" Padding="5,0" Canvas.Top="2"/>
+                            <Rectangle Fill="#FF5DADE2" Height="44" Stroke="#FFE8EBED" Width="1053" StrokeThickness="0"/>
+                            <Label Content="Project title 1" Canvas.Left="5" Height="40" Width="300" Foreground="White" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="24" VerticalContentAlignment="Center" Padding="5,0" Canvas.Top="2"/>
+                            <Label Content="Piotr Kowalski" Canvas.Left="315" Height="40" Width="300" Foreground="White" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="24" VerticalContentAlignment="Center" Padding="5,0" Canvas.Top="2"/>
+                            <Label Content="3" Canvas.Left="630" Height="40" Width="40" Foreground="White" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" Padding="5,0" Canvas.Top="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <Label Content="01.02.2018" Canvas.Left="695" Height="40" Width="240" Foreground="White" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="24" VerticalContentAlignment="Center" Padding="5,0" Canvas.Top="2"/>
                         </Canvas>
                     </Canvas>
                 </ScrollViewer>
@@ -55,13 +55,12 @@
                 <Label Content="Creator" Canvas.Left="330" Canvas.Top="62" Width="300" FontSize="20" Height="40" Foreground="White"/>
                 <Label Content="Deadline" Canvas.Left="710" Canvas.Top="62" Width="240" FontSize="20" Height="40" Foreground="White"/>
                 <Image x:Name="image1" Height="40" Canvas.Left="640" Canvas.Top="62" Width="40" Source="Resources/UI/teams.png"/>
-
             </Canvas>
 
             <Canvas x:Name="canvas_tasks" HorizontalAlignment="Left" Height="665" Margin="200,35,0,0" VerticalAlignment="Top" Width="1100" Visibility="Hidden">
                 <Rectangle Fill="#FFF3F3F4" Height="665" Stroke="Black" StrokeThickness="0" Width="1100"/>
                 <Rectangle Fill="White" Height="55" Stroke="#FFE8EBED" Width="275" StrokeThickness="0"/>
-                <Label Content="To Do" Height="55" Width="210" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Foreground="Black" FontSize="24" Padding="10,5,5,5" VerticalContentAlignment="Center"/>
+                <Label Content="To Do" Height="55" Width="210" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" Foreground="Black" FontSize="24" Padding="10,5,5,15" VerticalContentAlignment="Center"/>
 
 
                 <Canvas x:Name="todo_1" Height="155" Canvas.Left="5" Canvas.Top="65" Width="250" Visibility="Hidden">
@@ -96,9 +95,9 @@
                     <Canvas x:Name="done_wrapper" Width="258" Height="610"/>
                 </ScrollViewer>
 
-                <Label Content="In Progress" Height="55" Width="210" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Foreground="White" FontSize="24" Padding="10,5,5,5" VerticalContentAlignment="Center" Canvas.Left="275"/>
-                <Label Content="For Review" Height="55" Width="210" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Foreground="White" FontSize="24" Padding="10,5,5,5" VerticalContentAlignment="Center" Canvas.Left="550"/>
-                <Label Content="Done" Height="55" Width="210" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Foreground="White" FontSize="24" Padding="10,5,5,5" VerticalContentAlignment="Center" Canvas.Left="825"/>
+                <Label Content="In Progress" Height="55" Width="210" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" Foreground="White" FontSize="24" Padding="10,5,5,15" VerticalContentAlignment="Center" Canvas.Left="275"/>
+                <Label Content="For Review" Height="55" Width="210" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" Foreground="White" FontSize="24" Padding="10,5,5,15" VerticalContentAlignment="Center" Canvas.Left="550"/>
+                <Label Content="Done" Height="55" Width="210" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" Foreground="White" FontSize="24" Padding="10,5,5,15" VerticalContentAlignment="Center" Canvas.Left="825"/>
                 <Label x:Name="todo_counter" Content="Count:" Canvas.Left="10" Canvas.Top="31" Foreground="Black" Height="24"/>
                 <Label x:Name="inprogress_counter" Content="Count:" Canvas.Left="285" Canvas.Top="31" Foreground="White" Height="24"/>
                 <Label x:Name="forreview_counter" Content="Count:" Canvas.Left="560" Canvas.Top="31" Foreground="White" Height="24"/>
@@ -112,17 +111,76 @@
                 <Label Content="Max:" Canvas.Left="920" Canvas.Top="31" Foreground="White" Height="24"/>
             </Canvas>
 
-            <Canvas x:Name="canvas_storage" HorizontalAlignment="Left" Height="665" Margin="200,35,0,0" VerticalAlignment="Top" Width="1100" Visibility="Hidden">
+            <Canvas x:Name="canvas_calendar" HorizontalAlignment="Left" Height="665" Margin="200,35,0,0" VerticalAlignment="Top" Width="1100" Visibility="Hidden">
                 <Rectangle Fill="#FFF3F3F4" Height="665" Stroke="Black" StrokeThickness="0" Width="1100"/>
                 <Rectangle Fill="White" Height="55" Stroke="#FFE8EBED" Width="1100"/>
-                <Label Content="Storage:" Canvas.Left="20" Canvas.Top="10" Height="40" Width="120" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Foreground="Black" FontSize="20" Padding="0,5,5,5"/>
+                <Rectangle Fill="#FF2F4050" Height="44" Canvas.Left="10" Stroke="#FFE8EBED" Canvas.Top="60" Width="1080" StrokeThickness="0" RadiusX="2" RadiusY="2"/>
+                <Rectangle Fill="White" Height="552" Canvas.Left="10" Stroke="#FFE8EBED" Canvas.Top="104" Width="1080"/>
+
+                <Label Content="Calendar:" Canvas.Left="10" Height="55" Width="128" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" Foreground="Black" FontSize="24" Padding="0,5,5,5" VerticalContentAlignment="Center"/>
+
+                <Label x:Name="label1_Copy" Content="Month:" Canvas.Left="720" Canvas.Top="12" Height="30" Width="70" Padding="0" FontSize="20"/>
+                <ComboBox x:Name="comboBox1_Copy1" Canvas.Left="790" Canvas.Top="12" Width="164" Height="30" Background="{x:Null}" SelectedIndex="0" FontSize="20" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" BorderBrush="#FFE8EBED">
+                    <ComboBoxItem Content="January"/>
+                    <ComboBoxItem Content="February"/>
+                    <ComboBoxItem Content="March"/>
+                    <ComboBoxItem Content="April"/>
+                    <ComboBoxItem Content="May"/>
+                    <ComboBoxItem Content="June"/>
+                    <ComboBoxItem Content="July"/>
+                    <ComboBoxItem Content="August"/>
+                    <ComboBoxItem Content="September"/>
+                    <ComboBoxItem Content="October"/>
+                    <ComboBoxItem Content="November"/>
+                    <ComboBoxItem Content="December"/>
+                </ComboBox>
+                <Label x:Name="label1_Copy1" Content="Year:" Canvas.Left="962" Canvas.Top="12" Height="30" Width="48" Padding="0" FontSize="20"/>
+                <ComboBox x:Name="comboBox1_Copy2" Canvas.Left="1010" Canvas.Top="12" Width="80" Height="30" Background="{x:Null}" SelectedIndex="0" FontSize="20" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" BorderBrush="#FFE8EBED">
+                    <ComboBoxItem Content="2017"/>
+                    <ComboBoxItem Content="2018"/>
+                    <ComboBoxItem Content="2019"/>
+                    <ComboBoxItem Content="2020"/>
+                </ComboBox>
+
+                <Label Content="Monday" Canvas.Left="15" Canvas.Top="62" Width="152" FontSize="20" Height="40" Foreground="White" HorizontalContentAlignment="Center"/>
+                <Label Content="Tuesday" Canvas.Left="167" Canvas.Top="62" Width="152" FontSize="20" Height="40" Foreground="White" HorizontalContentAlignment="Center"/>
+                <Label Content="Wednesday" Canvas.Left="319" Canvas.Top="62" Width="152" FontSize="20" Height="40" Foreground="White" HorizontalContentAlignment="Center"/>
+                <Label Content="Thursday" Canvas.Left="471" Canvas.Top="62" Width="152" FontSize="20" Height="40" Foreground="White" HorizontalContentAlignment="Center"/>
+                <Label Content="Friday" Canvas.Left="623" Canvas.Top="62" Width="152" FontSize="20" Height="40" Foreground="White" HorizontalContentAlignment="Center"/>
+                <Label Content="Saturday" Canvas.Left="775" Canvas.Top="62" Width="152" FontSize="20" Height="40" Foreground="White" HorizontalContentAlignment="Center"/>
+                <Label Content="Sunday" Canvas.Left="927" Canvas.Top="62" Width="152" FontSize="20" Height="40" Foreground="White" HorizontalContentAlignment="Center"/>
+
+                <Image x:Name="previous_week" Height="30" Canvas.Left="289" Canvas.Top="12" Width="30" Source="Resources/UI/todo/move_backward_task.png"/>
+                <Label x:Name="current_week" Content="01-07 September 2017" Canvas.Left="319" Canvas.Top="12" Height="30" Width="215" Padding="0" FontSize="20" HorizontalContentAlignment="Center"/>
+                <Image x:Name="next_week" Height="30" Canvas.Left="534" Canvas.Top="12" Width="30" Source="Resources/UI/todo/move_forward_task.png"/>
+                <Rectangle Fill="#FF00BA79" Height="551" Canvas.Left="167" Stroke="#FFE8EBED" Canvas.Top="104" Width="1" StrokeThickness="0"/>
+                <Rectangle Fill="#FF00BA79" Height="551" Canvas.Left="319" Stroke="#FFE8EBED" Canvas.Top="104" Width="1" StrokeThickness="0"/>
+                <Rectangle Fill="#FF00BA79" Height="551" Canvas.Left="471" Stroke="#FFE8EBED" Canvas.Top="104" Width="1" StrokeThickness="0"/>
+                <Rectangle Fill="#FF00BA79" Height="551" Canvas.Left="623" Stroke="#FFE8EBED" Canvas.Top="104" Width="1" StrokeThickness="0"/>
+                <Rectangle Fill="#FF00BA79" Height="551" Canvas.Left="775" Stroke="#FFE8EBED" Canvas.Top="104" Width="1" StrokeThickness="0"/>
+                <Rectangle Fill="#FF00BA79" Height="551" Canvas.Left="927" Stroke="#FFE8EBED" Canvas.Top="104" Width="1" StrokeThickness="0"/>
+
+                <ScrollViewer x:Name="mondays_SV" Height="551" Canvas.Left="16" Canvas.Top="104" Width="151" VerticalScrollBarVisibility="Hidden"/>
+                <ScrollViewer x:Name="tuesdays_SV" Height="551" Canvas.Left="168" Canvas.Top="104" Width="151" VerticalScrollBarVisibility="Hidden"/>
+                <ScrollViewer x:Name="wednesdays_SV" Height="551" Canvas.Left="320" Canvas.Top="104" Width="151" VerticalScrollBarVisibility="Hidden"/>
+                <ScrollViewer x:Name="thursdays_SV" Height="551" Canvas.Left="472" Canvas.Top="104" Width="151" VerticalScrollBarVisibility="Hidden"/>
+                <ScrollViewer x:Name="fridays_SV" Height="551" Canvas.Left="624" Canvas.Top="104" Width="151" VerticalScrollBarVisibility="Hidden"/>
+                <ScrollViewer x:Name="saturdays_SV" Height="551" Canvas.Left="776" Canvas.Top="104" Width="151" VerticalScrollBarVisibility="Hidden"/>
+                <ScrollViewer x:Name="sundays_SV" Height="551" Canvas.Left="928" Canvas.Top="104" Width="151" VerticalScrollBarVisibility="Hidden"/>
             </Canvas>
 
-            <Canvas x:Name="canvas_communication" HorizontalAlignment="Left" Height="665" Margin="200,35,0,0" VerticalAlignment="Top" Width="1100" Visibility="Hidden">
+            <Canvas x:Name="canvas_communication" HorizontalAlignment="Left" Height="665" Margin="200,35,0,0" VerticalAlignment="Top" Width="1100">
                 <Rectangle Fill="#FFF3F3F4" Height="665" Stroke="Black" StrokeThickness="0" Width="1100"/>
                 <Rectangle Fill="White" Height="55" Stroke="#FFE8EBED" Width="1100"/>
-                <Label Content="Communication:" Canvas.Left="20" Canvas.Top="10" Height="40" Width="165" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Foreground="Black" FontSize="20" Padding="0,5"/>
+                <Label Content="Communication:" Canvas.Left="10" Height="55" Width="200" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" Foreground="Black" FontSize="24" Padding="0,5" VerticalContentAlignment="Center"/>
                 <Rectangle Fill="White" Height="590" Canvas.Left="550" Stroke="#FFE8EBED" Canvas.Top="65" Width="530"/>
+
+                <Border Name="member_image_mask"
+                        Background="White"
+                        BorderBrush="#FF3B5998"
+                        BorderThickness=".5"
+                        CornerRadius="30" Height="60" Width="60" Canvas.Left="-281" Canvas.Top="605">
+                </Border>
 
                 <TextBox x:Name="message_textBox" Height="30" Canvas.Left="560" TextWrapping="Wrap" Canvas.Top="615" Width="510" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="18" BorderBrush="#FFE8EBED" Background="{x:Null}" KeyUp="message_textBox_KeyUp"/>
                 <Rectangle Fill="White" Height="590" Canvas.Left="20" Stroke="#FFE8EBED" Canvas.Top="65" Width="500"/>
@@ -154,25 +212,45 @@
 
                 <Canvas Height="60" Canvas.Left="20" Canvas.Top="105" Width="483" Visibility="Hidden">
                     <Rectangle Fill="#FFF3F3F4" Height="60" Stroke="#FFE8EBED" Width="483"/>
-                    <Image x:Name="image" Height="50" Canvas.Left="10" Width="50" Source="Resources/UI/avatar.png" Canvas.Top="5"/>
+                    <Image x:Name="image" Height="50" Canvas.Left="10" Width="50" Source="Resources/UI/avatar.png" Canvas.Top="5">
+                        <Image.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=member_image_mask}" />
+                        </Image.OpacityMask>
+                    </Image>
                     <Label x:Name="label4" Content="Name Surname" Canvas.Left="70" Canvas.Top="10" Width="360" Height="40" FontSize="24" VerticalContentAlignment="Center" Padding="0"/>
                 </Canvas>
-                <Label x:Name="actual_comm_member_id" Content="2" Canvas.Left="1032" Canvas.Top="69" Foreground="#FF2F4050"/>
-                <Button x:Name="button" Content="Button" Canvas.Left="963" Canvas.Top="18" Width="75" Click="button_Click"/>
+                <Label x:Name="actual_comm_member_id" Content="3" Canvas.Left="1032" Canvas.Top="69" Foreground="#FF2F4050"/>
             </Canvas>
 
             <Canvas x:Name="canvas_finances" HorizontalAlignment="Left" Height="665" Margin="200,35,0,0" VerticalAlignment="Top" Width="1100" Visibility="Hidden">
                 <Rectangle Fill="#FFF3F3F4" Height="665" Stroke="Black" StrokeThickness="0" Width="1100"/>
                 <Rectangle Fill="White" Height="55" Stroke="#FFE8EBED" Width="1100"/>
-                <Label Content="Finances:" Canvas.Left="20" Canvas.Top="10" Height="40" Width="120" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Foreground="Black" FontSize="20" Padding="0,5,5,5"/>
+                <Label Content="Finances:" Canvas.Left="10" Height="55" Width="120" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" Foreground="Black" FontSize="24" Padding="0,5,5,5" VerticalContentAlignment="Center"/>
+                <Rectangle Fill="#FF2F4050" Height="70" Canvas.Left="10" Stroke="#FFE8EBED" Canvas.Top="60" Width="1080" RadiusX="2" RadiusY="2" StrokeThickness="0"/>
+                <Rectangle Fill="White" Height="520" Canvas.Left="10" Stroke="#FFE8EBED" Canvas.Top="135" Width="501"/>
+                <Label Content="Overall budget:" Canvas.Left="25" Canvas.Top="66" Height="20" Width="200" Padding="0" Foreground="White" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="16" HorizontalContentAlignment="Center"/>
+                <Label Content="12 000 000 $" Canvas.Left="25" Canvas.Top="86" Width="200" Foreground="#FF00BA79" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="24" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                <ScrollViewer Height="520" Canvas.Left="10" Canvas.Top="135" Width="501"/>
+                <Label Content="Invested so far:" Canvas.Left="290" Canvas.Top="66" Height="20" Width="200" Padding="0" Foreground="White" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="16" HorizontalContentAlignment="Center"/>
+                <Label Content="12 000 000 $" Canvas.Left="290" Canvas.Top="86" Width="200" Foreground="#FF3498DB" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="24" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                <Rectangle Fill="White" Height="58" Canvas.Left="265" Stroke="#FFE8EBED" StrokeThickness="0" Canvas.Top="66" Width="1"/>
+                <Label Content="Sponsored:" Canvas.Left="535" Canvas.Top="66" Height="20" Width="200" Padding="0" Foreground="White" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="16" HorizontalContentAlignment="Center"/>
+                <Label Content="12 000 000 $" Canvas.Left="535" Canvas.Top="86" Width="200" Foreground="#FFF3DB40" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="24" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                <Rectangle Fill="White" Height="58" Canvas.Left="510" Stroke="#FFE8EBED" StrokeThickness="0" Canvas.Top="66" Width="1"/>
+                <Label Content="Left from budget:" Canvas.Left="780" Canvas.Top="66" Height="20" Width="200" Padding="0" Foreground="White" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="16" HorizontalContentAlignment="Center"/>
+                <Label Content="12 000 000 $" Canvas.Left="780" Canvas.Top="86" Width="200" Foreground="#FFF24050" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="24" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                <Rectangle Fill="White" Height="58" Canvas.Left="755" Stroke="#FFE8EBED" StrokeThickness="0" Canvas.Top="66" Width="1"/>
+                <Image x:Name="image4" Height="50" Canvas.Left="1025" Canvas.Top="69" Width="50" Source="Resources/UI/todo/add_task.png"/>
+                <Rectangle Fill="White" Height="60" Canvas.Left="516" Stroke="#FFE8EBED" Canvas.Top="135" Width="574"/>
+                <Rectangle Fill="White" Height="455" Canvas.Left="516" Stroke="#FFE8EBED" Canvas.Top="200" Width="574"/>
             </Canvas>
 
             <Canvas x:Name="canvas_charts" HorizontalAlignment="Left" Height="665" Margin="200,35,0,0" VerticalAlignment="Top" Width="1100" Visibility="Hidden">
                 <Rectangle Fill="#FFF3F3F4" Height="665" Stroke="Black" StrokeThickness="0" Width="1100"/>
                 <Rectangle Fill="White" Height="55" Stroke="#FFE8EBED" Width="1100"/>
-                <Label Content="Charts:" Canvas.Left="20" Canvas.Top="10" Height="40" Width="120" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Foreground="Black" FontSize="20" Padding="0,5,5,5"/>
+                <Label Content="Charts:" Canvas.Left="10" Height="55" Width="120" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" Foreground="Black" FontSize="24" Padding="0,5,5,5" VerticalContentAlignment="Center"/>
                 <Rectangle Fill="White" Height="70" Canvas.Left="10" Stroke="#FFE8EBED" Canvas.Top="60" Width="1080"/>
-                <Label x:Name="label1" Content="Project:" Canvas.Left="20" Canvas.Top="68" Height="20" Width="45" Padding="0"/>
+                <Label Content="Project:" Canvas.Left="20" Canvas.Top="68" Height="20" Width="45" Padding="0"/>
                 <ComboBox x:Name="comboBox1" Canvas.Left="20" Canvas.Top="88" Width="260" Height="30" Background="{x:Null}" SelectedIndex="0" FontSize="20" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" BorderBrush="#FFE8EBED">
                     <ComboBoxItem Content="choose 1"/>
                     <ComboBoxItem Content="choose 2"/>
@@ -195,7 +273,7 @@
             <Canvas x:Name="canvas_users" HorizontalAlignment="Left" Height="665" Margin="200,35,0,0" VerticalAlignment="Top" Width="1100" Visibility="Hidden">
                 <Rectangle Fill="#FFF3F3F4" Height="665" Stroke="Black" StrokeThickness="0" Width="1100"/>
                 <Rectangle Fill="White" Height="55" Stroke="#FFE8EBED" Width="1100"/>
-                <Label Content="Members:" Canvas.Left="20" Canvas.Top="10" Height="40" Width="120" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Foreground="Black" FontSize="20" Padding="0,5,5,5"/>
+                <Label Content="Members:" Canvas.Left="10" Height="55" Width="120" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" Foreground="Black" FontSize="24" Padding="0,5,5,5" VerticalContentAlignment="Center"/>
                 <Rectangle Fill="White" Height="70" Stroke="#FFE8EBED" Width="1080" Canvas.Top="60" Canvas.Left="10"/>
                 <Rectangle Fill="White" Height="520" Stroke="#FFE8EBED" Width="1080" Canvas.Top="135" Canvas.Left="10"/>
                 <Label Content="Project:" Canvas.Left="20" Canvas.Top="68" Height="20" Width="45" Padding="0"/>
@@ -212,16 +290,10 @@
                 </ScrollViewer>
             </Canvas>
 
-            <Canvas x:Name="canvas_achievs" HorizontalAlignment="Left" Height="665" Margin="200,35,0,0" VerticalAlignment="Top" Width="1100" Visibility="Hidden">
-                <Rectangle Fill="#FFF3F3F4" Height="665" Stroke="Black" StrokeThickness="0" Width="1100"/>
-                <Rectangle Fill="White" Height="55" Stroke="#FFE8EBED" Width="1100"/>
-                <Label Content="Achievements:" Canvas.Left="20" Canvas.Top="10" Height="40" Width="150" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Foreground="Black" FontSize="20" Padding="0,5,5,5"/>
-            </Canvas>
-
             <Canvas x:Name="canvas_settings" HorizontalAlignment="Left" Height="665" Margin="200,35,0,0" VerticalAlignment="Top" Width="1100" Visibility="Hidden">
                 <Rectangle Fill="#FFF3F3F4" Height="665" Stroke="Black" StrokeThickness="0" Width="1100"/>
                 <Rectangle Fill="White" Height="55" Stroke="#FFE8EBED" Width="1100"/>
-                <Label Content="Settings:" Canvas.Left="20" Canvas.Top="10" Height="40" Width="120" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Foreground="Black" FontSize="20" Padding="0,5,5,5"/>
+                <Label Content="Settings:" Canvas.Left="10" Height="55" Width="120" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" Foreground="Black" FontSize="24" Padding="0,5,5,5" VerticalContentAlignment="Center"/>
                 <Rectangle Fill="White" Height="175" Stroke="#FFE8EBED" Width="1080" Canvas.Top="60" Canvas.Left="10"/>
                 <Label Content="Account:" Canvas.Left="20" Canvas.Top="65" FontSize="20" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Padding="0,5,5,5"/>
                 <Image x:Name="image5" Height="120" Canvas.Left="20" Canvas.Top="104" Width="120" Source="Resources/UI/avatar.png"/>
@@ -258,65 +330,62 @@
                     <VisualBrush Visual="{Binding ElementName=Mask}" />
                 </Image.OpacityMask>
             </Image>
-            <Label x:Name="name_surname_label" Content="Name Surname" HorizontalAlignment="Left" VerticalAlignment="Top" Width="181" Foreground="White" FontSize="14" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" Canvas.Left="9" Canvas.Top="660"/>
+            <Label x:Name="name_surname_label" Content="Name Surname" HorizontalAlignment="Left" VerticalAlignment="Top" Width="181" Foreground="White" FontSize="14" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" Canvas.Left="9" Canvas.Top="660"/>
 
 
-            <Label x:Name="dashboard_label" Content="Dashboard" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="White" Padding="45,5,5,5" FontSize="16" BorderThickness="0" Background="#00000000" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="70"/>
+            <Label x:Name="dashboard_label" Content="Dashboard" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="White" Padding="45,5,5,5" FontSize="18" BorderThickness="0" Background="#00000000" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="70" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand"/>
             <Image x:Name="dashboard_icon" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Source="Resources/UI/dashboard.png" Canvas.Left="15" Canvas.Top="77"/>
 
 
-            <Label x:Name="projects_label" Content="Projects" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="40,5,5,5" FontSize="16" BorderThickness="5,0,0,0" Background="#FF293846" BorderBrush="#FF00BA79" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="102"/>
-            <Image x:Name="projects_icon" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Source="Resources/UI/dashboard.png" Opacity="0.6" Canvas.Left="15" Canvas.Top="109"/>
+            <Label x:Name="projects_label" Content="Projects" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="40,5,5,5" FontSize="18" BorderThickness="5,0,0,0" Background="#FF293846" BorderBrush="#FF00BA79" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="102" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand"/>
+            <Image x:Name="projects_icon" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Source="Resources/UI/achievs.png" Opacity="0.6" Canvas.Left="15" Canvas.Top="109"/>
 
 
-            <Label x:Name="todo_label" Content="Tasks" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="40,5,5,5" FontSize="16" BorderThickness="5,0,0,0" BorderBrush="#FF00BA79" Background="#FF293846" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="134"/>
+            <Label x:Name="todo_label" Content="Tasks" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="40,5,5,5" FontSize="18" BorderThickness="5,0,0,0" BorderBrush="#FF00BA79" Background="#FF293846" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="134" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand"/>
             <Image x:Name="todo_icon" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Source="Resources/UI/todo.png" Opacity="0.6" Canvas.Left="15" Canvas.Top="141"/>
 
 
-            <Label x:Name="storage_label" Content="Calendar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="40,5,5,5" FontSize="16" BorderThickness="5,0,0,0" BorderBrush="#FF00BA79" Background="#FF293846" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="166"/>
-            <Image x:Name="storage_icon" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Source="Resources/UI/storage.png" Opacity="0.6" Canvas.Left="15" Canvas.Top="173"/>
+            <Label x:Name="calendar_label" Content="Calendar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="40,5,5,5" FontSize="18" BorderThickness="5,0,0,0" BorderBrush="#FF00BA79" Background="#FF293846" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="166" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand"/>
+            <Image x:Name="calendar_icon" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Source="Resources/UI/storage.png" Opacity="0.6" Canvas.Left="15" Canvas.Top="173"/>
 
 
-            <Label x:Name="communication_label" Content="Communication" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="40,5,5,5" FontSize="16" BorderThickness="5,0,0,0" BorderBrush="#FF00BA79" Background="#FF293846" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="198"/>
+            <Label x:Name="communication_label" Content="Communication" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="40,5,5,5" FontSize="18" BorderThickness="5,0,0,0" BorderBrush="#FF00BA79" Background="#FF293846" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="198" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand"/>
             <Image x:Name="communication_icon" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Source="Resources/UI/chat.png" Opacity="0.6" Canvas.Left="15" Canvas.Top="205"/>
 
 
-            <Label x:Name="finances_label" Content="Finances" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="40,5,5,5" FontSize="16" BorderThickness="5,0,0,0" BorderBrush="#FF00BA79" Background="#FF293846" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="230"/>
+            <Label x:Name="finances_label" Content="Finances" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="40,5,5,5" FontSize="18" BorderThickness="5,0,0,0" BorderBrush="#FF00BA79" Background="#FF293846" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="230" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand"/>
             <Image x:Name="finances_icon" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Source="Resources/UI/finances.png" Opacity="0.6" Canvas.Left="15" Canvas.Top="237"/>
 
 
-            <Label x:Name="charts_label" Content="Charts" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="40,5,5,5" FontSize="16" BorderThickness="5,0,0,0" BorderBrush="#FF00BA79" Background="#FF293846" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="262"/>
+            <Label x:Name="charts_label" Content="Charts" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="40,5,5,5" FontSize="18" BorderThickness="5,0,0,0" BorderBrush="#FF00BA79" Background="#FF293846" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="262" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand"/>
             <Image x:Name="charts_icon" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Source="Resources/UI/charts.png" Opacity="0.6" Canvas.Left="15" Canvas.Top="269"/>
 
 
-            <Label x:Name="users_label" Content="Members" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="40,5,5,5" FontSize="16" BorderThickness="5,0,0,0" BorderBrush="#FF00BA79" Background="#FF293846" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="294"/>
+            <Label x:Name="users_label" Content="Members" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="40,5,5,5" FontSize="18" BorderThickness="5,0,0,0" BorderBrush="#FF00BA79" Background="#FF293846" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="294" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand"/>
             <Image x:Name="users_icon" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Source="Resources/UI/teams.png" Opacity="0.6" Canvas.Left="15" Canvas.Top="301"/>
 
 
-            <Label x:Name="achievs_label" Content="Achievs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="40,5,5,5" FontSize="16" BorderThickness="5,0,0,0" BorderBrush="#FF00BA79" Background="#FF293846" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="326"/>
-            <Image x:Name="achievs_icon" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Source="Resources/UI/achievs.png" Opacity="0.6" Canvas.Left="15" Canvas.Top="333"/>
+            <Label x:Name="settings_label" Content="Settings" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="45,5,5,5" FontSize="18" BorderThickness="0" Background="#00000000" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="326" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand"/>
+            <Image x:Name="settings_icon" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Source="Resources/UI/settings.png" Opacity="0.6" Canvas.Left="15" Canvas.Top="333"/>
 
-
-            <Label x:Name="settings_label" Content="Settings" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="32" Foreground="#99FFFFFF" Padding="45,5,5,5" FontSize="16" BorderThickness="0" Background="#00000000" MouseEnter="menu_MouseEnter" MouseLeave="menu_MouseLeave" MouseLeftButtonUp="menu_Clicked" Canvas.Top="358"/>
-            <Image x:Name="settings_icon" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Source="Resources/UI/settings.png" Opacity="0.6" Canvas.Left="15" Canvas.Top="365"/>
-            <Label x:Name="label3" Content="PROJECTO" Canvas.Left="10" Canvas.Top="10" Height="45" Width="180" Foreground="White" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="36"/>
+            <Label Content="PROJECTO" Canvas.Left="10" Canvas.Top="10" Height="45" Width="180" Foreground="White" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="36"/>
             <Rectangle Fill="#FF1C3742" Height="1" Canvas.Left="9" Canvas.Top="550" Width="181" StrokeThickness="0"/>
+            <Rectangle Fill="#FF1C3742" Height="1" Canvas.Left="9" Canvas.Top="370" Width="181" StrokeThickness="0"/>
+            <Label Content="Project:" Canvas.Left="10" Canvas.Top="384" Width="180" Height="40" Foreground="White" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="24"/>
         </Canvas>
 
         <Canvas x:Name="canvas_add_todo" HorizontalAlignment="Left" Height="510" Margin="480,100,0,0" VerticalAlignment="Top" Width="420" Visibility="Hidden">
             <Rectangle Fill="#FF2F4050" Height="510" Stroke="Black" StrokeThickness="0" Width="420" RadiusX="5" RadiusY="5"/>
-            <Label Content="Add a new To Do" Canvas.Left="10" Canvas.Top="10" Height="35" Width="400" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="22" Foreground="#FF00BA79" FontWeight="Bold"/>
-            <Label Content="Title" Canvas.Left="10" Canvas.Top="60" Height="33" Width="400" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
-            <Label Content="Description" Canvas.Left="10" Canvas.Top="135" Height="33" Width="400" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
+            <Label Content="Add a new To Do" Canvas.Left="10" Canvas.Top="10" Height="35" Width="400" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="24" Foreground="#FF00BA79" FontWeight="Bold"/>
+            <Rectangle Fill="White" Height="1" Canvas.Left="10" Stroke="Black" StrokeThickness="0" Canvas.Top="50" Width="400"/>
+            <Label Content="Title" Canvas.Left="10" Canvas.Top="60" Height="33" Width="400" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
+            <Label Content="Description" Canvas.Left="10" Canvas.Top="135" Height="33" Width="400" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
 
             <TextBox x:Name="add_todo_title" Height="35" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="93" Width="400" BorderBrush="#FF00BA79" BorderThickness="1" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="22" SelectionBrush="{x:Null}" VerticalScrollBarVisibility="Disabled"/>
             <TextBox x:Name="add_todo_desc" Height="200" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="168" Width="400" BorderBrush="#FF00BA79" BorderThickness="1" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="16" SelectionBrush="{x:Null}" VerticalScrollBarVisibility="Disabled"/>
 
-
-
-            <Label Content="Category" Canvas.Left="10" Canvas.Top="375" Height="33" Width="400" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
+            <Label Content="Category" Canvas.Left="10" Canvas.Top="375" Height="33" Width="400" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
             <TextBox x:Name="add_todo_category" Height="35" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="410" Width="400" BorderBrush="#FF00BA79" BorderThickness="1" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="22" SelectionBrush="{x:Null}" VerticalScrollBarVisibility="Disabled"/>
-            <Rectangle Fill="White" Height="1" Canvas.Left="10" Stroke="Black" StrokeThickness="0" Canvas.Top="50" Width="400"/>
 
             <Border BorderThickness="2" Height="40" Canvas.Left="10" Canvas.Top="460" Width="190" CornerRadius="2" BorderBrush="#FF00BA79">
                 <Label x:Name="add_todo_confirm" Content="ADD" Canvas.Left="10" Canvas.Top="480" Width="190" Height="40" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" Background="#FF00BA79" FontWeight="Bold" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="add_todo_confirm_MouseLeftButtonUp"/>
@@ -328,21 +397,64 @@
 
         <Canvas x:Name="canvas_add_project" HorizontalAlignment="Left" Height="400" Margin="280,149,0,0" VerticalAlignment="Top" Width="740" Visibility="Hidden">
             <Rectangle Fill="#FF2F4050" Height="400" Stroke="Black" StrokeThickness="0" Width="740" RadiusX="5" RadiusY="5"/>
-            <Label Content="Add a new Project" Canvas.Left="10" Canvas.Top="10" Height="40" Width="400" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="22" Foreground="#FF00BA79" FontWeight="Bold"/>
-            <Label Content="Project title" Canvas.Left="10" Canvas.Top="60" Height="33" Width="350" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
+            <Label Content="Add a new Project" Canvas.Left="10" Canvas.Top="10" Height="40" Width="400" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="24" Foreground="#FF00BA79" FontWeight="Bold"/>
+            <Label Content="Project title" Canvas.Left="10" Canvas.Top="60" Height="33" Width="350" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
             <TextBox x:Name="project_title" Height="35" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="93" Width="350" BorderBrush="#FF00BA79" BorderThickness="1" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="22" SelectionBrush="{x:Null}" VerticalScrollBarVisibility="Disabled"/>
 
 
-            <Label Content="Deadline" Canvas.Left="380" Canvas.Top="60" Height="33" Width="350" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
-            <TextBox x:Name="project_title_Copy" Height="35" Canvas.Left="380" TextWrapping="Wrap" Canvas.Top="93" Width="350" BorderBrush="#FF00BA79" BorderThickness="1" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="22" SelectionBrush="{x:Null}" VerticalScrollBarVisibility="Disabled"/>
-            <TextBox x:Name="project_title_Copy1" Height="147" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="176" Width="720" BorderBrush="#FF00BA79" BorderThickness="1" FontSize="18" SelectionBrush="{x:Null}" VerticalScrollBarVisibility="Disabled"/>
-            <Label Content="Description" Canvas.Left="10" Canvas.Top="143" Height="33" Width="720" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
+            <Label Content="Deadline" Canvas.Left="380" Canvas.Top="60" Height="33" Width="350" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
+            <TextBox x:Name="project_deadline" Height="35" Canvas.Left="380" TextWrapping="Wrap" Canvas.Top="93" Width="350" BorderBrush="#FF00BA79" BorderThickness="1" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="22" SelectionBrush="{x:Null}" VerticalScrollBarVisibility="Disabled"/>
+            <TextBox x:Name="project_desc" Height="147" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="176" Width="720" BorderBrush="#FF00BA79" BorderThickness="1" FontSize="18" SelectionBrush="{x:Null}" VerticalScrollBarVisibility="Disabled"/>
+            <Label Content="Description" Canvas.Left="10" Canvas.Top="143" Height="33" Width="720" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
             <Rectangle Fill="White" Height="1" Canvas.Left="10" Stroke="Black" StrokeThickness="0" Canvas.Top="50" Width="720"/>
             <Border BorderThickness="2" Height="40" Canvas.Left="170" Canvas.Top="345" Width="190" CornerRadius="2" BorderBrush="#FF00BA79">
                 <Label x:Name="add_project_confirm" Content="ADD" Canvas.Left="170" Canvas.Top="345" Width="190" Height="40" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" Background="#FF00BA79" FontWeight="Bold" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="add_project_confirm_MouseLeftButtonUp" Padding="5,3,5,5"/>
             </Border>
             <Border BorderThickness="2" Height="40" Canvas.Left="380" Canvas.Top="345" Width="190" CornerRadius="2" BorderBrush="#FF00BA79">
                 <Label x:Name="add_project_cancel" Content="CANCEL" Canvas.Left="380" Canvas.Top="345" Width="190" Height="40" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" Background="#FF00BA79" FontWeight="Bold" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="add_project_cancel_MouseLeftButtonUp" Padding="5,3,5,5"/>
+            </Border>
+        </Canvas>
+
+        <Canvas x:Name="canvas_add_calendar" HorizontalAlignment="Left" Height="390" Margin="280,149,0,0" VerticalAlignment="Top" Width="740" Visibility="Hidden">
+            <Rectangle Fill="#FF2F4050" Height="390" Stroke="Black" StrokeThickness="0" Width="740" RadiusX="5" RadiusY="5"/>
+            <Rectangle Fill="White" Height="1" Canvas.Left="10" Stroke="Black" StrokeThickness="0" Canvas.Top="50" Width="720"/>
+            <Label Content="Add a new Event" Canvas.Left="10" Canvas.Top="10" Height="40" Width="400" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="24" Foreground="#FF00BA79" FontWeight="Bold"/>
+            <Label Content="Type (ex. Meeting, Job to do)" Canvas.Left="10" Canvas.Top="56" Height="33" Width="350" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
+            <TextBox x:Name="project_title_Cohpy_Copy" Height="35" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="89" Width="720" BorderBrush="#FF00BA79" BorderThickness="1" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="22" SelectionBrush="{x:Null}" VerticalScrollBarVisibility="Disabled"/>
+            <Label Content="Description" Canvas.Left="10" Canvas.Top="125" Height="33" Width="350" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
+            <TextBox x:Name="event_title" Height="100" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="158" Width="720" BorderBrush="#FF00BA79" BorderThickness="1" FontFamily="/PROJECTO.PC;component/Resources/#Aaargh" FontSize="22" SelectionBrush="{x:Null}" VerticalScrollBarVisibility="Disabled"/>
+            <Label Content="Date" Canvas.Left="10" Canvas.Top="263" Height="33" Width="250" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
+            <TextBox x:Name="project_title_Cohpy" Height="35" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="296" Width="250" BorderBrush="#FF00BA79" BorderThickness="1" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" SelectionBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" Text="01.02.1999" VerticalContentAlignment="Center"/>
+            <Label Content="Time from" Canvas.Left="265" Canvas.Top="263" Height="33" Width="145" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
+            <TextBox x:Name="project_title_Cohdpy" Height="35" Canvas.Left="265" TextWrapping="Wrap" Canvas.Top="296" Width="145" BorderBrush="#FF00BA79" BorderThickness="1" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" SelectionBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" Text="12:00" VerticalContentAlignment="Center"/>
+            <Label Content="Time to" Canvas.Left="415" Canvas.Top="263" Height="33" Width="145" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
+            <TextBox x:Name="project_title_Cofsdhdpy" Height="35" Canvas.Left="415" TextWrapping="Wrap" Canvas.Top="296" Width="145" BorderBrush="#FF00BA79" BorderThickness="1" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" SelectionBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Center" Text="14:00"/>
+            <Label Content="Color" Canvas.Left="565" Canvas.Top="263" Height="33" Width="165" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="20" Foreground="White" Padding="0,5,5,5"/>
+            <Rectangle Fill="#FF0083FF" Height="35" Canvas.Left="565" RadiusY="2" RadiusX="2" Stroke="Black" StrokeThickness="0" Canvas.Top="296" Width="165"/>
+
+            <Border BorderThickness="2" Height="40" Canvas.Left="175" Canvas.Top="340" Width="190" CornerRadius="2" BorderBrush="#FF00BA79">
+                <Label x:Name="add_event_confirm" Content="ADD" Canvas.Left="170" Canvas.Top="345" Width="190" Height="40" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" Background="#FF00BA79" FontWeight="Bold" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="add_project_confirm_MouseLeftButtonUp" Padding="5,3,5,5"/>
+            </Border>
+            <Border BorderThickness="2" Height="40" Canvas.Left="375" Canvas.Top="340" Width="190" CornerRadius="2" BorderBrush="#FF00BA79">
+                <Label x:Name="add_event_cancel" Content="CANCEL" Canvas.Left="380" Canvas.Top="345" Width="190" Height="40" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" Background="#FF00BA79" FontWeight="Bold" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="add_project_cancel_MouseLeftButtonUp" Padding="5,3,5,5"/>
+            </Border>
+        </Canvas>
+
+        <Canvas x:Name="canvas_delete_project" HorizontalAlignment="Left" Height="510" Margin="480,100,0,0" VerticalAlignment="Top" Width="420" Visibility="Hidden">
+            <Rectangle Fill="#FF2F4050" Height="510" Stroke="Black" StrokeThickness="0" Width="420" RadiusX="5" RadiusY="5"/>
+            <Label Content="Delete project?" Canvas.Left="10" Canvas.Top="10" Height="41" Width="400" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="24" Foreground="#FF00BA79" FontWeight="Bold"/>
+            <Rectangle Fill="White" Height="1" Canvas.Left="10" Stroke="Black" StrokeThickness="0" Canvas.Top="50" Width="400"/>
+            <Image x:Name="image3" Height="170" Canvas.Left="130" Canvas.Top="65" Width="170" Source="Resources/UI/warning.png"/>
+            <Rectangle Fill="#FFF44336" Height="60" Canvas.Left="55" Stroke="Black" StrokeThickness="0" Canvas.Top="240" Width="310" RadiusX="5" RadiusY="5"/>
+            <Label Content="WARNING!" Canvas.Left="55" Canvas.Top="240" Height="60" Width="310" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="48" Foreground="White" Padding="5,0,5,5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="{x:Null}"/>
+            <Label Content="This will erase ALL DATA connected" Canvas.Left="25" Canvas.Top="324" Height="33" Width="375" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="20" Foreground="White" Padding="0,5,5,5" HorizontalContentAlignment="Center"/>
+            <Label Content="with this Project (ex. tasks, events)!" Canvas.Left="25" Canvas.Top="357" Height="33" Width="375" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="20" Foreground="White" Padding="0,5,5,5" HorizontalContentAlignment="Center"/>
+            <Label Content="Are you sure, you want to delete?" Canvas.Left="25" Canvas.Top="405" Height="33" Width="375" FontFamily="/PROJECTO.PC;component/Resources/#Quicksand" FontSize="20" Foreground="#FF00BA79" Padding="0,5,5,5" HorizontalContentAlignment="Center"/>
+            <Border BorderThickness="2" Height="40" Canvas.Left="25" Canvas.Top="455" Width="170" CornerRadius="2" BorderBrush="#FFF44336">
+                <Label x:Name="delete_project_confirm" Content="DELETE" Canvas.Left="170" Canvas.Top="345" Width="170" Height="40" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" Background="#FFF44336" FontWeight="Bold" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="delete_project_confirm_MouseLeftButtonUp" Padding="5,3,5,5"/>
+            </Border>
+            <Border BorderThickness="2" Height="40" Canvas.Left="230" Canvas.Top="455" Width="170" CornerRadius="2" BorderBrush="#FF00BA79">
+                <Label x:Name="delete_project_cancel" Content="CANCEL" Canvas.Left="380" Canvas.Top="345" Width="170" Height="40" FontFamily="/PROJECTO.PC;component/Resources/#Moon" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" Background="#FF00BA79" FontWeight="Bold" MouseEnter="btns_MouseEnter" MouseLeave="btns_MouseLeave" MouseLeftButtonUp="delete_project_cancel_MouseLeftButtonUp" Padding="5,3,5,5"/>
             </Border>
         </Canvas>
     </Grid>
