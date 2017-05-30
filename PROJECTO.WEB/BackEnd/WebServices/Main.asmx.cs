@@ -102,6 +102,22 @@ namespace PROJECTO.WEB.BackEnd.WebServices
 
 
         [WebMethod]
+        public List<string> LoadFinances(string chsnProj)
+        {
+            var sc = new DBConn.Finances();
+            return sc.LoadFinances(chsnProj);
+        }
+
+        [WebMethod]
+        public string AddFinance(string title, string amount, string type, string chsnProj)
+        {
+            var sc = new DBConn.Finances();
+            return sc.AddFinance(title, amount, type, chsnProj);
+        }
+
+
+
+        [WebMethod]
         public string Maintenance()
         {
             var sc = new DBConn.Maintenance();

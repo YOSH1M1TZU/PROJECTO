@@ -37,9 +37,16 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                
                 return "OK";
             }
             catch (MySqlException ex) { return ex.ToString(); }
+        }
+
+        ~Maintenance()
+        {
+            conn.Close();
         }
     }
 }

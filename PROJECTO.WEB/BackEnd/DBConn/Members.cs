@@ -79,5 +79,10 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 return result;
             }
         }
+
+        ~Members()
+        {
+            conn.Close();
+        }
     }
 }

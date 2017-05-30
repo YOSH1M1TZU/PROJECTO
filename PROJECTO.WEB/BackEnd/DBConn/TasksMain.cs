@@ -38,14 +38,16 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
-
+                cmd.Dispose();
+                
                 MySqlCommand cmd2 = new MySqlCommand();
                 cmd2.CommandTimeout = 40;
                 cmd2.CommandText = "DELETE FROM projecto." + from + " WHERE projectID='" + projectID + "' AND " + from + "Title='" + taskTitle + "';";
                 cmd2.Connection = conn;
                 cmd2.CommandType = CommandType.Text;
                 cmd2.ExecuteNonQuery();
-
+                cmd2.Dispose();
+                
                 result = "OK";
 
                 if (result != null) return result;
@@ -58,6 +60,11 @@ namespace PROJECTO.WEB.BackEnd.DBConn
             {
                 return "ERR";
             }
+        }
+
+        ~TasksMain()
+        {
+            conn.Close();
         }
     }
 }

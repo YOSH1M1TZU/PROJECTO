@@ -48,6 +48,8 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                     result.Add(reader2.GetString("memberIDs").Split(',').Length.ToString());
                     result.Add(reader2.GetString("deadline"));
                 }
+                cmd2.Dispose();
+                reader2.Close();
 
                 if (result != null) return result;
                 else
@@ -86,6 +88,8 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                     result.Add(reader2.GetString("memberIDs").Split(',').Length.ToString());
                     result.Add(reader2.GetString("deadline"));
                 }
+                cmd2.Dispose();
+                reader2.Close();
 
                 if (result != null) return result;
                 else
@@ -139,7 +143,7 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 if (result != null) return result;
                 else
                 {
-                    result.Add("Error");
+                    result.Add("ERR");
                     return result;
                 }
             }
@@ -161,6 +165,8 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                
                 return "OK";
             }
             catch (MySqlException ex)
@@ -179,6 +185,8 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                
                 return "OK";
             }
             catch (MySqlException ex)
@@ -199,6 +207,8 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                
                 return "OK";
             }
             catch (MySqlException ex)
@@ -265,6 +275,11 @@ namespace PROJECTO.WEB.BackEnd.DBConn
             {
                 return ex.ToString();
             }
+        }
+
+        ~Projects()
+        {
+            conn.Close();
         }
     }
 }

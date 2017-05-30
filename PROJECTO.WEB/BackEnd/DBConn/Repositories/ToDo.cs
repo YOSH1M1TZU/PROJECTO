@@ -45,6 +45,8 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                     result.Add(reader.GetString("todoDesc"));
                     result.Add(reader.GetString("todoCategory"));
                 }
+                cmd.Dispose();
+                reader.Close();
 
                 if (result != null) return result;
                 else
@@ -76,6 +78,8 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                
                 return "OK";
             }
             catch (MySqlException ex) { return ex.ToString(); }
@@ -98,6 +102,9 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 cmd2.Connection = conn;
                 cmd2.CommandType = CommandType.Text;
                 cmd2.ExecuteNonQuery();
+                cmd.Dispose();
+                cmd2.Dispose();
+
                 return "OK";
             }
             catch (MySqlException ex) { return ex.ToString(); }
@@ -113,9 +120,16 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
                 return "OK";
             }
             catch (MySqlException ex) { return ex.ToString(); }
+        }
+
+        ~ToDo()
+        {
+            conn.Close();
         }
     }
 }

@@ -43,6 +43,8 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                     result.Add(reader.GetString("messageText"));
                     result.Add(reader.GetString("sentTime"));
                 }
+                cmd.Dispose();
+                reader.Close();
 
                 if (result != null) return result;
                 else
@@ -69,12 +71,19 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                
                 return "OK";
             }
             catch (MySqlException ex)
             {
                 return ex.ToString();
             }
+        }
+
+        ~Messages()
+        {
+            conn.Close();
         }
     }
 }

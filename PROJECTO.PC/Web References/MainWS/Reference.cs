@@ -51,6 +51,10 @@ namespace PROJECTO.PC.MainWS {
         
         private System.Threading.SendOrPostCallback SendMessageOperationCompleted;
         
+        private System.Threading.SendOrPostCallback LoadFinancesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddFinanceOperationCompleted;
+        
         private System.Threading.SendOrPostCallback MaintenanceOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
@@ -123,6 +127,12 @@ namespace PROJECTO.PC.MainWS {
         
         /// <remarks/>
         public event SendMessageCompletedEventHandler SendMessageCompleted;
+        
+        /// <remarks/>
+        public event LoadFinancesCompletedEventHandler LoadFinancesCompleted;
+        
+        /// <remarks/>
+        public event AddFinanceCompletedEventHandler AddFinanceCompleted;
         
         /// <remarks/>
         public event MaintenanceCompletedEventHandler MaintenanceCompleted;
@@ -469,6 +479,70 @@ namespace PROJECTO.PC.MainWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/LoadFinances", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] LoadFinances(string chsnProj) {
+            object[] results = this.Invoke("LoadFinances", new object[] {
+                        chsnProj});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LoadFinancesAsync(string chsnProj) {
+            this.LoadFinancesAsync(chsnProj, null);
+        }
+        
+        /// <remarks/>
+        public void LoadFinancesAsync(string chsnProj, object userState) {
+            if ((this.LoadFinancesOperationCompleted == null)) {
+                this.LoadFinancesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoadFinancesOperationCompleted);
+            }
+            this.InvokeAsync("LoadFinances", new object[] {
+                        chsnProj}, this.LoadFinancesOperationCompleted, userState);
+        }
+        
+        private void OnLoadFinancesOperationCompleted(object arg) {
+            if ((this.LoadFinancesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LoadFinancesCompleted(this, new LoadFinancesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/AddFinance", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string AddFinance(string title, string amount, string type, string chsnProj) {
+            object[] results = this.Invoke("AddFinance", new object[] {
+                        title,
+                        amount,
+                        type,
+                        chsnProj});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AddFinanceAsync(string title, string amount, string type, string chsnProj) {
+            this.AddFinanceAsync(title, amount, type, chsnProj, null);
+        }
+        
+        /// <remarks/>
+        public void AddFinanceAsync(string title, string amount, string type, string chsnProj, object userState) {
+            if ((this.AddFinanceOperationCompleted == null)) {
+                this.AddFinanceOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddFinanceOperationCompleted);
+            }
+            this.InvokeAsync("AddFinance", new object[] {
+                        title,
+                        amount,
+                        type,
+                        chsnProj}, this.AddFinanceOperationCompleted, userState);
+        }
+        
+        private void OnAddFinanceOperationCompleted(object arg) {
+            if ((this.AddFinanceCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddFinanceCompleted(this, new AddFinanceCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://localhost/Maintenance", RequestNamespace="http://localhost/", ResponseNamespace="http://localhost/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string Maintenance() {
             object[] results = this.Invoke("Maintenance", new object[0]);
@@ -787,6 +861,58 @@ namespace PROJECTO.PC.MainWS {
         private object[] results;
         
         internal SendMessageCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void LoadFinancesCompletedEventHandler(object sender, LoadFinancesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LoadFinancesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LoadFinancesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    public delegate void AddFinanceCompletedEventHandler(object sender, AddFinanceCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1590.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddFinanceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddFinanceCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

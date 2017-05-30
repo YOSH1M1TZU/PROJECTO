@@ -41,6 +41,9 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 {
                     result = reader.GetString("id");
                 }
+                cmd.Dispose();
+                reader.Close();
+
                 if (result != null) return result;
                 else return "ERR";
             }
@@ -57,6 +60,8 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                
                 return "OK";
             }
             catch (MySqlException ex) { return ex.ToString(); }
@@ -95,6 +100,11 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 result.Add(ex.ToString());
                 return result;
             }
+        }
+
+        ~Accounts()
+        {
+            conn.Close();
         }
     }
 }

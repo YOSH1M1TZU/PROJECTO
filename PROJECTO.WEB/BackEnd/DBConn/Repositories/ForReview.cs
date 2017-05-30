@@ -45,6 +45,8 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                     result.Add(reader.GetString("forreviewDesc"));
                     result.Add(reader.GetString("forreviewCategory"));
                 }
+                cmd.Dispose();
+                reader.Close();
 
                 if (result != null) return result;
                 else
@@ -59,6 +61,11 @@ namespace PROJECTO.WEB.BackEnd.DBConn
                 result.Add(ex.ToString());
                 return result;
             }
+        }
+
+        ~ForReview()
+        {
+            conn.Close();
         }
     }
 }

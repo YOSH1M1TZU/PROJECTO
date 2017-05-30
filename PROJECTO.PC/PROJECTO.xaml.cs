@@ -27,6 +27,11 @@ namespace PROJECTO.PC
 
         public string projectToDelete = null;
 
+        public int invested = 0;
+        public int income = 0;
+
+        public int one = 0;
+
         public Dictionary<string, bool> ProjectIDAndAccess = new Dictionary<string, bool>();
 
         public int spacer = 5;
@@ -53,6 +58,35 @@ namespace PROJECTO.PC
 
             LoadProjectMembers(chosenProject);
 
+            LoadFinances(chosenProject);
+
+            canvas_dashboard.Visibility = Visibility.Visible;
+            canvas_projects.Visibility = Visibility.Hidden;
+            canvas_tasks.Visibility = Visibility.Hidden;
+            canvas_calendar.Visibility = Visibility.Hidden;
+            canvas_communication.Visibility = Visibility.Hidden;
+            canvas_finances.Visibility = Visibility.Hidden;
+            canvas_charts.Visibility = Visibility.Hidden;
+            canvas_users.Visibility = Visibility.Hidden;
+            canvas_settings.Visibility = Visibility.Hidden;
+            one = 1;
+        }
+
+
+        public void ReloadInfo(string user)
+        {
+            //LoadUserInfo(user);
+
+            LoadMyProjects(user);
+            LoadParticipatingProjects(user);
+
+            LoadTodos(chosenProject, false);
+            LoadInProgress(chosenProject, false);
+            LoadForReview(chosenProject, false);
+            LoadDone(chosenProject, false);
+
+            LoadProjectMembers(chosenProject);
+
             canvas_dashboard.Visibility = Visibility.Visible;
             canvas_projects.Visibility = Visibility.Hidden;
             canvas_tasks.Visibility = Visibility.Hidden;
@@ -63,8 +97,6 @@ namespace PROJECTO.PC
             canvas_users.Visibility = Visibility.Hidden;
             canvas_settings.Visibility = Visibility.Hidden;
         }
-
-
         
         #region UI handlers
         private void btns_MouseEnter(object sender, MouseEventArgs e)
@@ -1685,6 +1717,8 @@ namespace PROJECTO.PC
                 int spacerY1 = 5;
                 int spacerY2 = 10;
 
+                members_count.Content = result.Count();
+
                 //communication members
                 foreach (string member in result)
                 {
@@ -1922,6 +1956,101 @@ namespace PROJECTO.PC
                 spacerY += 60;
             }
         }
+
+
+
+        public void LoadFinances(string chsnProj)
+        {
+            try
+            {
+                finances_wrapper.Children.Clear();
+
+                var web_service = new MainWS.Main();
+                var result = web_service.LoadFinances(chosenProject);
+
+                spacer = 10;
+
+                for (int i = 0; i < result.Length; i += 4)
+                {
+                    Canvas cv = new Canvas();
+                    cv.Width = 465;
+                    cv.Height = 50;
+                    Thickness project_margin = cv.Margin;
+                    project_margin.Left = 10;
+                    project_margin.Top = spacer;
+                    cv.Margin = project_margin;
+                    //cv.Name = "project_" + result[i];
+                    finances_wrapper.Children.Add(cv);
+
+                    if(Convert.ToInt32(result[i + 3])==0)
+                    {
+                        //investment
+                        Rectangle rect = new Rectangle();
+                        rect.Width = 465;
+                        rect.Height = 50;
+                        rect.Fill = new SolidColorBrush(Color.FromArgb(255, 52, 152, 219));
+                        rect.RadiusX = 3;
+                        rect.RadiusY = 3;
+                        cv.Children.Add(rect);
+
+                        invested += Convert.ToInt32(result[i + 2]);
+                    }
+                    else
+                    {
+                        //income
+                        Rectangle rect = new Rectangle();
+                        rect.Width = 465;
+                        rect.Height = 50;
+                        rect.Fill = new SolidColorBrush(Color.FromArgb(255, 0, 186, 121));
+                        rect.RadiusX = 3;
+                        rect.RadiusY = 3;
+                        cv.Children.Add(rect);
+
+                        income += Convert.ToInt32(result[i + 2]);
+                    }
+                    
+                    Label title = new Label();
+                    title.Width = 270;
+                    title.Height = 40;
+                    Thickness title_margin = cv.Margin;
+                    title_margin.Left = 5;
+                    title_margin.Top = 5;
+                    title.Margin = title_margin;
+                    title.FontSize = 20;
+                    title.FontFamily = new FontFamily("Quicksand");
+                    title.Foreground = Brushes.White;
+                    title.Content = result[i + 1];
+                    title.VerticalContentAlignment = VerticalAlignment.Center;
+                    cv.Children.Add(title);
+
+                    Label amount = new Label();
+                    amount.Width = 180;
+                    amount.Height = 40;
+                    Thickness amount_margin = cv.Margin;
+                    amount_margin.Left = 275;
+                    amount_margin.Top = 5;
+                    amount.Margin = amount_margin;
+                    amount.FontSize = 20;
+                    amount.FontFamily = new FontFamily("Quicksand");
+                    amount.Foreground = Brushes.White;
+                    if (Convert.ToInt32(result[i + 3]) == 0)
+                    {
+                        amount.Content = "-" + result[i + 2].ToString() + " PLN";
+                    }
+                    else amount.Content = "+" + result[i + 2].ToString() + " PLN";
+                    amount.VerticalContentAlignment = VerticalAlignment.Center;
+                    cv.Children.Add(amount);
+
+                    spacer += 60;
+                }
+
+                invested_so_far.Content = invested.ToString() + " PLN";
+                income_so_far.Content = income.ToString() + " PLN";
+
+                capital_so_far.Content = (income - invested).ToString() + " PLN";
+            }
+            catch (Exception ex) { }
+        }
         #endregion
 
 
@@ -1984,6 +2113,15 @@ namespace PROJECTO.PC
 
                 if (result[0] == "ERR")
                 {
+                    Canvas cv = new Canvas();
+                    cv.Width = 1040;
+                    cv.Height = 80;
+                    Thickness member_margin = members_wrapper.Margin;
+                    member_margin.Left = 10;
+                    member_margin.Top = 10;
+                    cv.Margin = member_margin;
+                    members_wrapper.Children.Add(cv);
+
                     Label lb = new Label();
                     lb.Width = 360;
                     lb.Height = 60;
@@ -1995,12 +2133,12 @@ namespace PROJECTO.PC
                     //lb_padding.Left = 0;
                     //lb_padding.Top = 0;
                     //lb.Padding = lb_padding;
-                    lb.FontFamily = new FontFamily("Aaargh");
+                    lb.FontFamily = new FontFamily("Quicksand");
                     lb.FontSize = 24;
                     lb.Content = "Nothing Found!";
-                    lb.Foreground = Brushes.Gray;
+                    lb.Foreground = Brushes.Black;
                     lb.VerticalContentAlignment = VerticalAlignment.Center;
-                    members_wrapper.Children.Add(lb);
+                    cv.Children.Add(lb);
                     return;
                 }
 
@@ -2009,6 +2147,8 @@ namespace PROJECTO.PC
                 foreach (string member in result)
                 {
                     string[] mem = member.Split(',');
+                    if (mem[0] == currentUserID) return;
+
                     Canvas cv = new Canvas();
                     cv.Width = 1040;
                     cv.Height = 80;
@@ -2049,7 +2189,7 @@ namespace PROJECTO.PC
                     lb_padding.Left = 0;
                     //lb_padding.Top = 0;
                     lb.Padding = lb_padding;
-                    lb.FontFamily = new FontFamily("Aaargh");
+                    lb.FontFamily = new FontFamily("Quicksand");
                     lb.FontSize = 16;
                     lb.Content = mem[1];
                     lb.VerticalContentAlignment = VerticalAlignment.Center;
@@ -2066,7 +2206,7 @@ namespace PROJECTO.PC
                     lb2_padding.Left = 0;
                     //lb_padding.Top = 0;
                     lb2.Padding = lb2_padding;
-                    lb2.FontFamily = new FontFamily("Aaargh");
+                    lb2.FontFamily = new FontFamily("Quicksand");
                     lb2.FontSize = 16;
                     lb2.Content = "Short description of a profile.";
                     lb2.VerticalContentAlignment = VerticalAlignment.Center;
@@ -2186,6 +2326,46 @@ namespace PROJECTO.PC
             canvas_delete_project.Visibility = Visibility.Hidden;
             canvas_main.Effect = null;
             projectToDelete = null;
+        }
+
+        private void chosen_project_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(one==1)
+            {
+                chosenProject = null; //ProjectIDAndAccess.Keys.ElementAt(chosen_project.SelectedIndex);
+                chosen_project.Items.Clear();
+                ProjectIDAndAccess.Clear();
+                ReloadInfo(chosenProject);
+                //one = 0;
+                //chosen_project.SelectedIndex = 0;
+            }
+        }
+
+        private void create_finance_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var blur = new BlurEffect();
+            blur.Radius = 9;
+            canvas_main.Effect = blur;
+            canvas_add_finance.Visibility = Visibility.Visible;
+        }
+
+        private void add_finance_confirm_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var web_service = new MainWS.Main();
+                var result = web_service.AddFinance(add_finance_title.Text, add_finance_amount.Text, add_finance_type.SelectedIndex.ToString(), chosenProject);
+            }
+            catch (Exception ex) { }
+            canvas_main.Effect = null;
+            canvas_add_finance.Visibility = Visibility.Hidden;
+            LoadFinances(currentUserID);
+        }
+
+        private void add_finance_cancel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            canvas_add_finance.Visibility = Visibility.Hidden;
+            canvas_main.Effect = null;
         }
     }
 }
